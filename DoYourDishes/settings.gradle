@@ -1,0 +1,2 @@
+include ':DoYourDishes'
+rootProject.name = "DoYourDishes"
