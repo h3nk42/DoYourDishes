@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pw.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pw/pw.json" beforeDir="false" afterPath="$PROJECT_DIR$/pw/pw.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,12 +46,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shareYourPlant" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Schemas" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -71,6 +70,7 @@
       <workItem from="1602149594308" duration="1567000" />
       <workItem from="1602164386857" duration="16000" />
       <workItem from="1603189714753" duration="4716000" />
+      <workItem from="1604510701873" duration="2924000" />
     </task>
     <servers />
   </component>
@@ -87,8 +87,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="692" y="288" width="526" height="496" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604511653654">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="692" y="288" width="526" height="496" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/0.25.1920.1055@0.25.1920.1055" timestamp="1604511653654" />
     <state x="743" y="297" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603190814004">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>

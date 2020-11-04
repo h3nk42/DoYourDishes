@@ -3,7 +3,13 @@ const express = require('express');
 let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./data');
+
+const Plan = require ('./Schemas/Plan');
+const Task = require ('./Schemas/Task');
+const User = require ('./Schemas/User');
+
+const ObjectId = mongoose.Types.ObjectId;
+
 const http = require('http')
 const socketIo = require('socket.io')
 
@@ -56,10 +62,35 @@ io.on('connection', (socket) => {
     eventEmitter.on('update', (message) => socket.emit("dbUpdated", message))
 })
 
-
 // this is our get method
 // this method fetches all available data in our database
 
+router.get('/findOnePlan', (req, res) => {
+    //let {planId} = req.body;
+    let planId = "5fa2ea499c0cacc6ca5b9f02";
+    let objId = new ObjectId(planId);
+    Plan.find( {_id: objId } ,(err, data) => {
+        if (err) {
+            return res.json({success: false, error: err});
+        } else {
+            return res.json({success: true, data: data});
+        }
+    });
+});
+
+router.get('/findAllPlans', (req, res) => {
+    //let {planId} = req.body;
+    let planId = "5fa2ea499c0cacc6ca5b9f02";
+    let objId = new ObjectId(planId);
+    Plan.find((err, data) => {
+        if (err) {
+            return res.json({success: false, error: err});
+        } else {
+            return res.json({success: true, data: data});
+        }
+    });
+});
+/*
     router.get('/getData', (req, res) => {
         Data.find((err, data) => {
             if (err) {
@@ -113,6 +144,8 @@ io.on('connection', (socket) => {
             return res.json({success: true});
         });
     });
+
+    */
 
 // append /api for our http requests
     app.use('/api', router);
