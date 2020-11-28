@@ -1,6 +1,5 @@
 package com.control.logic;
 
-import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.Http;
 
 

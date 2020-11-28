@@ -2,6 +2,7 @@ package com.view.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.control.logic.AsynchronousRequest;
 import com.control.logic.Crud;
 
 
@@ -15,6 +16,8 @@ import com.view.R;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    MainActivity thisClass = this;
 
     String test;
 
@@ -43,11 +46,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent activityChangeIntent = new Intent(MainActivity.this, Authentication.class);
 //                MainActivity.this.startActivity(activityChangeIntent);
-                  textView.setText(testCrud.fetchData());
+                  AsynchronousRequest request = new AsynchronousRequest(thisClass, "testtest");
+                  request.execute();
+                 // textView.setText(testCrud.fetchData());
             }
         });
 
         Log.d(TAG, "onCreate: out");
+    }
+
+    public void changeTextFromAsync(String newText) {
+        Log.d(TAG, "changeTextFromAsync: called method");
+        final TextView textView = (TextView) findViewById(R.id.showFetchData);
+        textView.setText(newText);
     }
 
     @Override
