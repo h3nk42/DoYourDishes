@@ -2,7 +2,7 @@ package com.control.networkHttp;
 
 public class Http implements HTTPSEngine {
     @Override
-    public void GET() {
+    public void GET( String path) {
         // TODO implement GET for http
     }
 
