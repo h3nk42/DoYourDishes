@@ -27,7 +27,7 @@ public class Authentication extends AppCompatActivity {
     RequestQueue queue;
 
     private void fetchData() {
-        final TextView textView = (TextView) findViewById(R.id.textView3);
+        final TextView textView = (TextView) findViewById(R.id.showFetchData);
         textView.setText("");
         //final Object[] data = new Object[1];
         final JSONObject[] data = new JSONObject[1];

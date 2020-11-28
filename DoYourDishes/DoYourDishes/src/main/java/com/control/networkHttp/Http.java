@@ -1,10 +1,16 @@
 package com.control.networkHttp;
 
 public class Http implements HTTPSEngine {
+
+
+    //constructor takes path?
+
     @Override
 
-    public void GET() {
+    public String GET(String path) {
         // TODO implement GET for http --> HIER
+
+        return "lululu" + path;
     }
 
     @Override

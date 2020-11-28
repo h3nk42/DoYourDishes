@@ -4,7 +4,7 @@ import org.json.JSONArray;
 
 public interface HTTPSEngine {
 
-    void GET();
+    String GET(String path);
 
     void POST();
 

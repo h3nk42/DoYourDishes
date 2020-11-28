@@ -2,19 +2,29 @@ package com.view.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.control.logic.Crud;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.view.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    String test;
+
+    Crud testCrud = new Crud();
+
     private static final String TAG="MainActivity";
+
+    private void changeString() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +33,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button buttonAuth = (Button) findViewById(R.id.buttonAuth);
+        final TextView textView = (TextView) findViewById(R.id.showFetchData);
+        textView.setText("");
+
+        final Button buttonAuth = (Button) findViewById(R.id.fetchDataButton);
 
         buttonAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activityChangeIntent = new Intent(MainActivity.this, Authentication.class);
-                MainActivity.this.startActivity(activityChangeIntent);
+//                Intent activityChangeIntent = new Intent(MainActivity.this, Authentication.class);
+//                MainActivity.this.startActivity(activityChangeIntent);
+                  textView.setText(testCrud.fetchData());
             }
         });
 
