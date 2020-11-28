@@ -1,8 +1,8 @@
 package com.control.networkHttp;
 
-import org.json.JSONArray;
 
-public interface HTTPSEngine {
+
+public interface HTTPInterface {
 
     String GET(String path);
 

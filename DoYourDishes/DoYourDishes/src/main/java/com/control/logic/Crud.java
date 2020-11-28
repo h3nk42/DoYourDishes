@@ -1,23 +1,28 @@
 package com.control.logic;
 
+import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.Http;
 
-public class Crud implements CrudTaskInterface,CrudUserInterface,CrudPlan{
+
+public class Crud implements CrudTaskInterface,CrudUserInterface, CrudPlanInterface {
 
     Http httpEngine = new Http();
 
     @Override
     public String create(int x, String planname, Plan plan) {
+
         return null;
     }
 
     @Override
     public String create(String Name, String Key) {
+
         return null;
     }
 
     @Override
     public boolean create(User user, String string1) {
+
         return false;
     }
 

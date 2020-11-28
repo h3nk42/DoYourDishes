@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 
-public interface BluetoothEngine {
+public interface BluetoothInterface {
 
     BroadcastReceiver getBluetoothDeviceReceiver();
 

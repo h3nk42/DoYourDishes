@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 
-public class Bluetooth implements BluetoothEngine{
+public class Bluetooth implements BluetoothInterface {
+
     @Override
     public BroadcastReceiver getBluetoothDeviceReceiver() {
         return null;
