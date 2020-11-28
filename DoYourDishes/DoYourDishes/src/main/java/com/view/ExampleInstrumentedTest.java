@@ -1,4 +1,4 @@
-package com.example.doyourdishes;
+package com.view;
 
 import android.content.Context;
 
