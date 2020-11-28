@@ -1,4 +1,4 @@
-package com.example.doyourdishes;
+package com.view;
 
 import org.junit.Test;
 
