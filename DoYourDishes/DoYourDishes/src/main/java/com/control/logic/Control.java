@@ -1,4 +1,4 @@
 package com.control.logic;
 
-public class control {
+public class Control {
 }
