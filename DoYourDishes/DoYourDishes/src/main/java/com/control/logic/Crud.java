@@ -2,6 +2,10 @@ package com.control.logic;
 
 import com.control.networkHttp.Http;
 
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+
 
 public class Crud implements CrudTaskInterface,CrudUserInterface, CrudPlanInterface {
 
@@ -40,9 +44,19 @@ public class Crud implements CrudTaskInterface,CrudUserInterface, CrudPlanInterf
         //TODO implent delete
     }
 
-    public String fetchData() {
+    public String fetchData()  {
         String mem = "test";
-        mem = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData");
+
+        JSONObject response = null;
+        try {
+            response = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData");
+            mem = response.getJSONArray("data").getJSONObject(0).getString("message");
+        } catch (Exception e) {
+            e.printStackTrace();
+            mem = e.toString();
+        }
+
+
         return mem;
     }
 }

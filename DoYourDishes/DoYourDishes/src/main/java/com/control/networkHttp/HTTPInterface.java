@@ -1,10 +1,12 @@
 package com.control.networkHttp;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public interface HTTPInterface {
 
-    String GET(String path);
+    JSONObject GET(String path) throws Exception;
 
     void POST();
 
