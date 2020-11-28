@@ -10,6 +10,8 @@ public class AsynchronousRequest extends AsyncTask<Void, Void, Void> {
 
     private String data;
 
+    private Crud crud = new Crud();
+
     public AsynchronousRequest(MainActivity a,String passedString ) {
         this.mainActivity = a;
         data = passedString;
@@ -27,8 +29,8 @@ public class AsynchronousRequest extends AsyncTask<Void, Void, Void> {
         // Here you are in the worker thread and you are not allowed to access UI thread from here
         //Here you can perform network operations or any heavy operations you want.
         try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
+            data = crud.fetchData();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -39,6 +41,7 @@ public class AsynchronousRequest extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(aVoid);
         //After completing execution of given task , control will return here.
         //Hence if you want to populate UI elements with fetched data, do it here
+
         mainActivity.changeTextFromAsync(data);
     }
 
