@@ -1,8 +1,13 @@
 package com.control.logic;
 
-public class CrudTask implements CrudTaskInterface{
+public class Crud implements CrudTaskInterface,CrudUserInterface{
     @Override
     public String create(int x, String planname, Plan plan) {
+        return null;
+    }
+
+    @Override
+    public String create(String Name, String Key) {
         return null;
     }
 
