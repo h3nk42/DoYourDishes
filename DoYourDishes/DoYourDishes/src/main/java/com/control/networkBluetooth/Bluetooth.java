@@ -1,13 +1,19 @@
 package com.control.networkBluetooth;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 
-public class Bluetooth implements BluetoothInterface {
+
+public class Bluetooth  implements BluetoothInterface {
+
+
+
 
     @Override
     public BroadcastReceiver getBluetoothDeviceReceiver() {
+
         return null;
     }
 
@@ -23,6 +29,12 @@ public class Bluetooth implements BluetoothInterface {
 
     @Override
     public BluetoothDevice connect() {
+
         return null;
     }
+
+
+
+
+
 }
