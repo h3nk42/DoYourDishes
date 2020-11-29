@@ -15,7 +15,7 @@ public class Bluetooth  implements BluetoothInterface {
 
     @Override
     public BroadcastReceiver getBluetoothDeviceReceiver() {
-
+        //test
         return null;
     }
 
