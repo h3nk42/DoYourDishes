@@ -46,19 +46,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent activityChangeIntent = new Intent(MainActivity.this, Authentication.class);
 //                MainActivity.this.startActivity(activityChangeIntent);
-                  AsynchronousRequest request = new AsynchronousRequest(thisClass, "testtest");
+                  AsynchronousRequest request = new AsynchronousRequest(thisClass, textView);
                   request.execute();
                  // textView.setText(testCrud.fetchData());
             }
         });
 
         Log.d(TAG, "onCreate: out");
-    }
-
-    public void changeTextFromAsync(String newText) {
-        Log.d(TAG, "changeTextFromAsync: called method");
-        final TextView textView = (TextView) findViewById(R.id.showFetchData);
-        textView.setText(newText);
     }
 
     @Override
