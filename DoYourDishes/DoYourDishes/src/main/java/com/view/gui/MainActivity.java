@@ -6,6 +6,7 @@ import com.control.logic.AsynchronousRequest;
 import com.control.logic.Crud;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         buttonAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent activityChangeIntent = new Intent(MainActivity.this, Authentication.class);
+//                Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
 //                MainActivity.this.startActivity(activityChangeIntent);
-                  AsynchronousRequest request = new AsynchronousRequest(thisClass, textView);
-                  request.execute();
+                AsynchronousRequest request = new AsynchronousRequest(thisClass, textView);
+                request.execute();
                  // textView.setText(testCrud.fetchData());
             }
         });

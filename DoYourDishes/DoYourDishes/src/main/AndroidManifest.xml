@@ -2,8 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.view">
-    <uses-permission android:name="android.permission.INTERNET">
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+<!--    //TODO Bluetooth / Bluetooth Low Energy (access to location because of BLE required if app isn#t using Device Companion Manager!) -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+<!--  setting:  only available to BLE-Capable devices-->
+    <uses-feature android:name="android.hardware.bluetooth_le"  android:required="true" />
+
+
+
 
     <application
         android:icon="@mipmap/ic_launcher"

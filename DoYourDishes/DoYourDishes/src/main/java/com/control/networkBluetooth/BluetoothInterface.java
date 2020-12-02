@@ -14,4 +14,9 @@ public interface BluetoothInterface {
 
     BluetoothDevice connect();
 
+
+
+
+
+
 }
