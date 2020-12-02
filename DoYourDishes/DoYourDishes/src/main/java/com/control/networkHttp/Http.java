@@ -21,7 +21,7 @@ public class Http implements HTTPInterface {
     @Override
     public JSONObject GET(String path) throws Exception {
         // TODO implement GET for http --> HIER
-
+        //test12
         Request request = new Request.Builder()
                 .url(path)
                 .build();

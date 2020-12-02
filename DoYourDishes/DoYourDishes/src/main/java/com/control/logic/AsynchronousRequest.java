@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.view.R;
 import com.view.gui.MainActivity;
 
-public class AsynchronousRequest extends AsyncTask<Void, Void, Void> {
+public class AsynchronousRequest extends AsyncTask<Void, Void, Void>{
 
     private MainActivity mainActivity;
 
