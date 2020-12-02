@@ -65,11 +65,17 @@ io.on('connection', (socket) => {
 // this is our get method
 // this method fetches all available data in our database
 
-router.get('/findOnePlan', (req, res) => {
-    //let {planId} = req.body;
-    let planId = "5fa2ea499c0cacc6ca5b9f02";
-    let objId = new ObjectId(planId);
-    Plan.find( {_id: objId } ,(err, data) => {
+router.get('/findPlanToOwner', (req, res) => {
+
+    let owner = req.body.owner;
+
+    if (!owner)
+    return res.json({
+        success: false,
+        error: 'INVALID INPUTS',
+    });
+
+    Plan.find( {owner: owner} ,(err, data) => {
         if (err) {
             return res.json({success: false, error: err});
         } else {
@@ -90,6 +96,165 @@ router.get('/findAllPlans', (req, res) => {
         }
     });
 });
+
+router.get('/findAllTasks', (req, res) => {
+    Task.find((err, data) => {
+        if (err) {
+            return res.json({success: false, error: err});
+        } else {
+            return res.json({success: true, data: data});
+        }
+    });
+});
+//delete all tasks of a given planId
+router.delete('/delTasks', (req, res) => {
+
+    let planId = req.body.planId;
+
+    if (!planId) {
+        return res.json({
+            success: false,
+            error: 'INVALID INPUTS',
+        });
+    }
+
+    Task.deleteMany({ plan: planId}, (err, data) => {
+        if (err) {
+            return res.json({success: false, error: err});
+        } else {
+            Plan.updateOne(
+                { _id: planId },
+                {
+                    tasks: []
+                },
+                (err, updatedPlan) => { if(err) {console.log(err)} else {console.log(updatedPlan)}} )
+            return res.json({success: true, data: data});
+        }
+    });
+});
+
+router.delete('/delSingleTask', (req, res) => {
+
+    let taskId = req.body.taskId;
+
+    if (!taskId) {
+        return res.json({
+            success: false,
+            error: 'INVALID INPUTS',
+        });
+    }
+
+    var planId = '';
+
+    Task.findOne({_id: taskId}, (err, data) => {
+        if(err)
+            return res.json({
+                success: false,
+                error: 'INVALID INPUTS',
+            });
+        if (!data)
+            return res.json({
+            success: false,
+            error: 'Task not found',
+        });
+        else {
+            planId = data.plan;
+            console.log(planId);
+            Task.deleteOne({_id: taskId}, (err, data) => {
+                if (err) {
+                    return res.json({success: false, error: err});
+                } else {
+                    Plan.updateOne(
+                        {_id: planId},
+                        {
+                            $pull: {
+                                // omg man muss hier auf ObjectId casten sonst vergleicht er falsch..
+                                tasks: {taskId: ObjectId(taskId)}
+                            }
+                        },
+                        (err, updatedPlan) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+
+                            }
+                        })
+                    return res.json({success: true, data: data});
+                }
+            })
+        }
+    })
+});
+
+
+//create a plan, receives the user and planName => when authorization is done use emailAddress as user
+router.post('/createPlan', (req, res) => {
+    let plan = new Plan();
+    const {name, messageSender } = req.body;
+    if (!name || !messageSender) {
+        return res.json({
+            success: false,
+            error: 'INVALID INPUTS',
+        });
+    }
+    plan.name = name;
+    plan.users = [messageSender];
+    plan.owner = messageSender;
+    plan.tasks = [];
+    plan.save((err) => {
+        if (err) return res.json({success: false, error: err});
+        return res.json({success: true});
+    });
+});
+
+router.delete('/deletePlan', (req, res) => {
+    const {id} = req.body;
+    console.log(req.body);
+    if (!id) {
+        return res.json({
+            success: false,
+            error: 'NO ID',
+        });
+    }
+    Plan.deleteOne({_id: id}, (err) => {
+        if (err) return res.send(err);
+        Task.remove({plan: id}, (err, updatedPlan) => { if(err) {console.log(err)} })
+        return res.json({success: true});
+    });
+});
+
+router.post('/createTask', (req, res) => {
+    let task = new Task();
+    const {name, messageSender, planId } = req.body;
+    //checks if plan with planId exists
+   Plan.exists({_id: planId}, (err, exists) => {
+        console.log(exists)
+        if (!name || !messageSender || !planId || !exists ) {
+            return res.json({
+                success: false,
+                error: 'INVALID INPUTS',
+            });
+        }
+
+        task.name = name;
+        task.lastTimeDone = 0;
+        task.plan = planId;
+        task.save((err, newtask) => {
+            if (err) return res.json({success: false, error: err});
+            Plan.updateOne(
+                { _id: planId },
+                {
+                    $push: {
+                        tasks: [{taskName: name, taskId: newtask._id}]
+                    }
+                },
+                (err, updatedPlan) => { if(err) {console.log(err)} } )
+            return res.json({success: true});
+        });
+   });
+});
+
+
 /*
     router.get('/getData', (req, res) => {
         Data.find((err, data) => {

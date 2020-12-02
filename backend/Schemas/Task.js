@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema(
     {
-        name: Number,
-        lastTimeDone: [],
-        tasks: [],
+        name: String,
+        lastTimeDone: Number,
+        plan: mongoose.Schema.Types.ObjectId,
     },
     { timestamps: true }
 );

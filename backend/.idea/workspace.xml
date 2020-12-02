@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsynchronousRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsynchronousRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/MainActivity.java" afterDir="false" />
-    </list>
+    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -74,6 +71,8 @@
       <workItem from="1604510701873" duration="2924000" />
       <workItem from="1605546856601" duration="109000" />
       <workItem from="1606602801663" duration="772000" />
+      <workItem from="1606663211586" duration="1608000" />
+      <workItem from="1606909580868" duration="16175000" />
     </task>
     <servers />
   </component>
@@ -91,21 +90,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="692" y="288" width="526" height="496" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604511653654">
-      <screen x="0" y="25" width="1920" height="1055" />
-    </state>
-    <state x="692" y="288" width="526" height="496" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/0.25.1920.1055@0.25.1920.1055" timestamp="1604511653654" />
-    <state x="2663" y="278" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605546964056">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2663" y="278" key="FileChooserDialogImpl/0.25.1920.1055/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605546964056" />
-    <state x="743" y="297" key="FileChooserDialogImpl/1920.0.1920.1080/0.25.1920.1055@0.25.1920.1055" timestamp="1603190814004" />
-    <state x="743" y="298" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1602164400948" />
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1602150328138">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1602150328138" />
   </component>
 </project>

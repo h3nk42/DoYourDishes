@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PlanSchema = new Schema(
-    {
-        name: Number,
+    {   owner: String,
+        name: String,
         users: [],
         tasks: [],
     },
