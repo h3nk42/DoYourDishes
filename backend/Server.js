@@ -4,9 +4,12 @@ let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
+
 const Plan = require ('./Schemas/Plan');
 const Task = require ('./Schemas/Task');
 const User = require ('./Schemas/User');
+
+
 
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -28,6 +31,7 @@ const io = socketIo(server);
 const eventEmitter = new events.EventEmitter();
 
 app.use(cors());
+
 
 const router = express.Router();
 

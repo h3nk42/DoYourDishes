@@ -5,8 +5,17 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
     {
-        userName: Number,
-        passwordHash: String,
+        name: {
+            type: 'String',
+            required: true,
+            trim: true,
+            unique: true
+        },
+        password: {
+            type: 'String',
+            required: true,
+            trim: true
+        },
         plan: mongoose.Schema.Types.ObjectId
     },
     { timestamps: true }
