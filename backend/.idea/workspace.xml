@@ -44,12 +44,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/models" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/Schemas" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -73,6 +75,7 @@
       <workItem from="1606602801663" duration="772000" />
       <workItem from="1606663211586" duration="1608000" />
       <workItem from="1606909580868" duration="19886000" />
+      <workItem from="1606998989932" duration="3750000" />
     </task>
     <servers />
   </component>
