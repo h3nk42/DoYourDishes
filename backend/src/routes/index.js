@@ -14,4 +14,5 @@ module.exports = app => {
    // app.use('/api/user', authenticate, user);
     app.use('/api/plan', plan);
     app.use('/api/task', task);
+    app.use('/api/user', user);
 };

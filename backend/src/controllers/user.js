@@ -1,5 +1,87 @@
 const User = require('../models/User');
 const {uploader, sendEmail} = require('../utils/index');
+const {validationResult} =require('express-validator')
+const ObjectId = require('mongoose').Types.ObjectId
+
+
+
+
+
+exports.createUser = async function (req, res) {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    let{userName, password} = req.body;
+
+    let user = await User.exists({userName: userName})
+    if (user){
+        return res.status(402).json({
+            success: false,
+            message: 'user already exists'
+        })
+    }
+    const userData = {
+        userName: userName,
+        password: password
+    }
+    User(userData).save((err)=>{
+
+        if(err){
+            return res.status(401).json({
+                success: false,
+                message: err
+            })
+        }
+        return res.status(200).json({success: true});
+    })
+}
+
+exports.findAllUsers = async function (req, res) {
+    User.find({},(err, data)=>{
+        if(err){
+            return res.status(400).json({
+                success: false,
+                error: err
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            data: data
+        })
+    })
+}
+
+
+exports.checkPasswordMatch = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    User.findOne({_id: ObjectId(req.body.id) }, async (err, data) =>{
+        if(!data){  return res.status(405).json({
+            success: false,
+            error: 'user not found'
+        })}
+        let passwordMatching = await data.comparePassword(req.body.password);
+        console.log(data.password)
+        console.log(req.body.password)
+        console.log(passwordMatching)
+        return res.status(200).json({
+            success: true,
+            data: passwordMatching
+        })
+    })
+}
+
+
+
+
+//not my part
+
+
 
 // @route GET admin/user
 // @desc Returns all users

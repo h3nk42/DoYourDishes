@@ -11,18 +11,18 @@ const UserSchema = new Schema(
     {
         userName: {
             type: String,
-            required: true,
+            //required: true,
             trim: true,
             unique: true
         },
         password: {
             type: String,
-            required: true,
+            //required: true,
             trim: true
         },
         plan: {
             type: mongoose.ObjectId,
-            required: true,
+            required: false,
             trim: true
         },
         resetPasswordToken: {
@@ -46,21 +46,17 @@ UserSchema.pre('save',  function(next) {
     const user = this;
 
     if (!user.isModified('password')) return next();
-
-    bcrypt.genSalt(10, function(err, salt) {
-        if (err) return next(err);
-
-        bcrypt.hash(user.password, salt, function(err, hash) {
+       bcrypt.hash(user.password, 10,function(err, hash) {
             if (err) return next(err);
 
             user.password = hash;
             next();
         });
-    });
 });
 
-UserSchema.methods.comparePassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+//check if password matches to db password
+UserSchema.methods.comparePassword = async function(password) {
+    return await bcrypt.compareSync(password, this.password);
 };
 
 

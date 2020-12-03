@@ -23,9 +23,6 @@ exports.findPlanToOwner = (req, res) => {
 }
 
 exports.findAllPlans = (req, res) => {
-    //let {planId} = req.body;
-    let planId = "5fa2ea499c0cacc6ca5b9f02";
-    let objId = new ObjectId(planId);
     Plan.find((err, data) => {
         if (err) {
             return res.json({success: false, error: err});
@@ -58,10 +55,10 @@ exports.deletePlan = (req, res) => {
     const {id} = req.body;
     console.log(req.body);
     if (!id ) {
-        return res.json(returnError("id is null"));
+        return res.json({error: "error no id"});
     }
     Plan.findById(id, (err, plan) => {
-        if (!plan){return res.json(returnError("plan is null"));}
+        if (!plan){return res.json({error: err})}
 
         Plan.deleteOne({_id: id}, (err) => {
             if (err) return res.send(err);

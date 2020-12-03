@@ -1,16 +1,29 @@
 const express = require('express');
-const {check} = require('express-validator');
+const {body} = require('express-validator');
 const multer = require('multer');
 
-const User = require('../controllers/user');
+const userController = require('../controllers/user');
 const validate = require('../middlewares/validate');
 
 const router = express.Router();
 
 const upload = multer().single('profileImage');
 
+
+
+router.post('/createUser',[
+    body('userName').not().isEmpty().withMessage('Your username is required'),
+    body('password').not().isEmpty().withMessage('Your password is required')], userController.createUser)
+
+router.get('/findAllUsers',[],userController.findAllUsers)
+
+router.post('/checkPasswordMatch',[
+    body('password').not().isEmpty().withMessage('Your password is required')],userController.checkPasswordMatch)
+
+/*
 //INDEX
-router.get('/', User.index);
+router.get('/', userController.index);
+
 
 //STORE
 router.post('/', [
@@ -28,5 +41,6 @@ router.put('/:id', upload, User.update);
 
 //DELETE
 router.delete('/:id', User.destroy);
+*/
 
 module.exports = router;
