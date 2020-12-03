@@ -1,3 +1,4 @@
+/*
 const Datauri = require('datauri');
 const path = require('path');
 
@@ -28,3 +29,4 @@ function sendEmail(mailOptions) {
 }
 
 module.exports = { uploader, sendEmail };
+*/

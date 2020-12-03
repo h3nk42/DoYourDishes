@@ -29,16 +29,16 @@ router.get('/verify/:token', Auth.verify);
 router.post('/resend', Auth.resendToken);
 
 //Password RESET
-router.post('/recover', [
+/*router.post('/recover', [
     check('email').isEmail().withMessage('Enter a valid email address'),
 ], validate, Password.recover);
 
-router.get('/reset/:token', Password.reset);
+router.get('/reset/:token', Password.reset);*/
 
-router.post('/reset/:token', [
+/*router.post('/reset/:token', [
     check('password').not().isEmpty().isLength({min: 6}).withMessage('Must be at least 6 chars long'),
     check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
-], validate, Password.resetPassword);
+], validate, Password.resetPassword);*/
 
 
 module.exports = router;
