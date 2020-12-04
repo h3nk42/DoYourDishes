@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Plan = require('../models/Plan');
+const Task = require('../models/Task')
 const {uploader, sendEmail} = require('../utils/index');
 const {validationResult} = require('express-validator')
 const ObjectId = require('mongoose').Types.ObjectId
@@ -34,14 +36,53 @@ exports.createUser = async function (req, res) {
 }
 
 exports.delAllUsers = async (req, res) => {
-    User.deleteMany({}, (err, data) => {
-        if (err) {
-            return res.status(400).json({success: false, error: err});
-        } else {
-            return res.json({success: true, data: data});
-        }
-    });
+    let users = await User.find({}, (err, data) =>{
+    })
+    let userNames = users.map((user)=> user.userName)
+    Plan.deleteMany({owner:{$in: userNames}}).then(()=>{
+        User.deleteMany({userName: {$in: userNames}}, (err, data) =>{
+            return res.status(200).json({success:true, data: data})
+        })
+    })
 }
+
+exports.delUser = async (req, res) => {
+    let msgSender = req.user.userName;
+    let planToDelete = await Plan.findOne({owner: msgSender})
+
+    let userModel = await User.findOne({userName: msgSender}, (err, data)=>{})
+
+    Plan.deleteOne({owner: msgSender}, (err,data) =>{
+        if (err)
+            return res.status(401).json({
+            success: false,
+            message: err
+        })
+
+
+        // if plans have been deleted, also delete tasks
+        if(data.n>0){
+            Task.deleteMany({plan: planToDelete._id}, (err) => {})
+        }
+        //if user is in an existing plan but not owner, remove him/her from plan
+
+        else if(data.n===0 && userModel.plan != null) {
+            Plan.updateOne({_id: userModel.plan}, {$pull: {users: msgSender}}, (err,data) =>{
+                console.log('removed users updated: ' + data.n )
+            })
+        }
+    }).then(()=>{
+        User.deleteOne({userName: req.user.userName}, (err, data) =>{
+            if (err)
+                return res.status(401).json({
+                    success: false,
+                    message: err
+                })
+            return res.status(200).json({success:true, data: data})
+        })
+    })
+}
+
 
 exports.findAllUsers = async function (req, res) {
     User.find({},(err, data)=>{

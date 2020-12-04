@@ -23,7 +23,8 @@ const UserSchema = new Schema(
         plan: {
             type: mongoose.ObjectId,
             required: false,
-            trim: true
+            trim: true,
+            default: null
         },
         resetPasswordToken: {
             type: String,
