@@ -1,6 +1,23 @@
+
+
+
+
+
+
+
+exports.generateServerErrorCode = (res, code, fullError, msg, location = 'server') => {
+    return {
+        success: false,
+        fullError: fullError,
+        msg: msg,
+        location: location
+    }
+}
+
 /*
 const Datauri = require('datauri');
 const path = require('path');
+
 
 const cloudinary = require('../config/cloudinary');
 const sgMail = require('@sendgrid/mail');

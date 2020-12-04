@@ -41,7 +41,7 @@ connection.on('error', (err) => {
 
 //=== 3 - INITIALIZE PASSPORT MIDDLEWARE
 app.use(passport.initialize(undefined));
-require("./middlewares/jwt")(passport);
+require("./middlewares/unused/jwt")(passport);
 
 
 //=== 4 - CONFIGURE ROUTES

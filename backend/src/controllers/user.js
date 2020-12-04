@@ -1,22 +1,17 @@
 const User = require('../models/User');
 const {uploader, sendEmail} = require('../utils/index');
-const {validationResult} =require('express-validator')
+const {validationResult} = require('express-validator')
 const ObjectId = require('mongoose').Types.ObjectId
 
 
-
-
-
 exports.createUser = async function (req, res) {
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     let{userName, password} = req.body;
-
     let user = await User.exists({userName: userName})
+
     if (user){
         return res.status(402).json({
             success: false,
@@ -28,7 +23,6 @@ exports.createUser = async function (req, res) {
         password: password
     }
     User(userData).save((err)=>{
-
         if(err){
             return res.status(401).json({
                 success: false,
@@ -37,6 +31,16 @@ exports.createUser = async function (req, res) {
         }
         return res.status(200).json({success: true});
     })
+}
+
+exports.delAllUsers = async (req, res) => {
+    User.deleteMany({}, (err, data) => {
+        if (err) {
+            return res.status(400).json({success: false, error: err});
+        } else {
+            return res.json({success: true, data: data});
+        }
+    });
 }
 
 exports.findAllUsers = async function (req, res) {
@@ -54,13 +58,12 @@ exports.findAllUsers = async function (req, res) {
     })
 }
 
-
 exports.checkPasswordMatch = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    User.findOne({_id: ObjectId(req.body.id) }, async (err, data) =>{
+    User.findOne({userName: req.body.userName }, async (err, data) =>{
         if(!data){  return res.status(405).json({
             success: false,
             error: 'user not found'

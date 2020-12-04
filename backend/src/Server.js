@@ -42,8 +42,9 @@ const router = express.Router();
 // this method fetches all available data in our database
 
 //=== 3 - INITIALIZE PASSPORT MIDDLEWARE
+
 app.use(passport.initialize(undefined));
-require("./middlewares/jwt")(passport);
+require("./middlewares/unused/jwt")(passport);
 
 
 //=== 4 - CONFIGURE ROUTES

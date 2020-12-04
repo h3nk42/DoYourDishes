@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 const Schema = mongoose.Schema;
-const Token = require('../models/Token');
+const Token = require('./unused/Token');
 
 const UserSchema = new Schema(
     {

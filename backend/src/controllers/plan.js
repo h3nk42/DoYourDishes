@@ -1,17 +1,19 @@
+require('../utils/constant')
+
 const Plan = require('../models/Plan')
 const Task = require('../models/Task')
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
+const utils = require('../utils/index')
 
 exports.findPlanToOwner = (req, res) => {
     let owner = req.body.owner;
 
-    if (!owner)
-        return res.status(401).send({
-            success: false,
-            error: 'INVALID INPUTS',
-        });
+    if (!owner) {
+        console.log(utils.generateServerErrorCode(res, 403, 'no owner given', USERNAME_IS_EMPTY, 'findOwner'))
+        return utils.generateServerErrorCode(res, 403, 'no owner given', USERNAME_IS_EMPTY, 'findOwner');
+    }
 
     Plan.find( {owner: owner} ,(err, data) => {
         if (err) {
@@ -25,7 +27,8 @@ exports.findPlanToOwner = (req, res) => {
 exports.findAllPlans = (req, res) => {
     Plan.find((err, data) => {
         if (err) {
-            return res.json({success: false, error: err});
+            console.log(utils.generateServerErrorCode(res, 403, err, PLAN_NOT_FOUND, 'findAllPlans'))
+            return res.status(403).json(utils.generateServerErrorCode(res, 403, err, PLAN_NOT_FOUND, 'findAllPlans'));
         } else {
             return res.json({success: true, data: data});
         }
@@ -36,10 +39,8 @@ exports.createPlan = (req, res) => {
     let plan = new Plan();
     const {name, messageSender } = req.body;
     if (!name || !messageSender) {
-        return res.status(401).send({
-            success: false,
-            error: 'INVALID INPUTS',
-        });
+        console.log(utils.generateServerErrorCode(res, 403, 'no name given', NAME_IS_EMPTY, 'createPlan'))
+        return res.status(403).json(utils.generateServerErrorCode(res, 403, 'no name given', NAME_IS_EMPTY, 'createPlan'));
     }
     plan.name = name;
     plan.users = [messageSender];

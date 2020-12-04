@@ -3,7 +3,7 @@ const {body} = require('express-validator');
 const multer = require('multer');
 
 const userController = require('../controllers/user');
-const validate = require('../middlewares/validate');
+const validate = require('../middlewares/unused/validate');
 
 const router = express.Router();
 
@@ -16,6 +16,9 @@ router.post('/createUser',[
     body('password').not().isEmpty().withMessage('Your password is required')], userController.createUser)
 
 router.get('/findAllUsers',[],userController.findAllUsers)
+
+
+router.get('/delAllUsers',[],userController.delAllUsers)
 
 router.post('/checkPasswordMatch',[
     body('password').not().isEmpty().withMessage('Your password is required')],userController.checkPasswordMatch)

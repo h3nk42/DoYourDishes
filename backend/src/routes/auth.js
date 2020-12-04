@@ -1,9 +1,9 @@
 const express = require('express');
 const {check} = require('express-validator');
 
-const Auth = require('../controllers/auth');
+const authController = require('../controllers/auth');
 const Password = require('../controllers/password');
-const validate = require('../middlewares/validate');
+const validate = require('../middlewares/unused/validate');
 
 const router = express.Router();
 
@@ -11,11 +11,16 @@ router.get('/', (req, res) => {
     res.status(200).json({message: "You are in the Auth Endpoint. Register or Login to test Authentication."});
 });
 
+router.post('/login',  [
+    check('userName').not().isEmpty(),
+    check('password').not().isEmpty()], authController.login)
 
 
 
 
 
+
+//not my stuff start
 /*
 router.post('/register', [
     check('email').isEmail().withMessage('Enter a valid email address'),
@@ -31,9 +36,12 @@ router.post("/login", [
 */
 
 
+
+/*
 //EMAIL Verification
-router.get('/verify/:token', Auth.verify);
-router.post('/resend', Auth.resendToken);
+router.get('/verify/:token', authController.verify);
+router.post('/resend', authController.resendToken);
+*/
 
 //Password RESET
 /*router.post('/recover', [

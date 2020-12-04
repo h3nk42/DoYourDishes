@@ -1,6 +1,64 @@
 const User = require('../models/User');
-const Token = require('../models/Token');
+const Token = require('../models/unused/Token');
 //const {sendEmail} = require('../utils/index');
+const {validationResult} = require('express-validator');
+const jwt = require('jsonwebtoken')
+require('dotenv').config();
+
+const utils = require('../utils/index')
+const secret = process.env.JWT_SECRET;
+
+
+
+
+exports.login = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {userName, password} = req.body;
+
+    const user = await User.findOne({userName: userName});
+    if (user && user.userName) {
+        const isPasswordMatched = await user.comparePassword(password);
+        if (isPasswordMatched) {
+            // Sign token
+            const token = jwt.sign({userName}, secret,
+                {
+                    expiresIn: 86400,
+                });
+            const userToReturn = {...user.toJSON(), ...{token}};
+            delete userToReturn.password;
+            res.status(200).json(userToReturn);
+        } else {
+             return res.status(403).json(utils.generateServerErrorCode(res, 403, 'login password error', WRONG_PASSWORD, 'password'));
+        }
+    } else {
+        return res.status(404).json(utils.generateServerErrorCode(res, 404, 'login email error', USER_DOES_NOT_EXIST, 'email'));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 // @route POST api/auth/register
 // @desc Register user
@@ -112,7 +170,7 @@ async function sendVerificationEmail(user, req, res){
         let to = user.email;
         let from = process.env.FROM_EMAIL;
         let link="http://"+req.headers.host+"/api/auth/verify/"+token.token;
-        let html = `<p>Hi ${user.username}<p><br><p>Please click on the following <a href="${link}">link</a> to verify your account.</p> 
+        let html = `<p>Hi ${user.username}<p><br><p>Please click on the following <a href="${link}">link</a> to verify your account.</p>
                   <br><p>If you did not request this, please ignore this email.</p>`;
 
         await sendEmail({to, from, subject, html});
@@ -122,3 +180,4 @@ async function sendVerificationEmail(user, req, res){
         res.status(500).json({message: error.message})
     }
 }
+*/
