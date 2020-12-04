@@ -1,6 +1,7 @@
-import { Strategy, ExtractJwt } from 'passport-jwt';
-import { config, underscoreId } from './config';
-import User from '../model/User';
+const ExtractJwt = require('passport-jwt').ExtractJwt
+const Strategy = require('passport-jwt').Strategy
+
+const User = require('../models/User');
 require('dotenv').config();
 
 const config = {
@@ -10,9 +11,8 @@ const config = {
     }
 }
 
-const underscoreId = '_id';
 
-export const applyPassportStrategy = passport => {
+exports.applyPassportStrategy = passport => {
     const options = {};
     options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
     options.secretOrKey = config.passport.secret;
@@ -23,10 +23,10 @@ export const applyPassportStrategy = passport => {
                 if (user) {
                     return done(null, {
                         userName: user.userName,
-                        _id: user[underscoreId]
+                        _id: user._id
                     });
                 }
-                return done(null, false);
+                return done(null, false, 'test');
             });
         })
     );

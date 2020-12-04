@@ -8,14 +8,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const utils = require('../utils/index')
 
 exports.findPlanToOwner = (req, res) => {
-    let owner = req.body.owner;
-
-    if (!owner) {
-        console.log(utils.generateServerErrorCode(res, 403, 'no owner given', USERNAME_IS_EMPTY, 'findOwner'))
-        return utils.generateServerErrorCode(res, 403, 'no owner given', USERNAME_IS_EMPTY, 'findOwner');
-    }
-
-    Plan.find( {owner: owner} ,(err, data) => {
+    Plan.find( {owner: req.user.userName} ,(err, data) => {
         if (err) {
             return res.json({success: false, error: err});
         } else {
@@ -37,15 +30,16 @@ exports.findAllPlans = (req, res) => {
 
 exports.createPlan = (req, res) => {
     let plan = new Plan();
-    const {name, messageSender } = req.body;
-    if (!name || !messageSender) {
+    const {name} = req.body;
+    if (!name ) {
         console.log(utils.generateServerErrorCode(res, 403, 'no name given', NAME_IS_EMPTY, 'createPlan'))
         return res.status(403).json(utils.generateServerErrorCode(res, 403, 'no name given', NAME_IS_EMPTY, 'createPlan'));
     }
     plan.name = name;
-    plan.users = [messageSender];
-    plan.owner = messageSender;
+    plan.users = [req.user.userName];
+    plan.owner = req.user.userName;
     plan.tasks = [];
+    console.log(plan)
     plan.save((err) => {
         if (err) return res.json({success: false, error: err});
         return res.json({success: true});

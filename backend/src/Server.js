@@ -1,3 +1,6 @@
+
+const passportController = require("./middlewares/passport");
+
 const mongoose = require('mongoose');
 const express = require('express');
 let cors = require('cors');
@@ -43,8 +46,8 @@ const router = express.Router();
 
 //=== 3 - INITIALIZE PASSPORT MIDDLEWARE
 
-app.use(passport.initialize(undefined));
-require("./middlewares/unused/jwt")(passport);
+passportController.applyPassportStrategy(passport);
+//app.use(passport.initialize());
 
 
 //=== 4 - CONFIGURE ROUTES

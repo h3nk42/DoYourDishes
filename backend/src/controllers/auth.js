@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
         const isPasswordMatched = await user.comparePassword(password);
         if (isPasswordMatched) {
             // Sign token
-            const token = jwt.sign({userName}, secret,
+            const token = jwt.sign({userName: userName}, secret,
                 {
                     expiresIn: 86400,
                 });
