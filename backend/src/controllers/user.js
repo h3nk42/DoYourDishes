@@ -59,10 +59,10 @@ exports.delUser = async (req, res) => {
             message: err
         })
 
-
         // if plans have been deleted, also delete tasks
         if(data.n>0){
             Task.deleteMany({plan: planToDelete._id}, (err) => {})
+            User.updateMany({plan: planToDelete._id}, {$set: {plan: null}}, (err, data) =>{})
         }
         //if user is in an existing plan but not owner, remove him/her from plan
 

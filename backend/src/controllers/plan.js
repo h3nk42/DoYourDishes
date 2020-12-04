@@ -96,11 +96,11 @@ exports.addUser = async (req, res) => {
         )
     })
     if(!plan) return res.status(404).json(utils.generateServerErrorCode(res, 400, 'Plan not found in db', 'plan not found','addUser'))
-    if(plan.users.includes(userToAdd)) return res.status(450).json(utils.generateServerErrorCode(res, 400, 'User already in Plan', 'User in Plan','addUser'))
+    if(plan.users.includes(userToAdd)) return res.status(450).json(utils.generateServerErrorCode(res, 400, 'User already in this Plan', 'User in Plan','addUser'))
     let user = await User.findOne({userName: userToAdd}, (err)=>{
     })
     if (!user) return  res.status(404).json(utils.generateServerErrorCode(res, 400, 'User not found in db', 'User not found','addUser'))
-    if (user.plan != null)  return  res.status(450).json(utils.generateServerErrorCode(res, 400, 'User already in plan', 'User already in plan','addUser'))
+    if (user.plan != null)  return  res.status(450).json(utils.generateServerErrorCode(res, 400, 'User already in another plan', 'User already in plan','addUser'))
 
     Plan.updateOne(
         { owner: msgSender },
