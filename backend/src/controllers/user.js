@@ -8,6 +8,7 @@ const {retErr} = require('../utils/index');
 const {checkInputs} = require('../utils/index')
 
 
+
 exports.createUser = async function (req, res) {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     let{ userName, password } = req.body;

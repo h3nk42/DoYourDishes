@@ -4,6 +4,18 @@ const {validationResult} = require('express-validator');
 
 
 
+const passwordValidator = require('password-validator')
+
+let password = new passwordValidator();
+
+password
+    .is().min(5)                                    // Minimum length 8
+    .is().max(20)                                  // Maximum length 100     // Must have at least 2 digits
+    .has().not().spaces()                           // Should not have spaces
+    .is().not().oneOf(['Passw0rd', 'Password123']);
+
+module.exports.passwordScheme = password;
+
 
 exports.generateServerErrorCode = (res, code, fullError, msg, location = 'server') => {
     return {

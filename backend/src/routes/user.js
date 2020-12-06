@@ -11,11 +11,16 @@ const router = express.Router();
 
 const upload = multer().single('profileImage');
 
+const {passwordScheme} = require('../utils/index')
+
 
 
 router.post('/createUser',[
     body('userName').not().isEmpty().withMessage('Your username is required'),
-    body('password').not().isEmpty().withMessage('Your password is required')], userController.createUser)
+    body('userName').isLength({min:4, max: 10}).withMessage('Your username is required'),
+    body('password').not().isEmpty().withMessage('Your password is required'),
+    body('password').isLength({min:5, max: 20})],
+    userController.createUser)
 
 router.get('/findAllUsers',[],userController.findAllUsers)
 

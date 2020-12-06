@@ -21,7 +21,8 @@ router.delete('/delSingleTask',
 router.post('/createTask',
     [
         body('name').not().isEmpty().withMessage('TaskName is required'),
-        body('pointsWorth').not().isEmpty().withMessage('pointsWorth is required')
+        body('pointsWorth').not().isEmpty().withMessage('pointsWorth is required'),
+        body('pointsWorth').isNumeric().withMessage('pointsWorth is required')
     ],
     passport.authenticate('jwt',{session: false}),
     taskControl.createTask);

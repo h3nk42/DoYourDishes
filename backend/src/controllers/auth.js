@@ -10,17 +10,13 @@ const secret = process.env.JWT_SECRET;
 
 const {retErr} = require('../utils/index');
 
-
-
-
 exports.login = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return  retErr(res, errors, 400, 'INVALID INPUT');
+        return  retErr(res, errors, 418, 'INVALID_INPUT');
     }
 
     const {userName, password} = req.body;
-
     const user = await User.findOne({userName: userName});
     if (user && user.userName) {
         const isPasswordMatched = await user.comparePassword(password);
@@ -40,7 +36,6 @@ exports.login = async (req, res) => {
         return  retErr(res, {}, 418, 'WRONG_USER_OR_PW');
     }
 }
-
 
 exports.whoAmI = (req, res) => {
     return res.status(200).json({data: req.user})

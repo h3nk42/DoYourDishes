@@ -9,7 +9,8 @@ const router = express.Router();
 
 router.post('/login',  [
     check('userName').not().isEmpty(),
-    check('password').not().isEmpty()], authController.login)
+    check('password').not().isEmpty()],
+    authController.login)
 
 router.get('/whoAmI',passport.authenticate('jwt',{session: false}), authController.whoAmI)
 
