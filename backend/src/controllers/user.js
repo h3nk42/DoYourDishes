@@ -67,7 +67,7 @@ exports.delUser = async (req, res) => {
         //if user is in an existing plan but not owner, remove him/her from plan
 
         else if(data.n===0 && userModel.plan != null) {
-            Plan.updateOne({_id: userModel.plan}, {$pull: {users: msgSender}}, (err,data) =>{
+            Plan.updateOne({_id: userModel.plan}, {$pull: {users: {userName: msgSender}}}, (err,data) =>{
                 console.log('removed users updated: ' + data.n )
             })
         }

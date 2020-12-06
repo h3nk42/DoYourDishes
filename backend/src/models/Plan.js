@@ -4,10 +4,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PlanSchema = new Schema(
-    {   owner: String,
-        name: String,
+    {
         users: [],
         tasks: [],
+        owner: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
     },
     { timestamps: true }
 );

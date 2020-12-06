@@ -7,16 +7,21 @@ const TaskSchema = new Schema(
     {
         name: {
             type: String,
-            required: false
+            required: true
         },
         lastTimeDone: {
-            type: mongoose.Date,
-            required: false
+            type: Number,
+            required: true
         },
         plan: {
             type: mongoose.ObjectId,
-            required: false
+            required: true
         },
+        pointsWorth: {
+            type: Number,
+            required: true,
+            default: 10,
+        }
     },
     { timestamps: true }
 );

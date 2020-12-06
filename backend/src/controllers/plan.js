@@ -48,7 +48,7 @@ exports.createPlan = async (req, res) => {
         return res.status(403).json(utils.generateServerErrorCode(res, 403, 'no name given', NAME_IS_EMPTY, 'createPlan'));
     }
     plan.name = name;
-    plan.users = [msgSender];
+    plan.users = [{userName: msgSender, points: 0}];
     plan.owner = msgSender;
     plan.tasks = [];
     console.log(plan)
@@ -68,7 +68,7 @@ exports.deletePlan = (req, res) => {
     Plan.findById(id, (err, plan) => {
         if (!plan){return res.status(404).json(utils.generateServerErrorCode(res, 403, 'no plan exists', 'no plan exists', 'deletePlan'))}
         if(plan.owner !== req.user.userName) return res.status(402).json(
-            utils.generateServerErrorCode(res, 403, err, 'Not plan owner', 'deletePlan')
+            utils.generateServerErrorCode(res, 403, 'Youre not the plan owner..', 'Not plan owner', 'deletePlan')
         )
 
         Plan.deleteOne({_id: id}, (err) => {
@@ -106,11 +106,16 @@ exports.addUser = async (req, res) => {
         { owner: msgSender },
         {
             $push: {
-                users: [userToAdd]
+                users: [{userName: userToAdd, points: 0}]
             }
         },
         (err, updatedPlan) => { if(err) {console.log(err)} } )
     User.updateOne({userName: userToAdd} , {$set: {plan: plan._id}}, (err, data) => {
     })
     return res.json({success: true});
+}
+
+
+exports.kickUser = (req, res) => {
+
 }
