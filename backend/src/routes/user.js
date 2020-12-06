@@ -22,9 +22,6 @@ router.get('/findAllUsers',[],userController.findAllUsers)
 
 router.get('/delAllUsers',[],userController.delAllUsers)
 
-router.post('/checkPasswordMatch',[
-    body('password').not().isEmpty().withMessage('Your password is required')],userController.checkPasswordMatch)
-
 router.get('/delUser',passport.authenticate('jwt',{session: false}), userController.delUser)
 
 /*

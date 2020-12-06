@@ -1,19 +1,17 @@
 const express = require('express');
 const {check} = require('express-validator');
 
+
 const authController = require('../controllers/auth');
-const Password = require('../controllers/password');
-const validate = require('../middlewares/unused/validate');
+const passport = require('passport');
 
 const router = express.Router();
-
-router.get('/', (req, res) => {
-    res.status(200).json({message: "You are in the Auth Endpoint. Register or Login to test Authentication."});
-});
 
 router.post('/login',  [
     check('userName').not().isEmpty(),
     check('password').not().isEmpty()], authController.login)
+
+router.get('/whoAmI',passport.authenticate('jwt',{session: false}), authController.whoAmI)
 
 
 

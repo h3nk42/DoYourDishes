@@ -44,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -78,7 +78,8 @@
       <workItem from="1606909580868" duration="19886000" />
       <workItem from="1606998989932" duration="29862000" />
       <workItem from="1607079883357" duration="34590000" />
-      <workItem from="1607229906749" duration="9809000" />
+      <workItem from="1607229906749" duration="10385000" />
+      <workItem from="1607274746930" duration="16497000" />
     </task>
     <servers />
   </component>
@@ -96,5 +97,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
+          <line>183</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

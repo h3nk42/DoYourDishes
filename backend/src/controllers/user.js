@@ -2,36 +2,30 @@ const User = require('../models/User');
 const Plan = require('../models/Plan');
 const Task = require('../models/Task')
 const {uploader, sendEmail} = require('../utils/index');
-const {validationResult} = require('express-validator')
+const {validationResult} = require('express-validator');
 const ObjectId = require('mongoose').Types.ObjectId
+const {retErr} = require('../utils/index');
+const {checkInputs} = require('../utils/index')
 
 
 exports.createUser = async function (req, res) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    let{userName, password} = req.body;
-    let user = await User.exists({userName: userName})
+    if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
+    let{ userName, password } = req.body;
 
+    let user = await User.exists({$or:[{userName: userName},{userNameLowerCase: userName.toLowerCase()}]})
     if (user){
-        return res.status(402).json({
-            success: false,
-            message: 'user already exists'
-        })
+        return  retErr(res, {}, 418, 'USERNAME_TAKEN');
     }
     const userData = {
         userName: userName,
+        userNameLowerCase: userName.toLowerCase(),
         password: password
     }
-    User(userData).save((err)=>{
+    User(userData).save((err, user)=>{
         if(err){
-            return res.status(401).json({
-                success: false,
-                message: err
-            })
+            return  retErr(res, err, 418, 'DB_ERROR');
         }
-        return res.status(200).json({success: true});
+        return res.status(200).json({success: true, data: user});
     })
 }
 
@@ -68,7 +62,7 @@ exports.delUser = async (req, res) => {
 
         else if(data.n===0 && userModel.plan != null) {
             Plan.updateOne({_id: userModel.plan}, {$pull: {users: {userName: msgSender}}}, (err,data) =>{
-                console.log('removed users updated: ' + data.n )
+
             })
         }
     }).then(()=>{
@@ -98,30 +92,6 @@ exports.findAllUsers = async function (req, res) {
         })
     })
 }
-
-exports.checkPasswordMatch = async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    User.findOne({userName: req.body.userName }, async (err, data) =>{
-        if(!data){  return res.status(405).json({
-            success: false,
-            error: 'user not found'
-        })}
-        let passwordMatching = await data.comparePassword(req.body.password);
-        console.log(data.password)
-        console.log(req.body.password)
-        console.log(passwordMatching)
-        return res.status(200).json({
-            success: true,
-            data: passwordMatching
-        })
-    })
-}
-
-
-
 
 //not my part
 

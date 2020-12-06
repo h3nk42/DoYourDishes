@@ -8,13 +8,30 @@ const {body} = require("express-validator");
 const router = express.Router();
 
 router.get('/findAllTasks', taskControl.findAllTasks);
+
 router.delete('/delTasks', taskControl.delTasks);
-router.delete('/delSingleTask',[body('taskId').not().isEmpty().withMessage('TaskId is required')],passport.authenticate('jwt',{session: false}), taskControl.delSingleTask);
+
+router.delete('/delSingleTask',
+    [
+        body('taskId').not().isEmpty().withMessage('TaskId is required')
+    ],
+    passport.authenticate('jwt',{session: false}),
+    taskControl.delSingleTask);
+
 router.post('/createTask',
-    [body('name').not().isEmpty().withMessage('TaskName is required'),
-        body('pointsWorth').not().isEmpty().withMessage('pointsWorth is required')],
-    passport.authenticate('jwt',{session: false}), taskControl.createTask);
-router.post('/fulfillTask',[body('taskId').not().isEmpty().withMessage('taskId is required')],passport.authenticate('jwt',{session: false}), taskControl.fulfillTask);
+    [
+        body('name').not().isEmpty().withMessage('TaskName is required'),
+        body('pointsWorth').not().isEmpty().withMessage('pointsWorth is required')
+    ],
+    passport.authenticate('jwt',{session: false}),
+    taskControl.createTask);
+
+router.post('/fulfillTask',
+    [
+        body('taskId').not().isEmpty().withMessage('taskId is required')
+    ],
+    passport.authenticate('jwt',{session: false}),
+    taskControl.fulfillTask);
 
 
 module.exports = router;

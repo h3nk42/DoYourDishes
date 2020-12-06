@@ -8,13 +8,15 @@ require('dotenv').config();
 const utils = require('../utils/index')
 const secret = process.env.JWT_SECRET;
 
+const {retErr} = require('../utils/index');
+
 
 
 
 exports.login = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return  retErr(res, errors, 400, 'INVALID INPUT');
     }
 
     const {userName, password} = req.body;
@@ -32,13 +34,17 @@ exports.login = async (req, res) => {
             delete userToReturn.password;
             res.status(200).json(userToReturn);
         } else {
-             return res.status(403).json(utils.generateServerErrorCode(res, 403, 'login password error', WRONG_PASSWORD, 'password'));
+            return  retErr(res, {}, 418, 'WRONG_USER_OR_PW');
         }
     } else {
-        return res.status(404).json(utils.generateServerErrorCode(res, 404, 'login email error', USER_DOES_NOT_EXIST, 'email'));
+        return  retErr(res, {}, 418, 'WRONG_USER_OR_PW');
     }
 }
 
+
+exports.whoAmI = (req, res) => {
+    return res.status(200).json({data: req.user})
+}
 
 
 

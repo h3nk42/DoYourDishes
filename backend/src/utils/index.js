@@ -1,6 +1,6 @@
 
 
-
+const {validationResult} = require('express-validator');
 
 
 
@@ -12,6 +12,14 @@ exports.generateServerErrorCode = (res, code, fullError, msg, location = 'server
         msg: msg,
         location: location
     }
+}
+
+exports.retErr = (res, err, errCode = 400, customMessage) => {
+    return res.status(errCode).json({ errors: err, customMessage});
+}
+
+exports.checkInputs = (req, res) => {
+    return !validationResult(req).isEmpty();
 }
 
 /*

@@ -23,7 +23,8 @@ exports.applyPassportStrategy = passport => {
                 if (user) {
                     return done(null, {
                         userName: user.userName,
-                        _id: user._id
+                        _id: user._id,
+                        plan: user.plan
                     });
                 }
                 return done(null, false, 'test');
