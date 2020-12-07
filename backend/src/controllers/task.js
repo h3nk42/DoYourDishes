@@ -14,7 +14,7 @@ exports.findAllTasks = (req, res) => {
         if (err) {
             return res.json({success: false, error: err});
         } else {
-            return res.json({success: true, data: data});
+            return res.json({success: true, data: data.length});
         }
     });
 }
@@ -57,7 +57,7 @@ exports.delSingleTask = async (req, res) => {
     if (!task) return  retErr(res, {}, 418, 'TASK_NOT_FOUND');
 
     let plan = await Plan.findOne({_id: task.plan}, (err, plan) => {})
-    if(!plan.users.filter(e=>e.userName === msgSender))  return retErr(res, {}, 418, 'USER_NOT_IN_THIS_PLAN');
+    if(!plan.users.some(e=>e.userName === msgSender))  return retErr(res, {}, 418, 'USER_NOT_IN_THIS_PLAN');
 
     Task.findOne({_id: taskId}, (err, data) => {
         if(err)

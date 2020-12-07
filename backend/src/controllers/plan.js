@@ -56,16 +56,15 @@ exports.deletePlan = (req, res) => {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     const {id} = req.body;
     Plan.findById(id, (err, plan) => {
-        if (!plan){return res.status(404).json(utils.generateServerErrorCode(res, 403, 'no plan exists', 'no plan exists', 'deletePlan'))}
-        if(plan.owner !== req.user.userName) return res.status(402).json(
-            utils.generateServerErrorCode(res, 403, 'Youre not the plan owner..', 'Not plan owner', 'deletePlan')
-        )
+        if (!plan) return retErr(res, {}, 418, 'USER_NOT_IN_ANY_PLAN');
+        if(plan.owner !== req.user.userName)  return  retErr(res, {}, 418, 'USER_NOT_OWNER_OF_PLAN');
         Plan.deleteOne({_id: id}, (err) => {
-            if (err) return res.send(err);
-            Task.remove({plan: id}, (err, updatedPlan) => { if(err) {} })
+            if (err) return retErr(res, err, 418, 'DB_ERROR');
+            Task.deleteMany({plan: id}, (err, updatedPlan) => { if(err) return retErr(res, err, 418, 'DB_ERROR'); })
             User.updateMany({plan: ObjectId(id)}, {$set: {plan: null}}, (err, data) => {
+                if(err) return retErr(res, err, 418, 'DB_ERROR');
             })
-            return res.json({success: true});
+            return res.json({data: true});
         });
     })
 }
@@ -78,7 +77,7 @@ exports.addUser = async (req, res) => {
         if(err)  return  retErr(res, err, 418, 'DB_ERROR');
     })
     if(!plan) return  retErr(res, {}, 418, 'PLAN_NOT_FOUND');
-    if(plan.users.includes(userToAdd)) return  retErr(res, err, 418, 'USER_IN_PLAN_ALLREADY');
+    if(plan.users.some(e=>e.userName === userToAdd)) return  retErr(res, {}, 418, 'USER_IN_PLAN_ALLREADY');
     let user = await User.findOne({userName: userToAdd}, (err)=>{
     })
     if (!user) return  retErr(res, {}, 418, 'USER_DOES_NOT_EXIST');

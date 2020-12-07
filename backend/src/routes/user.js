@@ -26,7 +26,7 @@ router.get('/findAllUsers',[],userController.findAllUsers)
 
 router.get('/delAllUsers',[],userController.delAllUsers)
 
-router.get('/delUser',passport.authenticate('jwt',{session: false}), userController.delUser)
+router.delete('/delUser',passport.authenticate('jwt',{session: false}), userController.delUser)
 
 /*
 //INDEX

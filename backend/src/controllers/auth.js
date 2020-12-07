@@ -37,8 +37,9 @@ exports.login = async (req, res) => {
     }
 }
 
-exports.whoAmI = (req, res) => {
-    return res.status(200).json({data: req.user})
+exports.whoAmI = async (req, res) => {
+    let user = await User.findOne({_id: req.user._id })
+    return res.status(200).json({data: user})
 }
 
 

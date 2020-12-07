@@ -44,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -79,7 +79,8 @@
       <workItem from="1606998989932" duration="29862000" />
       <workItem from="1607079883357" duration="34590000" />
       <workItem from="1607229906749" duration="10385000" />
-      <workItem from="1607274746930" duration="26892000" />
+      <workItem from="1607274746930" duration="27354000" />
+      <workItem from="1607357168932" duration="9075000" />
     </task>
     <servers />
   </component>
@@ -104,25 +105,21 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
           <line>275</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>26</line>
-          <properties lambdaOrdinal="-1" />
+          <line>27</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>96</line>
-          <properties lambdaOrdinal="-1" />
+          <line>97</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>165</line>
-          <properties lambdaOrdinal="-1" />
+          <line>164</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
