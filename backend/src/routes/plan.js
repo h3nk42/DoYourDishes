@@ -18,7 +18,9 @@ router.get(
 
 router.post(
     '/createPlan',
-    [body('name').not().isEmpty().withMessage('planName is required')],
+    [
+        body('name').not().isEmpty(),
+            body('name').isLength({min: 1, max: 15})],
     passport.authenticate('jwt',{session: false}),
     planControl.createPlan);
 

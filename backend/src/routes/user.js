@@ -17,13 +17,12 @@ const {passwordScheme} = require('../utils/index')
 
 router.post('/createUser',[
     body('userName').not().isEmpty().withMessage('Your username is required'),
-    body('userName').isLength({min:4, max: 10}).withMessage('Your username is required'),
+    body('userName').isLength({min:4, max: 15}).withMessage('Your username is required'),
     body('password').not().isEmpty().withMessage('Your password is required'),
     body('password').isLength({min:5, max: 20})],
     userController.createUser)
 
 router.get('/findAllUsers',[],userController.findAllUsers)
-
 
 router.get('/delAllUsers',[],userController.delAllUsers)
 

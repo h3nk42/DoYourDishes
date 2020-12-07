@@ -13,7 +13,7 @@ const dropDb = new Promise((resolve, reject)=> {
             process.exit()
         })
     let dbConnection = mongoose.connection;
-    dbConnection.once('open', () => console.log('connected to the database'));
+    dbConnection.once('open', () =>{});
 
     Plan.deleteMany({}, (err, res)=>{
         if(err) console.log(err)
@@ -21,7 +21,7 @@ const dropDb = new Promise((resolve, reject)=> {
         if(err) console.log(err)
         Task.deleteMany({}, (err, res)=> {
             if (err) console.log(err)
-
+            console.log('dropped DB')
             resolve()
         })
     })

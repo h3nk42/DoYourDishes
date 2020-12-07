@@ -16,8 +16,8 @@ let token;
 describe("Create Stuff / login : ", () => {
 
     let longString = "";
-    for (let i=0; i<1000; i++) {
-        longString += "aaaaaaaaaaaaaaaaaa";
+    for (let i=0; i<10; i++) {
+        longString += "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     }
 
     before(
@@ -51,13 +51,14 @@ describe("Create Stuff / login : ", () => {
                         });
                 });
         });
-        it("(UNHAPPY PATH) should not create a user (really large string, 50k length)", (done) => {
+        it("(UNHAPPY PATH) should not create a user (really large string password and username, ~25k length)", (done) => {
             chai.request(app)
                 .post('/api/user/createUser', )
                 .send({userName: longString, password: longString})
                 .end((err, res) => {
-                    res.should.have.status(413) ;
+                    res.should.have.status(418) ;
                     res.body.should.be.a('object');
+                    done();
                 });
         });
 
@@ -163,6 +164,32 @@ describe("Create Stuff / login : ", () => {
 
 
     describe("Plans", () => {
+        it("(UNHAPPY PATH) should not create a plan (empty planName)", (done) => {
+            chai.request(app)
+                .post('/api/plan/createPlan')
+                .auth(token, { type: 'bearer' })
+                .send({ name: ''})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create a plan (longer than 10 characters)", (done) => {
+            chai.request(app)
+                .post('/api/plan/createPlan')
+                .auth(token, { type: 'bearer' })
+                .send({ name: 'Das ist ein sehr langer Haushaltsplan'})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+
         it("(HAPPY PATH) should create a plan and then find it in DB", (done) => {
             chai.request(app)
                 .post('/api/plan/createPlan')
@@ -183,7 +210,7 @@ describe("Create Stuff / login : ", () => {
                 });
         });
 
-        it("(HAPPY PATH) should not create a plan (1 plan per user)", (done) => {
+        it("(UNHAPPY PATH) should not create a plan (1 plan per user)", (done) => {
             chai.request(app)
                 .post('/api/plan/createPlan')
                 .auth(token, { type: 'bearer' })
@@ -192,6 +219,17 @@ describe("Create Stuff / login : ", () => {
                     res.should.have.status(418);
                     res.body.should.be.a('object');
                     chai.expect(res.body.customMessage).equal("ONLY_ONE_PLAN_PER_USER")
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create a plan (not logged in)", (done) => {
+            chai.request(app)
+                .post('/api/plan/createPlan')
+                .send({ name: 'haushalt1'})
+                .end((err, res) => {
+                    res.should.have.status(401);
+                    res.body.should.be.a('object');
                     done();
                 });
         });
@@ -242,6 +280,7 @@ describe("Create Stuff / login : ", () => {
     });
 
     describe("Tasks", () => {
+        let taskId;
         it("(HAPPY PATH) should create task", (done) => {
             chai.request(app)
                 .post('/api/task/createTask')
@@ -256,7 +295,153 @@ describe("Create Stuff / login : ", () => {
                         .end((err, res) => {
                             res.should.have.status(200);
                             res.body.should.be.a('object');
-                            chai.expect(res.body.data.tasks[0].taskName).to.equal('abwasch')
+                            chai.expect(res.body.data.tasks[0].taskName).to.equal('abwasch');
+                            chai.expect(res.body.data.tasks[0].pointsWorth).to.equal(50);
+                            taskId = res.body.data.tasks[0].taskId
+                            done();
+                        });
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create task (tasName longer than 10)", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .auth(token, { type: 'bearer' })
+                .send({ name: 'abwaschAbwaschAbwasch', pointsWorth: 50})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create task (empty taskName)", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .auth(token, { type: 'bearer' })
+                .send({ name: '', pointsWorth: 50})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create task (empty score)", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .auth(token, { type: 'bearer' })
+                .send({ name: '', pointsWorth: 50})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create task (score > 100 )", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .auth(token, { type: 'bearer' })
+                .send({ name: 'testTask', pointsWorth: 101})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+        it("(UNHAPPY PATH) should not create task (score < 1 )", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .auth(token, { type: 'bearer' })
+                .send({ name: 'testTask', pointsWorth: -10})
+                .end((err, res) => {
+                    res.should.have.status(418);
+                    res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal("INVALID_INPUT")
+                    done();
+                });
+        });
+
+        it("(UNHAPPY PATH) should not create task (no Token send / not logged in)", (done) => {
+            chai.request(app)
+                .post('/api/task/createTask')
+                .send({ name: 'testTask', pointsWorth: 10})
+                .end((err, res) => {
+                    res.should.have.status(401);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+
+        it("(HAPPY PATH) should fulfill task and update user Score in Plan", (done) => {
+            chai.request(app)
+                .post('/api/task/fulfillTask')
+                .auth(token, { type: 'bearer' })
+                .send({ taskId: taskId})
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    chai.request(app)
+                        .get('/api/plan/findPlanToOwner')
+                        .auth(token, { type: 'bearer' })
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            res.body.should.be.a('object');
+                            chai.expect(res.body.data.name).to.equal('haushalt1');
+                            chai.expect(res.body.data.users[1].userName).to.equal('harun');
+                            chai.expect(res.body.data.users[1].points).to.equal(50);
+                            done();
+                        });
+                });
+        });
+        it("(UNHAPPY PATH) should not fulfill task for a user that is not in any plan", (done) => {
+            chai.request(app)
+                .post('/api/user/createUser', )
+                .send({userName: 'nichtImPlan', password: 'iloveandroid'})
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    chai.request(app)
+                        .post('/api/auth/login', )
+                        .send({userName: 'nichtImPlan', password: 'iloveandroid'})
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            res.body.should.be.a('object');
+                            token = res.body.token;
+                            chai.request(app)
+                                .post('/api/task/fulfillTask')
+                                .auth(token, { type: 'bearer' })
+                                .send({ taskId: taskId})
+                                .end((err, res) => {
+                                    res.should.have.status(418);
+                                    res.body.should.be.a('object');
+                                    chai.expect(res.body.customMessage).equal("USER_NOT_IN_ANY_PLAN")
+                                    done();
+                                });
+                        });
+                });
+        });
+        it("(UNHAPPY PATH) should not fulfill task for user in a different plan", (done) => {
+            chai.request(app)
+                .post('/api/plan/createPlan')
+                .auth(token, { type: 'bearer' })
+                .send({ name: 'zweiterPlan'})
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    chai.request(app)
+                        .post('/api/task/fulfillTask')
+                        .auth(token, { type: 'bearer' })
+                        .send({ taskId: taskId})
+                        .end((err, res) => {
+                            res.should.have.status(418);
+                            res.body.should.be.a('object');
+                            chai.expect(res.body.customMessage).equal("USER_NOT_IN_THIS_PLAN")
                             done();
                         });
                 });

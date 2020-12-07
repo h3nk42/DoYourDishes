@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 let cors = require('cors');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
+//const logger = require('morgan');
 require('dotenv').config();
 const passport = require('passport');
 
@@ -21,10 +21,12 @@ app.use(cors());
 
 // connects our back end code with the database
 mongoose.connect(dbUri, {useUnifiedTopology: true, useNewUrlParser: true})
-    .then( res => {})
+    .then( () => {})
     .catch(error => {console.log(error)
         process.exit()
     })
+
+mongoose.set("useCreateIndex", true);
 
 let dbConnection = mongoose.connection;
 dbConnection.once('open', () => console.log('connected to the database'));
