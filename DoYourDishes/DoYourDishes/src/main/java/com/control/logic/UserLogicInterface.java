@@ -1,6 +1,6 @@
 package com.control.logic;
 
-public interface CrudUserInterface {
+public interface UserLogicInterface {
 
 String create(String Name, String Key);
 

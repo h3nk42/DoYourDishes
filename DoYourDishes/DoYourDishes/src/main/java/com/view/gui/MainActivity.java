@@ -2,47 +2,42 @@ package com.view.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.control.logic.AsynchronousRequest;
-import com.control.logic.Crud;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.control.logic.Login;
 import com.view.R;
 
 
 public class MainActivity extends AppCompatActivity {
-    MainActivity thisClass = this;
+    MainActivity thisActivity = this;
     private static final String TAG="MainActivity";
+    private TextView loginTextView;
+    private TextView userNameTextView;
+    private TextView passwordTextView;
+    private Login loginLogic;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
         Log.d(TAG, "onCreate: in");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final TextView textView = (TextView) findViewById(R.id.showFetchData);
-        textView.setText("");
-
-        final Button buttonAuth = (Button) findViewById(R.id.fetchDataButton);
-
-        buttonAuth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
-//                MainActivity.this.startActivity(activityChangeIntent);
-                AsynchronousRequest request = new AsynchronousRequest(thisClass, textView);
-                request.execute();
-                 // textView.setText(testCrud.fetchData());
-            }
-        });
-
+      //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
+        //                MainActivity.this.startActivity(activityChangeIntent);
         Log.d(TAG, "onCreate: out");
+    }
+
+    public void onClicker(View view) {
+        loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
+        userNameTextView = (TextView) findViewById(R.id.userNameTextView);
+        passwordTextView = (TextView) findViewById(R.id.passwordTextView);
+        loginLogic = new Login(loginTextView, userNameTextView, passwordTextView, thisActivity);
+        loginLogic.tryLogin();
     }
 
     @Override
@@ -79,4 +74,5 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         Log.d(TAG, "onRestart: out");
     }
+
 }

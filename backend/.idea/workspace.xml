@@ -19,7 +19,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="" />
+    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginLogicInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/androidTest/java/HTTPTest/HttpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/androidTest/java/HTTPTest/HttpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/androidTest/java/LogicTest/ControlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/androidTest/java/LogicTest/ControlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsynchronousRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/Control.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncWhoAmI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/Crud.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/Crud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/CrudPlanInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/PlanLogicInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/CrudTaskInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/TaskLogicInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/CrudUserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/UserLogicInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HTTPInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HTTPInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/Authentication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_authentication.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_main.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +63,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -81,6 +100,7 @@
       <workItem from="1607229906749" duration="10385000" />
       <workItem from="1607274746930" duration="27354000" />
       <workItem from="1607357168932" duration="9930000" />
+      <workItem from="1607443746691" duration="2642000" />
     </task>
     <servers />
   </component>

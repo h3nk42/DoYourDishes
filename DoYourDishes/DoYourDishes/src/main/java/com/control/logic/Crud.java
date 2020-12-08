@@ -1,16 +1,13 @@
 package com.control.logic;
-
-import com.control.networkHttp.Http;
-
+import com.control.networkHttp.HttpRequestFactory;
 import org.json.JSONObject;
 
-import okhttp3.ResponseBody;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 
 
-public class Crud implements CrudTaskInterface,CrudUserInterface, CrudPlanInterface {
-
-    Http httpEngine = new Http();
-
+public class Crud implements TaskLogicInterface, UserLogicInterface, PlanLogicInterface {
+    HttpRequestFactory httpEngine = new HttpRequestFactory();
     @Override
     public String create(int x, String planname, Plan plan) {
 
@@ -48,8 +45,11 @@ public class Crud implements CrudTaskInterface,CrudUserInterface, CrudPlanInterf
         String mem = "test";
 
         JSONObject response = null;
+
+        RequestBody requestBody = new FormBody.Builder()
+                .build();
         try {
-            response = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData");
+            response = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData", requestBody);
             mem = response.getJSONArray("data").getJSONObject(0).getString("message");
         } catch (Exception e) {
             e.printStackTrace();

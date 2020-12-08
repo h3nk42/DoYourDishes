@@ -1,6 +1,6 @@
 package com.control.logic;
 
-public interface CrudPlanInterface {
+public interface PlanLogicInterface {
 
     boolean create(User user, String string1);
 

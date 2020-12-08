@@ -1,6 +1,6 @@
 package com.control.logic;
 
-public interface CrudTaskInterface {
+public interface TaskLogicInterface {
 
     String create(int x, String planname, Plan plan);
 
