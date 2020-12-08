@@ -17,19 +17,8 @@ import com.view.R;
 
 
 public class MainActivity extends AppCompatActivity {
-
     MainActivity thisClass = this;
-
-    String test;
-
-    Crud testCrud = new Crud();
-
     private static final String TAG="MainActivity";
-
-    private void changeString() {
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: in");
