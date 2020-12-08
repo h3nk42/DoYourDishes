@@ -71,7 +71,8 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void>{
 
         //mainActivity.changeTextFromAsync(data);
         textView.setText(responseText);
-        AsyncWhoAmI request = new AsyncWhoAmI(textView, responseText );
+        Log.d(TAG, "onPostExecute: test");
+        AsyncWhoAmI request = new AsyncWhoAmI(textView, responseText);
         request.execute();
 
     }

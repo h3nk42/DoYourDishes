@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
         Log.d(TAG, "onCreate: in");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -32,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: out");
     }
 
-    public void onClicker(View view) {
+    public void login(View view) {
         loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
         userNameTextView = (TextView) findViewById(R.id.userNameTextView);
         passwordTextView = (TextView) findViewById(R.id.passwordTextView);
         loginLogic = new Login(loginTextView, userNameTextView, passwordTextView, thisActivity);
         loginLogic.tryLogin();
     }
+
 
     @Override
     protected void onStop() {

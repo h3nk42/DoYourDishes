@@ -49,7 +49,7 @@ public class Crud implements TaskLogicInterface, UserLogicInterface, PlanLogicIn
         RequestBody requestBody = new FormBody.Builder()
                 .build();
         try {
-            response = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData", requestBody);
+            response = httpEngine.GET("https://shareyourplant.herokuapp.com/api/getData", requestBody,"");
             mem = response.getJSONArray("data").getJSONObject(0).getString("message");
         } catch (Exception e) {
             e.printStackTrace();

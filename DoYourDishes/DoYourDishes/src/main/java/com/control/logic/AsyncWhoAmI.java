@@ -42,14 +42,13 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
         JSONObject response = null;
 
         RequestBody requestBody = new FormBody.Builder()
-               // .add("userName", userName)
+                // .add("userName", userName)
                 //.add("password", "test")
                 .build();
 
         try {
-            response = httpEngine.POST("http://10.0.2.2:3001/api/auth/whoAmI", requestBody, this.token);
-            //responseText = response.getJSONObject("data").getString("userName");
-            Log.d(TAG, "doInBackground: " + response.getJSONObject("data"));
+            response = httpEngine.GET("http://10.0.2.2:3001/api/auth/whoAmI", requestBody, this.token);
+            responseText = response.getJSONObject("data").getString("userName");
         }
 
         catch(Exception e){

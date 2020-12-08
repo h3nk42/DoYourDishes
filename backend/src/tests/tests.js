@@ -4,9 +4,7 @@ const chaiHttp = require('chai-http');
 const app = require('../Server');
 const mongoose = require ('mongoose')
 
-
 const {dropDb} = require('../utils/dropDb')
-
 
 // Configure chai
 chai.use(chaiHttp);
