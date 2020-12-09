@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
-public class AsyncLogin extends whatToDoFS{
+public class AsyncLogin extends AsyncTask<Void, Void, Void> {
 
     private static final String TAG="AsyncLogin";
     private TextView textView;

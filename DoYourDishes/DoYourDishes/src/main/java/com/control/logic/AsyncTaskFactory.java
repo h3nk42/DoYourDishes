@@ -1,5 +1,6 @@
 package com.control.logic;
 
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ import org.json.JSONObject;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
-public class AsyncTaskFactory extends whatToDoFS {
+public class AsyncTaskFactory extends AsyncTask<Void, Void, Void>  {
     private static final String TAG1 = "AsyncWho";
     private static final String TAG2 = "AsyncLogin";
 
