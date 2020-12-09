@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
-public class AsyncShortCut extends whatToDoFS {
+public class AsyncTaskFactory extends whatToDoFS {
     private static final String TAG1 = "AsyncWho";
     private static final String TAG2 = "AsyncLogin";
 
@@ -29,14 +29,14 @@ public class AsyncShortCut extends whatToDoFS {
 
 
     //AsyncWhoAmI
-    public AsyncShortCut(TextView _passedTextView, String _token) {
+    public AsyncTaskFactory(TextView _passedTextView, String _token) {
         this.textView = _passedTextView;
         this.token = _token;
         state = ActiveState.WHOAMI;       // kann man auch mit ENUM lösen
     }
 
     //AsyncLogin
-    public AsyncShortCut(TextView passedTextView, String _userName, String _password, MainActivity _mainActivity) {
+    public AsyncTaskFactory(TextView passedTextView, String _userName, String _password, MainActivity _mainActivity) {
         textView = passedTextView;
         responseText = "null";
         userName = _userName;

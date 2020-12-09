@@ -19,7 +19,6 @@ import okhttp3.RequestBody;
 public class AsyncLogin extends whatToDoFS{
 
     private static final String TAG="AsyncLogin";
-
     private TextView textView;
     private String responseText;
     private String userName;
