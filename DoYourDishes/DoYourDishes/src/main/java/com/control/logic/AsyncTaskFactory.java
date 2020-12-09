@@ -13,11 +13,12 @@ import org.json.JSONObject;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
-public class AsyncTaskFactory extends AsyncTask<Void, Void, Void>  {
+public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
     private static final String TAG1 = "AsyncWho";
     private static final String TAG2 = "AsyncLogin";
 
     ActiveState state;
+
     final HttpRequestFactory httpEngine = new HttpRequestFactory();
     private String responseText = "test";
     private TextView textView;
@@ -30,21 +31,36 @@ public class AsyncTaskFactory extends AsyncTask<Void, Void, Void>  {
 
 
     //AsyncWhoAmI
-    public AsyncTaskFactory(TextView _passedTextView, String _token) {
-        this.textView = _passedTextView;
-        this.token = _token;
-        state = ActiveState.WHOAMI;       // kann man auch mit ENUM lösen
+    public AsyncTaskFactory(TextView _passedTextView, String _token, ActiveState _state) {
+        state = _state;
+
+        switch (state) {
+            case WHOAMI:
+                this.textView = _passedTextView;
+                this.token = _token;
+                break;
+        }
+
     }
+    // state = ActiveState.WHOAMI;
+
 
     //AsyncLogin
-    public AsyncTaskFactory(TextView passedTextView, String _userName, String _password, MainActivity _mainActivity) {
-        textView = passedTextView;
-        responseText = "null";
-        userName = _userName;
-        password = _password;
-        mainActivity = _mainActivity;
-        // kann man auch mit ENUM lösen
-        state = ActiveState.LOGIN;
+    public AsyncTaskFactory(TextView passedTextView, String _userName, String _password, MainActivity _mainActivity, ActiveState _state) {
+        state = _state;
+
+        switch (state) {
+            case LOGIN:
+                textView = passedTextView;
+                responseText = "null";
+                userName = _userName;
+                password = _password;
+                mainActivity = _mainActivity;
+                break;
+        }
+        // weiter states
+
+        // state = ActiveState.LOGIN;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////

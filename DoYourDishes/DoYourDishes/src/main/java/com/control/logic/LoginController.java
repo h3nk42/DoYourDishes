@@ -5,13 +5,15 @@ import android.widget.TextView;
 import com.control.networkHttp.HttpRequestFactory;
 import com.view.gui.MainActivity;
 
-public class LoginController implements LoginControllerInterface {
+public class LoginController implements LoginControllerInterface{
     final TextView userNameTextView;
     final TextView passwordTextView;
     final TextView loginTextView;
     final HttpRequestFactory httpEngine = new HttpRequestFactory();
     private MainActivity mainActivity;
+    ActiveState state;
 
+    // TextView; TextView; TextView; Homeactivity
     public LoginController(TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {
         this.loginTextView = _loginTextView;
         this.userNameTextView = _userNameTextView;
@@ -21,7 +23,8 @@ public class LoginController implements LoginControllerInterface {
 
     @Override
     public void tryLogin() {
-        AsyncLogin request = new AsyncLogin(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity );
+        state = ActiveState.LOGIN;
+        AsyncTaskFactory request = new AsyncTaskFactory(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity ,state);
         request.execute();
     }
 
@@ -31,5 +34,7 @@ public class LoginController implements LoginControllerInterface {
         userNameTextView.setText("");
         passwordTextView.setText("");
     }
+
+
 
 }
