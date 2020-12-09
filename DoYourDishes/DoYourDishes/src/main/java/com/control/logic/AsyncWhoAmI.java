@@ -27,12 +27,6 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
         this.token = _token;
     }
 
-    @Override
-    protected void onPreExecute() {
-        //Here you can show progress bar or something on the similar lines.
-        //Since you are in a UI thread here.
-        super.onPreExecute();
-    }
 
     @Override
     protected Void doInBackground(Void... params) {
@@ -68,11 +62,4 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
         //mainActivity.changeTextFromAsync(data);
         textView.setText("you are: " + responseText);
     }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-        // You can track you progress update here
-    }
-
 }

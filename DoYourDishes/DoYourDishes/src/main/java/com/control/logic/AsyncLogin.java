@@ -38,13 +38,6 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void>{
         mainActivity = _mainActivity;
     }
 
-    @Override
-    protected void onPreExecute() {
-        //Here you can show progress bar or something on the similar lines.
-        //Since you are in a UI thread here.
-        super.onPreExecute();
-    }
-
 
     @NotNull
     private RequestBody makeRequestBody() {
@@ -110,11 +103,4 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void>{
         request.execute();*/
 
     }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-        // You can track you progress update here
-    }
-
 }
