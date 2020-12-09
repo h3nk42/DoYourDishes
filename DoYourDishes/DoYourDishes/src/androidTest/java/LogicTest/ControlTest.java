@@ -21,9 +21,7 @@ public class ControlTest {
 
     @Test
     public void gutTestCreateTask(){
-        TaskControllerInterface task1 = new Crud();
-        Plan plan = new Plan();
-        task1.create(12,"vonPlan1", plan);
+
         //TODO Assertion Abfrage
     }
 
@@ -33,7 +31,7 @@ public class ControlTest {
      */
     @Test
     public void gutTestUser(){
-        UserControllerInterface user1 = new Crud();
+
 
 
     }

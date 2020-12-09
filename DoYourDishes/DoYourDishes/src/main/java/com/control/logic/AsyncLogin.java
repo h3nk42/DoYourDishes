@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
-public class AsyncLogin extends AsyncTask<Void, Void, Void>{
+public class AsyncLogin extends whatToDoFS{
 
     private static final String TAG="AsyncLogin";
 
@@ -48,7 +48,7 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void>{
     }
 
     @Override
-    protected Void doInBackground(Void... params) {
+    public Void doInBackground(Void... params) {
         // TODO catch expection in background ??
         // https://stackoverflow.com/questions/26161538/throw-an-exception-in-doinbackground-and-catch-in-onpostexecute#:~:text=You%20cannot%20throw%20exceptions%20across,handle%20it%20in%20onPostExecute()%20.&text=No%2C%20you%20can't%20throw%20exception%20in%20the%20background%20thread.
         //Here you are in the worker thread and you are not allowed to access UI thread from here

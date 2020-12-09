@@ -1,4 +1,14 @@
 package com.control.logic;
 
-public class whatToDoFS {
+import android.os.AsyncTask;
+
+public abstract class whatToDoFS extends AsyncTask<Void, Void, Void> {
+
+
+
+
+    public abstract Void doInBackground(Void... voids);
+
+
+
 }
