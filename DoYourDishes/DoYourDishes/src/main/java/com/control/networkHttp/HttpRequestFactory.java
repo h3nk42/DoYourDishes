@@ -21,8 +21,6 @@ public class HttpRequestFactory implements HTTPInterface {
 
     @Override
     public JSONObject GET(String path, RequestBody requestBody, String token) throws Exception {
-        // TODO implement GET for http --> HIER
-
         Request request = new Request.Builder()
                 .url(path)
                 .addHeader("Authorization", "Bearer " + token)
@@ -31,8 +29,6 @@ public class HttpRequestFactory implements HTTPInterface {
         try {
             Response response = client.newCall(request).execute();
             String jsonData = response.body().string();
-            Log.d(TAG, "GET jsondata: " + jsonData );
-            Log.d(TAG, "GET token: " + token );
             JSONObject jsonObject = new JSONObject(jsonData);
             return jsonObject;
         } catch (IOException | JSONException e) {
@@ -44,7 +40,6 @@ public class HttpRequestFactory implements HTTPInterface {
 
     @Override
     public JSONObject POST(String path, RequestBody requestBody, String token) throws Exception {
-        // TODO implement POST for http
         Request request = new Request.Builder()
                 .url(path)
                 .post(requestBody)
@@ -53,10 +48,8 @@ public class HttpRequestFactory implements HTTPInterface {
         try {
             Response response = client.newCall(request).execute();
             JSONObject jsonObject = new JSONObject(response.body().string());
-            Log.d(TAG, "POST: " + jsonObject );
             return jsonObject;
         } catch (IOException | JSONException e) {
-            Log.d(TAG, "POST: ttttest");
             e.getLocalizedMessage();
             throw new Exception(e);
         }
@@ -64,7 +57,7 @@ public class HttpRequestFactory implements HTTPInterface {
 
     @Override
     public JSONObject DELETE(String path, RequestBody requestBody, String token) {
-        // TODO implement POST for http
+        // TODO implement DELETE for http
         return null;
     }
 }

@@ -1,8 +1,8 @@
 package com.control.logic;
 
-public interface PlanLogicInterface {
+public interface PlanControllerInterface {
 
-    boolean create(User user, String string1);
+    boolean create();
 
     void read();
 

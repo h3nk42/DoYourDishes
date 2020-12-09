@@ -1,10 +1,8 @@
 package LogicTest;
 
 
-import com.control.logic.Crud;
-import com.control.logic.TaskLogicInterface;
-import com.control.logic.UserLogicInterface;
-import com.control.logic.Plan;
+import com.control.logic.TaskControllerInterface;
+import com.control.logic.UserControllerInterface;
 
 import org.junit.Test;
 
@@ -23,7 +21,7 @@ public class ControlTest {
 
     @Test
     public void gutTestCreateTask(){
-        TaskLogicInterface task1 = new Crud();
+        TaskControllerInterface task1 = new Crud();
         Plan plan = new Plan();
         task1.create(12,"vonPlan1", plan);
         //TODO Assertion Abfrage
@@ -35,7 +33,7 @@ public class ControlTest {
      */
     @Test
     public void gutTestUser(){
-        UserLogicInterface user1 = new Crud();
+        UserControllerInterface user1 = new Crud();
 
 
     }

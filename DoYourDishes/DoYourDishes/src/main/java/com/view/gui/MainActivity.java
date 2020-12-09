@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.control.logic.Login;
+import com.control.logic.LoginController;
 import com.view.R;
 
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView loginTextView;
     private TextView userNameTextView;
     private TextView passwordTextView;
-    private Login loginLogic;
+    private LoginController loginLogic;
 
 
     @Override
@@ -28,14 +28,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
       //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
         //                MainActivity.this.startActivity(activityChangeIntent);
+
+        this.loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
+        this.userNameTextView = (TextView) findViewById(R.id.userNameTextView);
+        this.passwordTextView = (TextView) findViewById(R.id.passwordTextView);
+        this.loginLogic = new LoginController(loginTextView, userNameTextView, passwordTextView, thisActivity);
         Log.d(TAG, "onCreate: out");
     }
 
     public void login(View view) {
-        loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
-        userNameTextView = (TextView) findViewById(R.id.userNameTextView);
-        passwordTextView = (TextView) findViewById(R.id.passwordTextView);
-        loginLogic = new Login(loginTextView, userNameTextView, passwordTextView, thisActivity);
         loginLogic.tryLogin();
     }
 
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         Log.d(TAG, "onRestart: in");
+        loginLogic.resetData();
         super.onRestart();
         Log.d(TAG, "onRestart: out");
     }

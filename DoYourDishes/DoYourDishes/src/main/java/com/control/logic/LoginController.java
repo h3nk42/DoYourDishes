@@ -5,15 +5,14 @@ import android.widget.TextView;
 import com.control.networkHttp.HttpRequestFactory;
 import com.view.gui.MainActivity;
 
-public class Login implements LoginLogicInterface {
-
+public class LoginController implements LoginControllerInterface {
     final TextView userNameTextView;
     final TextView passwordTextView;
     final TextView loginTextView;
     final HttpRequestFactory httpEngine = new HttpRequestFactory();
     private MainActivity mainActivity;
 
-    public Login (TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {
+    public LoginController(TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {
         this.loginTextView = _loginTextView;
         this.userNameTextView = _userNameTextView;
         this.passwordTextView = _passwordTextView;
@@ -22,12 +21,15 @@ public class Login implements LoginLogicInterface {
 
     @Override
     public void tryLogin() {
-        AsyncLogin request = new AsyncLogin(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString() );
+        AsyncLogin request = new AsyncLogin(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity );
         request.execute();
     }
 
     @Override
-    public String whoAmI(String _token) {
-        return null;
+    public void resetData() {
+        loginTextView.setText("");
+        userNameTextView.setText("");
+        passwordTextView.setText("");
     }
+
 }

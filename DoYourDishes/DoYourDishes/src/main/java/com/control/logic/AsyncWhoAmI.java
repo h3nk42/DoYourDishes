@@ -56,7 +56,6 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
             responseText = e.toString();
             Log.d(TAG, "AsyncWhoAmI: " + e.toString());
         }
-
         return null;
     }
 
@@ -67,7 +66,7 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
         //Hence if you want to populate UI elements with fetched data, do it here
 
         //mainActivity.changeTextFromAsync(data);
-        textView.setText(responseText);
+        textView.setText("you are: " + responseText);
     }
 
     @Override
