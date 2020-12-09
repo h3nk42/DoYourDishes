@@ -14,8 +14,7 @@ import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
 public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
-    private static final String TAG1 = "AsyncWho";
-    private static final String TAG2 = "AsyncLogin";
+    private static final String TAG = "AsyncFactory";
 
     ActiveState state;
 
@@ -38,6 +37,7 @@ public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
             case WHOAMI:
                 this.textView = _passedTextView;
                 this.token = _token;
+                Log.d(TAG, "AsyncTaskFactory: ");
                 break;
         }
 
@@ -97,15 +97,15 @@ public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
-    public Void doInBackground(Void... voids) {
+    public Void doInBackground(Void... params) {
         switch (state) {
             case LOGIN:
                 doWhenLogin();
-                break;
+
 
             case WHOAMI:
                 doWhenWhoAmI();
-                break;
+
         }
         return null;
     }
@@ -136,7 +136,7 @@ public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
         } catch (Exception e) {
             e.printStackTrace();
             responseText = e.toString();
-            Log.d(TAG2, "AsyncLogin: " + e.toString());
+            Log.d(TAG, "AsyncLogin: " + e.toString());
         }
         return null;
     }
@@ -155,7 +155,7 @@ public class AsyncTaskFactory extends AsyncTask<Void, Void, Void> {
         } catch (Exception e) {
             e.printStackTrace();
             responseText = e.toString();
-            Log.d(TAG1, "AsyncWhoAmI: " + e.toString());
+            Log.d(TAG, "AsyncWhoAmI: " + e.toString());
         }
         return null;
     }

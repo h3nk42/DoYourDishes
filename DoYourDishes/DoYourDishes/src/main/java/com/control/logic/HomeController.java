@@ -23,7 +23,7 @@ public class HomeController{
     }
 
     public void whoAmI() {
-        AsyncTaskFactory request = new AsyncTaskFactory(whoAmItextView, token, state);
+        AsyncWhoAmI request = new AsyncWhoAmI(whoAmItextView, token);
         request.execute();
     }
 

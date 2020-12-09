@@ -24,7 +24,7 @@ public class LoginController implements LoginControllerInterface{
     @Override
     public void tryLogin() {
         state = ActiveState.LOGIN;
-        AsyncTaskFactory request = new AsyncTaskFactory(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity ,state);
+        AsyncLogin request = new AsyncLogin(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity);
         request.execute();
     }
 
