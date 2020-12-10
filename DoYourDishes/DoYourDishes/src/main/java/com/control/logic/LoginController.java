@@ -12,7 +12,6 @@ public class LoginController implements LoginControllerInterface{
     final TextView userNameTextView;
     final TextView passwordTextView;
     final TextView loginTextView;
-    final HttpRequest httpEngine = new HttpRequest();
     private MainActivity mainActivity;
 
     public LoginController(TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {

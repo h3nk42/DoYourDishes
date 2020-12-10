@@ -1,18 +1,14 @@
 package com.control.logic;
 
 import android.widget.TextView;
-
-import com.control.networkHttp.HttpRequest;
 import com.view.gui.HomeActivity;
 
 public class HomeController implements HomeControllerInterface {
 
     private TextView whoAmItextView;
-    final HttpRequest httpEngine = new HttpRequest();
     private HomeActivity homeActivity;
     private String token;
 
-    // TextView; String; Homeactivity
     public HomeController(TextView _whoAmItextView, String _token, HomeActivity _homeActivity) {
         this.whoAmItextView = _whoAmItextView;
         this.homeActivity = _homeActivity;
