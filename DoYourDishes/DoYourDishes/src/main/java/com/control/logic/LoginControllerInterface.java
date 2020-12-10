@@ -9,6 +9,14 @@ public interface LoginControllerInterface {
     public void tryLogin();
 
     /**
+     *  Handler given to the AsyncTask
+     *
+     */
+    void updateUi(String responseText);
+
+    void startHomeView(String token);
+
+    /**
      *  try login explanation
      */
     public void resetData();

@@ -2,14 +2,13 @@ package com.control.logic;
 
 import android.widget.TextView;
 
-import com.control.networkHttp.HttpRequestFactory;
+import com.control.networkHttp.HttpRequest;
 import com.view.gui.HomeActivity;
-import com.view.gui.MainActivity;
 
-public class HomeController{
+public class HomeController implements HomeControllerInterface {
 
     private TextView whoAmItextView;
-    final HttpRequestFactory httpEngine = new HttpRequestFactory();
+    final HttpRequest httpEngine = new HttpRequest();
     private HomeActivity homeActivity;
     private String token;
     ActiveState state;
@@ -23,9 +22,13 @@ public class HomeController{
     }
 
     public void whoAmI() {
-        AsyncWhoAmI request = new AsyncWhoAmI(whoAmItextView, token);
+        AsyncTask request = new AsyncTask(token, "WHO_AM_I", this);
         request.execute();
     }
 
+    @Override
+    public void updateUi(String responseText) {
+        whoAmItextView.setText(responseText);
+    }
 
 }

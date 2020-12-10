@@ -13,7 +13,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class HttpRequestFactory implements HTTPInterface {
+public class HttpRequest implements HTTPInterface {
     private static final String TAG="httpFactory";
 
     private OkHttpClient client = new OkHttpClient();

@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTaskFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTaskFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginController.java" afterDir="false" />
-    </list>
+    <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +83,8 @@
       <workItem from="1607357168932" duration="9930000" />
       <workItem from="1607443746691" duration="9393000" />
       <workItem from="1607510758740" duration="6726000" />
+      <workItem from="1607598003732" duration="17000" />
+      <workItem from="1607598054231" duration="11000" />
     </task>
     <servers />
   </component>

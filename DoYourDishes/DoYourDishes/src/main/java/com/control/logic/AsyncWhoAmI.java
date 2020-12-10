@@ -4,9 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.control.networkHttp.HttpRequestFactory;
-import com.view.R;
-import com.view.gui.MainActivity;
+import com.control.networkHttp.HttpRequest;
 
 import org.json.JSONObject;
 
@@ -17,7 +15,7 @@ public class AsyncWhoAmI extends AsyncTask<Void, Void, Void>{
 
     private static final String TAG="AsyncWho";
 
-    final HttpRequestFactory httpEngine = new HttpRequestFactory();
+    final HttpRequest httpEngine = new HttpRequest();
     private String responseText = "test";
     private TextView textView;
     private String token;

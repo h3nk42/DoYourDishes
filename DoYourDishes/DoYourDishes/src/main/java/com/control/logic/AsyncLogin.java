@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.control.networkHttp.HttpRequestFactory;
+import com.control.networkHttp.HttpRequest;
 import com.view.gui.HomeActivity;
 import com.view.gui.MainActivity;
 
@@ -23,7 +23,7 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void> {
     private String responseText;
     private String userName;
     private String password;
-    final HttpRequestFactory httpEngine = new HttpRequestFactory();
+    final HttpRequest httpEngine = new HttpRequest();
     private MainActivity mainActivity;
     private Boolean token = false;
     private Boolean errorMessage = false;
