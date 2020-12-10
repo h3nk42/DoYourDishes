@@ -11,7 +11,6 @@ public class HomeController implements HomeControllerInterface {
     final HttpRequest httpEngine = new HttpRequest();
     private HomeActivity homeActivity;
     private String token;
-    ActiveState state;
 
     // TextView; String; Homeactivity
     public HomeController(TextView _whoAmItextView, String _token, HomeActivity _homeActivity) {
@@ -28,7 +27,7 @@ public class HomeController implements HomeControllerInterface {
 
     @Override
     public void updateUi(String responseText) {
-        whoAmItextView.setText(responseText);
+        whoAmItextView.setText("you are: " + responseText);
     }
 
 }

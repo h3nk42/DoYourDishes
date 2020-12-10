@@ -14,9 +14,7 @@ public class LoginController implements LoginControllerInterface{
     final TextView loginTextView;
     final HttpRequest httpEngine = new HttpRequest();
     private MainActivity mainActivity;
-    ActiveState state;
 
-    // TextView; TextView; TextView; Homeactivity
     public LoginController(TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {
         this.loginTextView = _loginTextView;
         this.userNameTextView = _userNameTextView;
@@ -26,8 +24,6 @@ public class LoginController implements LoginControllerInterface{
 
     @Override
     public void tryLogin() {
-        state = ActiveState.LOGIN;
-        //AsyncLogin request = new AsyncLogin(loginTextView, userNameTextView.getText().toString(), passwordTextView.getText().toString(), mainActivity);
         AsyncTask request = new AsyncTask(userNameTextView.getText().toString(), passwordTextView.getText().toString(), "LOG_IN", this);
         request.execute();
     }

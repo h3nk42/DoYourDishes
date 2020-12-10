@@ -64,9 +64,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
 
     @NotNull
     private RequestBody makeRequestBody() {
-
         RequestBody requestBody = null;
-
         switch (stringValues.get("method")) {
             case "LOG_IN":
                 requestBody = new FormBody.Builder()
@@ -74,16 +72,13 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
                         .add("password", stringValues.get("password"))
                         .build();
                 break;
-
             case "WHO_AM_I":
                 requestBody = new FormBody.Builder()
                         .build();
                 break;
-
         }
         return requestBody;
     }
-
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
     //                                         choose what to do doInBackround()                  //
