@@ -1,21 +1,19 @@
 package com.control.logic;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.control.networkHttp.HttpRequest;
 import com.view.gui.HomeActivity;
 import com.view.gui.MainActivity;
 
 public class LoginController implements LoginControllerInterface{
     final TextView userNameTextView;
     final TextView passwordTextView;
-    final TextView loginTextView;
+    final TextView showLoginDataTextView;
     private MainActivity mainActivity;
 
     public LoginController(TextView _loginTextView, TextView _userNameTextView, TextView _passwordTextView, MainActivity _mainActivity ) {
-        this.loginTextView = _loginTextView;
+        this.showLoginDataTextView = _loginTextView;
         this.userNameTextView = _userNameTextView;
         this.passwordTextView = _passwordTextView;
         this.mainActivity = _mainActivity;
@@ -29,7 +27,7 @@ public class LoginController implements LoginControllerInterface{
 
     @Override
     public void updateUi(String responseText) {
-        loginTextView.setText(responseText);
+        showLoginDataTextView.setText(responseText);
     }
     @Override
     public void startHomeView(String token) {
@@ -39,7 +37,7 @@ public class LoginController implements LoginControllerInterface{
     }
     @Override
     public void resetData() {
-        loginTextView.setText("");
+        showLoginDataTextView.setText("");
         userNameTextView.setText("");
         passwordTextView.setText("");
     }

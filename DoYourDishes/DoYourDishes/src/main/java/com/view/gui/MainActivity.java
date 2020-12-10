@@ -15,7 +15,7 @@ import com.view.R;
 public class MainActivity extends AppCompatActivity {
     MainActivity thisActivity = this;
     private static final String TAG="MainActivity";
-    private TextView loginTextView;
+    private TextView showLoginDataTextView;
     private TextView userNameTextView;
     private TextView passwordTextView;
     private LoginController loginLogic;
@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
       //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
         //                MainActivity.this.startActivity(activityChangeIntent);
 
-        this.loginTextView = (TextView) findViewById(R.id.showLoginDataTextView);
+        this.showLoginDataTextView = (TextView) findViewById(R.id.showLoginDataTextView);
         this.userNameTextView = (TextView) findViewById(R.id.userNameTextView);
         this.passwordTextView = (TextView) findViewById(R.id.passwordTextView);
-        this.loginLogic = new LoginController(loginTextView, userNameTextView, passwordTextView, thisActivity);
+        this.loginLogic = new LoginController(showLoginDataTextView, userNameTextView, passwordTextView, thisActivity);
         Log.d(TAG, "onCreate: out");
     }
 
