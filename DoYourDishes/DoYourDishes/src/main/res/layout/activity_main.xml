@@ -9,7 +9,7 @@
     >
 
     <EditText
-        android:id="@+id/userNameTextView"
+        android:id="@+id/userNameEditTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/passwordTextView"
+        android:id="@+id/passwordEditTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditTextView" />
 
     <Button
         android:id="@+id/fetchDataButton"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextView" />
 
     <TextView
         android:id="@+id/loginText"
@@ -52,7 +52,7 @@
         android:layout_height="37dp"
         android:text="Log in please! "
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/userNameTextView"
+        app:layout_constraintBottom_toTopOf="@+id/userNameEditTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

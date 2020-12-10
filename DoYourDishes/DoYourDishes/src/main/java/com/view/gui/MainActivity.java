@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.control.logic.LoginController;
@@ -16,10 +17,9 @@ public class MainActivity extends AppCompatActivity {
     MainActivity thisActivity = this;
     private static final String TAG="MainActivity";
     private TextView showLoginDataTextView;
-    private TextView userNameTextView;
-    private TextView passwordTextView;
+    private EditText userNameTextView;
+    private EditText passwordTextView;
     private LoginController loginLogic;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         //                MainActivity.this.startActivity(activityChangeIntent);
 
         this.showLoginDataTextView = (TextView) findViewById(R.id.showLoginDataTextView);
-        this.userNameTextView = (TextView) findViewById(R.id.userNameTextView);
-        this.passwordTextView = (TextView) findViewById(R.id.passwordTextView);
+        this.userNameTextView = (EditText) findViewById(R.id.userNameEditTextView);
+        this.passwordTextView = (EditText) findViewById(R.id.passwordEditTextView);
         this.loginLogic = new LoginController(showLoginDataTextView, userNameTextView, passwordTextView, thisActivity);
         Log.d(TAG, "onCreate: out");
     }
