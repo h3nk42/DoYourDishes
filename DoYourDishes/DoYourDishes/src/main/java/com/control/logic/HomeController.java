@@ -1,6 +1,9 @@
 package com.control.logic;
 
+import android.view.Gravity;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.view.gui.HomeActivity;
 
 public class HomeController implements HomeControllerInterface {
@@ -14,6 +17,9 @@ public class HomeController implements HomeControllerInterface {
         this.homeActivity = _homeActivity;
         this.token = _token;
 
+        Toast toast = Toast.makeText(homeActivity, "you're logged in!", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 20, 150);
+        toast.show();
     }
 
     public void whoAmI() {
