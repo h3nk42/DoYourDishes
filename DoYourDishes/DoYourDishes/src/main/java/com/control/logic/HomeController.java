@@ -6,11 +6,24 @@ import android.widget.Toast;
 
 import com.view.gui.HomeActivity;
 
+
+/**
+ * This class implements control functionality for the Home_Activity
+ *
+ * @value TextView holds an output field given in constructor by Home_Activity
+ * @value homeActivity holds the controlled Activity given in constructor by Home_Activity
+ * @value state holds the instance of state, mainly for testing purposes
+ * @value TAG, purpose is using it on Log.d for debugging
+ */
+
 public class HomeController implements HomeControllerInterface {
 
-    private TextView whoAmItextView;
-    private HomeActivity homeActivity;
-    private String token;
+    private static final String TAG = "HomeController";
+    private final TextView whoAmItextView;
+    private final HomeActivity homeActivity;
+    private final String token;
+    private ControlState state;
+
 
     public HomeController(TextView _whoAmItextView, String _token, HomeActivity _homeActivity) {
         this.whoAmItextView = _whoAmItextView;

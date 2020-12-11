@@ -1,6 +1,6 @@
 package com.control.logic;
 
-public enum ControllState {
+public enum ControlState {
 
     LOGGED_IN,
     LOG_IN_ERROR,

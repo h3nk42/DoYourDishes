@@ -1,27 +1,26 @@
 package com.control.logic;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+
 import android.util.Log;
+
 import com.control.networkHttp.HttpRequest;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+
 import java.util.HashMap;
+
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
 public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     private static final String TAG = "MyAsyncTask";
-
-    private HashMap<String, String> stringValues = new HashMap<String, String>();
-
-
     final HttpRequest httpEngine = new HttpRequest();
+    private final HashMap<String, String> stringValues = new HashMap<String, String>();
     private Boolean logInError = false;
     private Boolean exceptionThrown = false;
     private HomeController homeController;
     private LoginController loginController;
-    private String BackendURL = "https://doyourdishes.herokuapp.com/api";
+    private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
     public AsyncTask(String _token, String _method, HomeController _homeController) {
@@ -107,7 +106,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         Log.d(TAG, "doWhenLoginBackGround: in");
         RequestBody requestBody = makeRequestBody();
         try {
-            JSONObject response = httpEngine.POST(BackendURL +"/auth/login", requestBody, "");
+            JSONObject response = httpEngine.POST(BackendURL + "/auth/login", requestBody, "");
             Log.d(TAG, "doWhenLogin response: " + response);
             if (response.has("token")) {
                 stringValues.put("responseText", response.getString("token"));
@@ -166,12 +165,11 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         Log.d(TAG, "doWhenWhoAmIPostExecute: out");
     }
 
-    private void doWhenLoginPostExecute(){
+    private void doWhenLoginPostExecute() {
         Log.d(TAG, "doWhenLoginPostExecute: in");
-        if(exceptionThrown){
-            loginController.showToast("network unavailable");
-        }
-        else if(logInError) {
+        if (exceptionThrown) {
+            loginController.showToast("network error");
+        } else if (logInError) {
             loginController.showToast(stringValues.get("responseText"));
         } else {
             loginController.startHomeView(stringValues.get("responseText"));

@@ -6,10 +6,9 @@ import com.control.logic.LoginController;
 import com.control.logic.LoginControllerInterface;
 import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.HttpRequest;
-import com.view.gui.MainActivity;
+import com.view.gui.LoginActivity;
 
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
 
 import okhttp3.FormBody;
@@ -25,7 +24,7 @@ public class LoginControllerTest {
 
     TextView passwortAusEingabe;
     TextView passwortAusEingabeTest;
-    MainActivity mainActivity;
+    LoginActivity mainActivity;
 
     /**
      * Prüft ob Login funktioniert

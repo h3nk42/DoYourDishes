@@ -2,7 +2,7 @@ package HTTPTest;
 
 import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.HttpRequest;
-import com.view.gui.MainActivity;
+import com.view.gui.LoginActivity;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class HttpTest {
 
     @Test
     public void buttonLaedUndRuftNeueActivityAuf(){
-        MainActivity mainActivity = new MainActivity();
+        LoginActivity mainActivity = new LoginActivity();
 
         HTTPInterface httpsEngine = new HttpRequest();
 

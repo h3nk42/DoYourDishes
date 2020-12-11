@@ -23,5 +23,4 @@ public interface LoginControllerInterface {
      */
     public void resetData();
 
-    void handleNetworkException(String exceptionResponse);
 }
