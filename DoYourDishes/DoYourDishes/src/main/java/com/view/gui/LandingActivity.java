@@ -23,7 +23,6 @@ public class LandingActivity extends AppCompatActivity {
         landingController = new LandingController(this);
     }
 
-
     public void toRegisterUserClick(View view){
         landingController.goToRegisterUser();
 
