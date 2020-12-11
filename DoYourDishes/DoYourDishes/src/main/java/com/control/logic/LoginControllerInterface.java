@@ -12,7 +12,9 @@ public interface LoginControllerInterface {
      *  Handler given to the AsyncTask
      *
      */
-    void updateUi(String responseText);
+
+
+    void showToast(String responseText);
 
     void startHomeView(String token);
 
@@ -21,4 +23,5 @@ public interface LoginControllerInterface {
      */
     public void resetData();
 
+    void handleNetworkException(String exceptionResponse);
 }

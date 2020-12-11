@@ -1,4 +1,7 @@
 package com.control.logic;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import com.control.networkHttp.HttpRequest;
 import org.jetbrains.annotations.NotNull;
@@ -15,8 +18,10 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
 
     final HttpRequest httpEngine = new HttpRequest();
     private Boolean logInError = false;
+    private Boolean exceptionThrown = false;
     private HomeController homeController;
     private LoginController loginController;
+    private String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
     public AsyncTask(String _token, String _method, HomeController _homeController) {
@@ -48,6 +53,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         }
 
     }
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
     //                                          makeRequestBody()                                 //
@@ -101,7 +107,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         Log.d(TAG, "doWhenLoginBackGround: in");
         RequestBody requestBody = makeRequestBody();
         try {
-            JSONObject response = httpEngine.POST("http://10.0.2.2:3001/api/auth/login", requestBody, "");
+            JSONObject response = httpEngine.POST(BackendURL +"/auth/login", requestBody, "");
             Log.d(TAG, "doWhenLogin response: " + response);
             if (response.has("token")) {
                 stringValues.put("responseText", response.getString("token"));
@@ -112,7 +118,8 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            stringValues.put("responseText", e.toString());
+            exceptionThrown = true;
+            stringValues.put("exceptionResponse", e.toString());
             Log.d(TAG, "AsyncLogin: " + e.toString());
         }
         Log.d(TAG, "doWhenLoginBackGround: out");
@@ -125,11 +132,12 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         JSONObject response = null;
         RequestBody requestBody = makeRequestBody();
         try {
-            response = httpEngine.GET("http://10.0.2.2:3001/api/auth/whoAmI", requestBody, stringValues.get("token"));
+            response = httpEngine.GET(BackendURL + "/auth/whoAmI", requestBody, stringValues.get("token"));
             stringValues.put("responseText", response.getJSONObject("data").getString("userName"));
         } catch (Exception e) {
             e.printStackTrace();
-            stringValues.put("responseText", e.toString());
+            exceptionThrown = true;
+            stringValues.put("exceptionResponse", e.toString());
             Log.d(TAG, "AsyncWhoAmI: " + e.toString());
         }
         return null;
@@ -160,8 +168,11 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
 
     private void doWhenLoginPostExecute(){
         Log.d(TAG, "doWhenLoginPostExecute: in");
-        if(logInError) {
-            loginController.updateUi(stringValues.get("responseText"));
+        if(exceptionThrown){
+            loginController.showToast("network unavailable");
+        }
+        else if(logInError) {
+            loginController.showToast(stringValues.get("responseText"));
         } else {
             loginController.startHomeView(stringValues.get("responseText"));
             Log.d(TAG, "onPostExecute: login: " + stringValues.get("responseText"));

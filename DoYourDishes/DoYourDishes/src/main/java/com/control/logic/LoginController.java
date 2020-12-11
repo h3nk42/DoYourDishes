@@ -1,6 +1,8 @@
 package com.control.logic;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.EditText;
@@ -36,7 +38,7 @@ public class LoginController implements LoginControllerInterface{
     }
 
     @Override
-    public void updateUi(String responseText) {
+    public void showToast(String responseText) {
         //showLoginDataTextView.setText(responseText);
 
         switch(responseText){
@@ -68,6 +70,9 @@ public class LoginController implements LoginControllerInterface{
         passwordTextView.setText("");
     }
 
+    @Override
+    public void handleNetworkException(String exceptionResponse) {
+        showLoginDataTextView.setText(exceptionResponse);
 
-
+    }
 }
