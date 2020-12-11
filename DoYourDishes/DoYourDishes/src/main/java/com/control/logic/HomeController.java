@@ -5,6 +5,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.view.gui.HomeActivity;
+import com.view.gui.LandingActivity;
+import com.view.gui.LoginActivity;
 
 
 /**
@@ -35,9 +37,16 @@ public class HomeController implements HomeControllerInterface {
         toast.show();
     }
 
+    @Override
     public void whoAmI() {
         AsyncTask request = new AsyncTask(token, "WHO_AM_I", this);
         request.execute();
+    }
+
+    @Override
+    public void finishPrevActivities(){
+        LandingActivity.landingActivity.finish();
+        LoginActivity.loginActivity.finish();
     }
 
     @Override

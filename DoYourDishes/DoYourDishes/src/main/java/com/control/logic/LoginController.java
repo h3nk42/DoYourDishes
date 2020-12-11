@@ -46,7 +46,6 @@ public class LoginController implements LoginControllerInterface{
      *  This method creates an AsyncTask with METHOD: "LOG_IN", sending userName and password,
      *  also passing itself for callBack functionality when the request came back ( to update the ui )
      */
-
     @Override
     public void tryLogin() {
         loginButton.setEnabled(false);
@@ -57,7 +56,6 @@ public class LoginController implements LoginControllerInterface{
     /**
      *  This method is used as a callBack in AsyncTask to show a Toast with information on UI
      */
-
     @Override
     public void showToast(String responseText) {
         //showLoginDataTextView.setText(responseText);
@@ -78,7 +76,7 @@ public class LoginController implements LoginControllerInterface{
     }
 
     /**
-     *  This method is used as a callBack in AsyncTask to start the HOME_VIEW when login was succesfull
+     *  This method is used as a callBack in AsyncTask to start the HOME_VIEW when login was successfull
      */
     @Override
     public void startHomeView(String token) {
@@ -99,5 +97,4 @@ public class LoginController implements LoginControllerInterface{
         userNameEditText.setText("");
         passwordEditText.setText("");
     }
-
 }

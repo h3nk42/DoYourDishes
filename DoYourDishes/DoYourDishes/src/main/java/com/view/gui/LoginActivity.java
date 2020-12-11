@@ -16,8 +16,8 @@ import com.view.R;
 
 
 public class LoginActivity extends AppCompatActivity {
-    LoginActivity thisActivity = this;
-    private static final String TAG="MainActivity";
+    public static LoginActivity loginActivity;
+    private static final String TAG="LoginActivity";
     private TextView showLoginDataTextView;
     private EditText userNameTextView;
     private EditText passwordTextView;
@@ -28,16 +28,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: in");
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
       //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
         //                MainActivity.this.startActivity(activityChangeIntent);
-
+        loginActivity = this;
         this.showLoginDataTextView = (TextView) findViewById(R.id.showLoginDataTextView);
         this.userNameTextView = (EditText) findViewById(R.id.userNameEditTextView);
         this.passwordTextView = (EditText) findViewById(R.id.passwordEditTextView);
-        this.loginButton = findViewById(R.id.loginButton);
-        this.loginLogic = new LoginController(loginButton, showLoginDataTextView, userNameTextView, passwordTextView, thisActivity);
+        this.loginButton = findViewById(R.id.toLoginButton);
+        this.loginLogic = new LoginController(loginButton, showLoginDataTextView, userNameTextView, passwordTextView, loginActivity);
         Log.d(TAG, "onCreate: out");
     }
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.view">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- //TODO Bluetooth / Bluetooth Low Energy (access to location because of BLE required if app isn#t using Device Companion Manager!) -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -21,26 +22,34 @@
         android:theme="@style/Theme.DoYourDishes"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
-        <activity android:name=".gui.HomeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            >
-
-        </activity>
-        <activity android:name=".gui.LoginActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            >
+        <activity android:name=".gui.LandingActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <activity
+            android:name=".gui.HomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".gui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:launchMode="singleInstance">
+
         </activity>
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -24,13 +24,14 @@ public class HomeActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
 
+
+
         Intent intent = getIntent();
         token = intent.getStringExtra("TOKEN");
-
         whoAmITextView = (TextView) findViewById(R.id.whoAmITextView);
         whoAmITextView.setText("your JWToken: \n" + token);
         homeController = new HomeController(whoAmITextView, token, this);
-
+        homeController.finishPrevActivities();
 
     }
 
