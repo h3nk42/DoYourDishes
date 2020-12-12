@@ -18,8 +18,11 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     private final HashMap<String, String> stringValues = new HashMap<String, String>();
     private Boolean logInError = false;
     private Boolean exceptionThrown = false;
+    private Boolean registerError = false;
     private HomeController homeController;
     private LoginController loginController;
+    private RegisterController registerController;
+
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
@@ -50,6 +53,19 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
                 stringValues.put("password", _password);
                 break;
         }
+    }
+
+    //AsyncLogin
+    public AsyncTask(String _userName, String _password, String _method, RegisterController _registerController) {
+        stringValues.put("method", _method);
+        registerController = _registerController;
+
+        switch (stringValues.get("method")) {
+            case "REGISTER_USER":
+                stringValues.put("userName", _userName);
+                stringValues.put("password", _password);
+                break;
+        }
 
     }
 
@@ -62,6 +78,12 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     private RequestBody makeRequestBody() {
         RequestBody requestBody = null;
         switch (stringValues.get("method")) {
+            case "REGISTER_USER":
+                requestBody = new FormBody.Builder()
+                        .add("userName", stringValues.get("userName"))
+                        .add("password", stringValues.get("password"))
+                        .build();
+                break;
             case "LOG_IN":
                 requestBody = new FormBody.Builder()
                         .add("userName", stringValues.get("userName"))
@@ -72,6 +94,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
                 requestBody = new FormBody.Builder()
                         .build();
                 break;
+
         }
         return requestBody;
     }
@@ -83,6 +106,9 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     @Override
     public Void doInBackground(Void... params) {
         switch (stringValues.get("method")) {
+            case "REGISTER_USER":
+                doWhenRegisterUser();
+                break;
             case "LOG_IN":
                 doWhenLoginBackGround();
                 break;
@@ -99,7 +125,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    public Void doWhenLoginBackGround(Void... voids) {
+    public void  doWhenLoginBackGround(Void... voids) {
         // https://stackoverflow.com/questions/26161538/throw-an-exception-in-doinbackground-and-catch-in-onpostexecute#:~:text=You%20cannot%20throw%20exceptions%20across,handle%20it%20in%20onPostExecute()%20.&text=No%2C%20you%20can't%20throw%20exception%20in%20the%20background%20thread.
         //Here you are in the worker thread and you are not allowed to access UI thread from here
         //Here you can perform network operations or any heavy operations you want.
@@ -122,10 +148,9 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
             Log.d(TAG, "AsyncLogin: " + e.toString());
         }
         Log.d(TAG, "doWhenLoginBackGround: out");
-        return null;
     }
 
-    public Void doWhenWhoAmIBackground(Void... voids) {
+    public void doWhenWhoAmIBackground(Void... voids) {
         //Here you are in the worker thread and you are not allowed to access UI thread from here
         //Here you can perform network operations or any heavy operations you want.
         JSONObject response = null;
@@ -137,9 +162,34 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
             e.printStackTrace();
             exceptionThrown = true;
             stringValues.put("exceptionResponse", e.toString());
+            Log.d(TAG, "doWhenWhoAmIBackground exception: " + e.toString());
+        }
+    }
+
+    private void doWhenRegisterUser(){
+        Log.d(TAG, "doWhenRegisterUser: in");
+
+        //Here you are in the worker thread and you are not allowed to access UI thread from here
+        //Here you can perform network operations or any heavy operations you want.
+        JSONObject response = null;
+        RequestBody requestBody = makeRequestBody();
+        try {
+            response = httpEngine.POST(BackendURL + "/user/createUser", requestBody, "");
+            if (response.has("customMessage")) {
+                stringValues.put("responseText", response.getString("customMessage"));
+                registerError = true;
+            } else {
+                stringValues.put("responseText", "user created!");
+                registerError = false;
+                doWhenLoginBackGround();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            exceptionThrown = true;
+            stringValues.put("exceptionResponse", e.toString());
             Log.d(TAG, "AsyncWhoAmI: " + e.toString());
         }
-        return null;
+        Log.d(TAG, "doWhenRegisterUser: out");
     }
 
 
@@ -149,6 +199,9 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         //After completing execution of given task , control will return here.
         //Hence if you want to populate UI elements with fetched data, do it here
         switch (stringValues.get("method")) {
+            case "REGISTER_USER":
+                doWhenRegisterUserPostExecute();
+                break;
             case "LOG_IN":
                 doWhenLoginPostExecute();
                 break;
@@ -157,6 +210,17 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
                 break;
         }
 
+    }
+    private void doWhenRegisterUserPostExecute(){
+        Log.d(TAG, "doWhenRegisterUserPostExecute: in");
+        if (exceptionThrown) {
+            registerController.showToast("network error");
+        }  else if (registerError) {
+        registerController.showToast(stringValues.get("responseText"));
+    } else {
+        registerController.startHomeView(stringValues.get("responseText"));
+        Log.d(TAG, "onPostExecute: login: " + stringValues.get("responseText"));
+    }
     }
 
     private void doWhenWhoAmIPostExecute() {

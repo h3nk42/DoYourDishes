@@ -6,6 +6,10 @@ public enum ControlState {
     LOG_IN_ERROR,
     NOT_LOGGED_IN,
 
+    NOT_REGISTERED,
+    REGISTER_USER_ERROR,
+
+
     CREATE_USER,             //Username:String  password:String
     DELETE_USER,             //Username:String
 

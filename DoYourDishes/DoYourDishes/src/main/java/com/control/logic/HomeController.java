@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.view.gui.HomeActivity;
 import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
+import com.view.gui.RegisterActivity;
 
 
 /**
@@ -46,7 +47,14 @@ public class HomeController implements HomeControllerInterface {
     @Override
     public void finishPrevActivities(){
         LandingActivity.landingActivity.finish();
-        LoginActivity.loginActivity.finish();
+        if(LoginActivity.loginWasOpened) {
+            LoginActivity.loginActivity.finish();
+        }
+        if( RegisterActivity.registerWasOpen){
+            RegisterActivity.registerActivity.finish();
+        }
+
+
     }
 
     @Override

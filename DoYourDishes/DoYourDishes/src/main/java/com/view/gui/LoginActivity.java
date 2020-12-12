@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,12 +16,16 @@ import com.view.R;
 
 public class LoginActivity extends AppCompatActivity {
     public static LoginActivity loginActivity;
+    public static Boolean loginWasOpened = false;
+
+
     private static final String TAG="LoginActivity";
     private TextView showLoginDataTextView;
-    private EditText userNameTextView;
-    private EditText passwordTextView;
+    private EditText userNameEditText;
+    private EditText passwordEditText;
     private LoginController loginLogic;
     private Button loginButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,12 @@ public class LoginActivity extends AppCompatActivity {
       //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
         //                MainActivity.this.startActivity(activityChangeIntent);
         loginActivity = this;
+        loginWasOpened = true;
         this.showLoginDataTextView = (TextView) findViewById(R.id.showLoginDataTextView);
-        this.userNameTextView = (EditText) findViewById(R.id.userNameEditTextView);
-        this.passwordTextView = (EditText) findViewById(R.id.passwordEditTextView);
+        this.userNameEditText = (EditText) findViewById(R.id.userNameEditTextView);
+        this.passwordEditText = (EditText) findViewById(R.id.passwordEditTextView);
         this.loginButton = findViewById(R.id.toLoginButton);
-        this.loginLogic = new LoginController(loginButton, showLoginDataTextView, userNameTextView, passwordTextView, loginActivity);
+        this.loginLogic = new LoginController(loginButton, showLoginDataTextView, userNameEditText, passwordEditText, loginActivity);
         Log.d(TAG, "onCreate: out");
     }
 

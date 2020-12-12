@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
+import com.view.gui.RegisterActivity;
 
 public class LandingController implements LandingControllerInterface {
 
@@ -16,7 +17,8 @@ public class LandingController implements LandingControllerInterface {
 
     @Override
     public void goToRegisterUser() {
-
+        Intent intent = new Intent(landingActivity, RegisterActivity.class);
+        landingActivity.startActivity(intent);
     }
 
     @Override

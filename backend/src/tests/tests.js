@@ -78,6 +78,7 @@ describe("Create Stuff / login : ", () => {
                 .end((err, res) => {
                     res.should.have.status(418);
                     res.body.should.be.a('object');
+                    chai.expect(res.body.customMessage).equal('INVALID_INPUT')
                     done();
                 });
         });

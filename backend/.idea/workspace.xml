@@ -20,8 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterControllerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/RegisterActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/ControlState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/ControlState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/tests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/tests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +103,7 @@
       <workItem from="1607598054231" duration="11000" />
       <workItem from="1607683817637" duration="8000" />
       <workItem from="1607684827430" duration="832000" />
+      <workItem from="1607734924766" duration="1498000" />
     </task>
     <servers />
   </component>
@@ -113,7 +127,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>273</line>
+          <line>274</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -123,12 +137,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>95</line>
+          <line>96</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/tests/tests.js</url>
-          <line>162</line>
+          <line>163</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
