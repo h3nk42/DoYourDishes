@@ -19,14 +19,16 @@ public class RegisterController implements RegisterControllerInterface {
 
     final TextInputEditText userNameEditText;
     final TextInputEditText passwordEditText;
+    final TextInputEditText confirmPasswordEditText;
     final Button registerButton;
     private RegisterActivity registerActivity;
     public ControlState state;
 
 
-    public RegisterController(Button _registerButton, TextInputEditText _userNameTextView, TextInputEditText _passwordTextView, RegisterActivity _registerActivity ) {
+    public RegisterController(Button _registerButton, TextInputEditText _userNameTextView, TextInputEditText _passwordTextView, TextInputEditText _confirmPasswordEditText, RegisterActivity _registerActivity ) {
         this.userNameEditText = _userNameTextView;
         this.passwordEditText = _passwordTextView;
+        this.confirmPasswordEditText = _confirmPasswordEditText;
         this.registerActivity = _registerActivity;
         this.registerButton = _registerButton;
         this.state = ControlState.NOT_REGISTERED;
@@ -35,8 +37,16 @@ public class RegisterController implements RegisterControllerInterface {
 
     public void registerUser(){
         registerButton.setEnabled(false);
-        AsyncTask request = new AsyncTask(userNameEditText.getText().toString(), passwordEditText.getText().toString(), "REGISTER_USER", this);
-        request.execute();
+        String password = passwordEditText.getText().toString();
+        String cPassword = confirmPasswordEditText.getText().toString();
+        String userName = userNameEditText.getText().toString();
+
+        if ( password.equals(cPassword) ){
+            AsyncTask request = new AsyncTask(userName, password, "REGISTER_USER", this);
+            request.execute();
+        } else {
+            showToast("passwords don't match");
+        }
     }
 
     public void showToast(String responseText ){

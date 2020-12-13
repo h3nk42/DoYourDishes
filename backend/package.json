@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/Server.js",
-    "test": "mocha --exit src/tests/tests.js"
+    "test": "mocha --exit src/tests/tests.js",
+    "drop": "node src/tests/runDropDb.js"
   },
   "keywords": [],
   "author": "",
