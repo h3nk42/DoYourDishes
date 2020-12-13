@@ -32,23 +32,22 @@
 
             <TextView
                 android:id="@+id/planNameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="136dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="create a plan!"
+                android:text=".."
                 android:textColor="@color/fontColorDark" />
 
             <Button
-                android:id="@+id/createPlanButton"
+                android:id="@+id/goToPlanViewButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:onClick="createPlan"
                 android:textSize="14sp"
-                app:icon="@drawable/baseline_add_black_18dp"
+                app:icon="@drawable/baseline_arrow_right_alt_24"
                 app:iconSize="50dp" />
 
         </LinearLayout>

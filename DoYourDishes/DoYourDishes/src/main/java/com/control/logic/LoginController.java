@@ -78,11 +78,17 @@ public class LoginController implements LoginControllerInterface{
     /**
      *  This method is used as a callBack in AsyncTask to start the HOME_VIEW when login was successfull
      */
+
     @Override
-    public void startHomeView(String token) {
+    public void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
         this.state = ControlState.LOGGED_IN;
+
         Intent intent = new Intent(loginActivity, HomeActivity.class);
-        intent.putExtra("TOKEN", token);
+        intent.putExtra("TOKEN", _token);
+        intent.putExtra("USERNAME", _resUserName);
+        intent.putExtra("USERPLANID", _resUserPlanId);
+        intent.putExtra("PLANNAME", _planName);
+        intent.putExtra("PLANOWNER", _planOwner);
         loginActivity.startActivity(intent);
         Log.d(TAG, "startHomeView: state == " + this.state);
     }

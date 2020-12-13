@@ -66,10 +66,14 @@ public class RegisterController implements RegisterControllerInterface {
     }
 
     @Override
-    public void startHomeView(String token) {
+    public void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
         this.state = ControlState.LOGGED_IN;
         Intent intent = new Intent(registerActivity, HomeActivity.class);
-        intent.putExtra("TOKEN", token);
+        intent.putExtra("TOKEN", _token);
+        intent.putExtra("USERNAME", _resUserName);
+        intent.putExtra("USERPLANID", _resUserPlanId);
+        intent.putExtra("PLANNAME", _planName);
+        intent.putExtra("PLANOWNER", _planOwner);
         registerActivity.startActivity(intent);
         Log.d(TAG, "startHomeView: state == " + this.state);
     }

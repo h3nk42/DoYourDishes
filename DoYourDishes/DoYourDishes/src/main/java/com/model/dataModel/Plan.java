@@ -1,25 +1,39 @@
 package com.model.dataModel;
 
+import java.util.List;
+
 public class Plan {
     private String owner;
     private String name;
-    private Task[] tasks;
-    private User[] users;
+    private String planId;
+    private List<String> tasks;
+    private List<String> users;
 
-    public Plan(String _owner, String _name) {
+    public Plan(String _owner, String _name, String _planId, List<String> _users) {
         this.owner = _owner;
         this.name = _name;
+        this.planId = _planId;
+        this.users = _users;
     }
+
+    public Plan(String _owner, String _name, String _planId, List<String> _users, List<String> _tasks) {
+        this.owner = _owner;
+        this.name = _name;
+        this.planId = _planId;
+        this.users = _users;
+        this.tasks = _tasks;
+    }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setTasks(Task[] tasks) {
+    public void setTasks(List<String> tasks) {
         this.tasks = tasks;
     }
 
-    public void setUsers(User[] users) {
+    public void setUsers(List<String>users) {
         this.users = users;
     }
 
@@ -31,11 +45,11 @@ public class Plan {
         return owner;
     }
 
-    public Task[] getTasks() {
+    public List<String> getTasks() {
         return tasks;
     }
 
-    public User[] getUsers() {
+    public List<String> getUsers() {
         return users;
     }
 }

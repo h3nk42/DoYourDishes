@@ -3,7 +3,6 @@ package com.control.logic;
 import android.util.Log;
 
 import com.control.networkHttp.HttpRequest;
-import com.model.dataModel.User;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -20,6 +19,9 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     private Boolean logInError = false;
     private Boolean exceptionThrown = false;
     private Boolean registerError = false;
+    private Boolean userIsInPlan = false;
+
+
     private HomeController homeController;
     private LoginController loginController;
     private RegisterController registerController;
@@ -27,22 +29,18 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
-    public AsyncTask(String _token, String _method, HomeController _homeController) {
+    public AsyncTask(String _token, String _method, String _planName, HomeController _homeController) {
         stringValues.put("method", _method);
         homeController = _homeController;
-
         switch (stringValues.get("method")) {
-            case "WHO_AM_I":
-
+            case "CREATE_PLAN":
                 this.stringValues.put("token", _token);
-                Log.d(TAG, "AsyncTaskFactory: ");
+                this.stringValues.put("planName", _planName);
+                Log.d(TAG, "AsyncTask: " + _method + " constructor");
                 break;
         }
     }
-    // state = ActiveState.WHOAMI;
 
-
-    //AsyncLogin
     public AsyncTask(String _userName, String _password, String _method, LoginController _loginController) {
         stringValues.put("method", _method);
         loginController = _loginController;
@@ -76,26 +74,31 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     @NotNull
-    private RequestBody makeRequestBody() {
+    private RequestBody makeRequestBody(boolean emptyBody) {
         RequestBody requestBody = null;
-        switch (stringValues.get("method")) {
-            case "REGISTER_USER":
+        if(!emptyBody) {
+            switch (stringValues.get("method")) {
+                case "CREATE_PLAN":
+                    requestBody = new FormBody.Builder()
+                            .add("name", stringValues.get("planName"))
+                            .build();
+                    break;
+                case "REGISTER_USER":
+                    requestBody = new FormBody.Builder()
+                            .add("userName", stringValues.get("userName"))
+                            .add("password", stringValues.get("password"))
+                            .build();
+                    break;
+                case "LOG_IN":
+                    requestBody = new FormBody.Builder()
+                            .add("userName", stringValues.get("userName"))
+                            .add("password", stringValues.get("password"))
+                            .build();
+                    break;
+            }
+        }else {
                 requestBody = new FormBody.Builder()
-                        .add("userName", stringValues.get("userName"))
-                        .add("password", stringValues.get("password"))
                         .build();
-                break;
-            case "LOG_IN":
-                requestBody = new FormBody.Builder()
-                        .add("userName", stringValues.get("userName"))
-                        .add("password", stringValues.get("password"))
-                        .build();
-                break;
-            case "WHO_AM_I":
-                requestBody = new FormBody.Builder()
-                        .build();
-                break;
-
         }
         return requestBody;
     }
@@ -107,14 +110,14 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     @Override
     public Void doInBackground(Void... params) {
         switch (stringValues.get("method")) {
+            case "CREATE_PLAN":
+                doWhenCreatePlanBackground();
+                break;
             case "REGISTER_USER":
-                doWhenRegisterUser();
+                doWhenRegisterUserBackground();
                 break;
             case "LOG_IN":
                 doWhenLoginBackGround();
-                break;
-            case "WHO_AM_I":
-                doWhenWhoAmIBackground();
                 break;
         }
         return null;
@@ -125,21 +128,51 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
     //                                          doInBackround()                                   //
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
+    public void doWhenFetchMyPLanBackGround(Void... voids) {
+        //Here you are in the worker thread and you are not allowed to access UI thread from here
+        //Here you can perform network operations or any heavy operations you want.
+        JSONObject response = null;
+        RequestBody requestBody = makeRequestBody(true);
+        try {
+            response = httpEngine.GET(BackendURL + "/plan/findPlanToOwner", requestBody, stringValues.get("token"));
+            if(response.has("data")){
+                Log.d(TAG, "doWhenFetchMyPLanBackGround: " + response);
+                stringValues.put("responsePlanOwner", response.getJSONObject("data").getString("owner"));
+                stringValues.put("responsePlanName", response.getJSONObject("data").getString("name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            exceptionThrown = true;
+            stringValues.put("exceptionResponse", e.toString());
+            Log.d(TAG, "doWhenWhoAmIBackground exception: " + e.toString());
+        }
+    }
+
 
     public void  doWhenLoginBackGround(Void... voids) {
         // https://stackoverflow.com/questions/26161538/throw-an-exception-in-doinbackground-and-catch-in-onpostexecute#:~:text=You%20cannot%20throw%20exceptions%20across,handle%20it%20in%20onPostExecute()%20.&text=No%2C%20you%20can't%20throw%20exception%20in%20the%20background%20thread.
         //Here you are in the worker thread and you are not allowed to access UI thread from here
         //Here you can perform network operations or any heavy operations you want.
         Log.d(TAG, "doWhenLoginBackGround: in");
-        RequestBody requestBody = makeRequestBody();
+        RequestBody requestBody = makeRequestBody(false);
         try {
             JSONObject response = httpEngine.POST(BackendURL + "/auth/login", requestBody, "");
             Log.d(TAG, "doWhenLogin response: " + response);
             if (response.has("token")) {
-                stringValues.put("responseText", response.getString("token"));
+                stringValues.put("responseToken", response.getString("token"));
+                stringValues.put("token", response.getString("token"));
+                stringValues.put("responseUserName", response.getString("userName"));
+                stringValues.put("responseUserPlanId", response.getString("plan"));
                 logInError = false;
+                // falls user in plan ist:
+                if(stringValues.get("responseUserPlanId").equals("null")){
+                   //
+                }else {
+                    userIsInPlan = true;
+                    doWhenFetchMyPLanBackGround();
+                }
             } else {
-                stringValues.put("responseText", response.getString("customMessage"));
+                stringValues.put("responseErrorMessage", response.getString("customMessage"));
                 logInError = true;
             }
         } catch (Exception e) {
@@ -151,36 +184,19 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         Log.d(TAG, "doWhenLoginBackGround: out");
     }
 
-    public void doWhenWhoAmIBackground(Void... voids) {
-        //Here you are in the worker thread and you are not allowed to access UI thread from here
-        //Here you can perform network operations or any heavy operations you want.
-        JSONObject response = null;
-        RequestBody requestBody = makeRequestBody();
-        try {
-            response = httpEngine.GET(BackendURL + "/auth/whoAmI", requestBody, stringValues.get("token"));
-            if(response.has("data")){
-                stringValues.put("responseUserName", response.getJSONObject("data").getString("userName"));
-                stringValues.put("responseUserPlan", response.getJSONObject("data").getString("plan"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            exceptionThrown = true;
-            stringValues.put("exceptionResponse", e.toString());
-            Log.d(TAG, "doWhenWhoAmIBackground exception: " + e.toString());
-        }
-    }
 
-    private void doWhenRegisterUser(){
-        Log.d(TAG, "doWhenRegisterUser: in");
+
+    private void doWhenRegisterUserBackground(){
+        Log.d(TAG, "doWhenRegisterUserBackground: in");
 
         //Here you are in the worker thread and you are not allowed to access UI thread from here
         //Here you can perform network operations or any heavy operations you want.
         JSONObject response = null;
-        RequestBody requestBody = makeRequestBody();
+        RequestBody requestBody = makeRequestBody(false);
         try {
             response = httpEngine.POST(BackendURL + "/user/createUser", requestBody, "");
             if (response.has("customMessage")) {
-                stringValues.put("responseText", response.getString("customMessage"));
+                stringValues.put("responseErrorMessage", response.getString("customMessage"));
                 registerError = true;
             } else {
                 stringValues.put("responseText", "user created!");
@@ -193,7 +209,34 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
             stringValues.put("exceptionResponse", e.toString());
             Log.d(TAG, "AsyncWhoAmI: " + e.toString());
         }
-        Log.d(TAG, "doWhenRegisterUser: out");
+        Log.d(TAG, "doWhenRegisterUserBackground: out");
+    }
+
+    private void doWhenCreatePlanBackground(){
+        Log.d(TAG, "doWhenCreatePlanBackground: in");
+
+        //Here you are in the worker thread and you are not allowed to access UI thread from here
+        //Here you can perform network operations or any heavy operations you want.
+        JSONObject response = null;
+        RequestBody requestBody = makeRequestBody(false);
+        try {
+            response = httpEngine.POST(BackendURL + "/plan/createPlan", requestBody, stringValues.get("token"));
+            if (response.has("customMessage")) {
+                stringValues.put("responseText", response.getString("customMessage"));
+                registerError = true;
+            } else {
+                stringValues.put("planName", response.getJSONObject("data").getString("name"));
+                stringValues.put("planId", response.getJSONObject("data").getString("_id"));
+                stringValues.put("planOwner", response.getJSONObject("data").getString("owner"));
+                registerError = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            exceptionThrown = true;
+            stringValues.put("exceptionResponse", e.toString());
+            Log.d(TAG, "AsyncWhoAmI: " + e.toString());
+        }
+        Log.d(TAG, "doWhenCreatePlanBackground: out");
     }
 
 
@@ -203,49 +246,70 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         //After completing execution of given task , control will return here.
         //Hence if you want to populate UI elements with fetched data, do it here
         switch (stringValues.get("method")) {
+            case "CREATE_PLAN":
+                doWhenCreatePlanPostExecute();
+                break;
             case "REGISTER_USER":
                 doWhenRegisterUserPostExecute();
                 break;
             case "LOG_IN":
                 doWhenLoginPostExecute();
                 break;
-            case "WHO_AM_I":
-                doWhenWhoAmIPostExecute();
-                break;
         }
 
     }
-    private void doWhenRegisterUserPostExecute(){
+    private void doWhenRegisterUserPostExecute() {
         Log.d(TAG, "doWhenRegisterUserPostExecute: in");
         if (exceptionThrown) {
             registerController.showToast("network error");
-        }  else if (registerError) {
-        registerController.showToast(stringValues.get("responseText"));
-    } else {
-        registerController.startHomeView(stringValues.get("responseText"));
-        Log.d(TAG, "onPostExecute: login: " + stringValues.get("responseText"));
-    }
+        } else if (registerError) {
+            registerController.showToast(stringValues.get("responseErrorMessage"));
+        } else {
+            String resUserName = stringValues.get("responseUserName");
+            String resUserPlanId = stringValues.get("responseUserPlanId");
+            String resToken = stringValues.get("responseToken");
+        registerController.startHomeView(resToken, resUserName, resUserPlanId, "null", "null");
+        Log.d(TAG, "onPostExecute: registerUser: " + stringValues.get("token"));
+        }
     }
 
-    private void doWhenWhoAmIPostExecute() {
-        Log.d(TAG, "doWhenWhoAmIPostExecute: in");
-        String resUserName = stringValues.get("responseUserName");
-        String resUserPlan = stringValues.get("responseUserPlan");
-        homeController.updateUi(resUserName);
-        homeController.updateUser(resUserName, resUserPlan);
-        Log.d(TAG, "doWhenWhoAmIPostExecute: out");
-    }
+
 
     private void doWhenLoginPostExecute() {
         Log.d(TAG, "doWhenLoginPostExecute: in");
+        String resUserName = stringValues.get("responseUserName");
+        String resUserPlanId = stringValues.get("responseUserPlanId");
+        String resToken = stringValues.get("responseToken");
         if (exceptionThrown) {
             loginController.showToast("network error");
         } else if (logInError) {
-            loginController.showToast(stringValues.get("responseText"));
+            String resError = stringValues.get("responseErrorMessage");
+            loginController.showToast(resError);
         } else {
-            loginController.startHomeView(stringValues.get("responseText"));
-            Log.d(TAG, "onPostExecute: login: " + stringValues.get("responseText"));
+            if(userIsInPlan) {
+                String planName = stringValues.get("responsePlanName");
+                String planOwner = stringValues.get("responsePlanOwner");
+                loginController.startHomeView(resToken, resUserName, resUserPlanId, planName, planOwner);
+            } else {
+                loginController.startHomeView(resToken, resUserName, resUserPlanId, "null", "null");
+                Log.d(TAG, "onPostExecute: login: " + stringValues.get("token"));
+            }
         }
         Log.d(TAG, "doWhenLoginPostExecute: out");
+    }
+
+    private void doWhenCreatePlanPostExecute(){
+        Log.d(TAG, "doWhenCreatePlanPostExecute: in");
+        String planName = stringValues.get("planName");
+        String planId = stringValues.get("planId");
+        String planOwner = stringValues.get("planOwner");
+        if (exceptionThrown) {
+            homeController.showToast("network error");
+        }  else if (registerError) {
+            homeController.showToast(stringValues.get("responseText"));
+        } else {
+            homeController.callBackCreatedPlan(planOwner,planName,planId);
+            Log.d(TAG, "doWhenCreatePlanPostExecute: login: " + stringValues.get("responseText"));
+        }
     }
 }

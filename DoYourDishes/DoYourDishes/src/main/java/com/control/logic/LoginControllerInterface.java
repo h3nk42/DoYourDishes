@@ -16,7 +16,7 @@ public interface LoginControllerInterface {
 
     void showToast(String responseText);
 
-    void startHomeView(String token);
+    void startHomeView(String _token, String _resUserName, String _resUserPlan, String _planName, String _planOwner);
 
     /**
      *  try login explanation
