@@ -53,7 +53,7 @@ public class RegisterController implements RegisterControllerInterface {
         registerButton.setEnabled(true);
         switch(responseText){
             case("INVALID_INPUT"):
-                responseText = "no username/password given" ;
+                responseText = "please give proper input" ;
                 break;
             case("USERNAME_TAKEN"):
                 responseText = "userName taken.." ;

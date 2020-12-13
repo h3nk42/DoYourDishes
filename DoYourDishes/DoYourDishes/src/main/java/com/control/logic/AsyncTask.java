@@ -3,6 +3,7 @@ package com.control.logic;
 import android.util.Log;
 
 import com.control.networkHttp.HttpRequest;
+import com.model.dataModel.User;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -157,7 +158,10 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         RequestBody requestBody = makeRequestBody();
         try {
             response = httpEngine.GET(BackendURL + "/auth/whoAmI", requestBody, stringValues.get("token"));
-            stringValues.put("responseText", response.getJSONObject("data").getString("userName"));
+            if(response.has("data")){
+                stringValues.put("responseUserName", response.getJSONObject("data").getString("userName"));
+                stringValues.put("responseUserPlan", response.getJSONObject("data").getString("plan"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             exceptionThrown = true;
@@ -225,7 +229,10 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
 
     private void doWhenWhoAmIPostExecute() {
         Log.d(TAG, "doWhenWhoAmIPostExecute: in");
-        homeController.updateUi(stringValues.get("responseText"));
+        String resUserName = stringValues.get("responseUserName");
+        String resUserPlan = stringValues.get("responseUserPlan");
+        homeController.updateUi(resUserName);
+        homeController.updateUser(resUserName, resUserPlan);
         Log.d(TAG, "doWhenWhoAmIPostExecute: out");
     }
 

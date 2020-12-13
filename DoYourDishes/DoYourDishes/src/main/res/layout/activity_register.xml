@@ -65,7 +65,7 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
 
-        android:hint="@string/userName"
+        android:hint="@string/registerUserName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:hint="@string/password"
+        android:hint="@string/registerPassword"
         app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/confirmPasswordLayout"
         app:layout_constraintStart_toStartOf="@+id/userNameLayout">

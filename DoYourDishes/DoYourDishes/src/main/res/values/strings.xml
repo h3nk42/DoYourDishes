@@ -12,6 +12,8 @@
 
 
     <string name="password">Password</string>
+    <string name="registerPassword">Password | len > 4 </string>
     <string name="userName">userName</string>
+    <string name="registerUserName">userName | len > 3</string>
     <string name="confirmPassword">confirm password</string>
 </resources>
