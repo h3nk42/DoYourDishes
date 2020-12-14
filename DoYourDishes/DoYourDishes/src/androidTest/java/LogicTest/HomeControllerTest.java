@@ -22,7 +22,7 @@ public class HomeControllerTest {
      */
     @Test
     public void test1WhoAmI(){
-        hC = new HomeController(whoAmItextView, token, homeActivity);
+        //hC = new HomeController(whoAmItextView, token, homeActivity);
     }
 
 

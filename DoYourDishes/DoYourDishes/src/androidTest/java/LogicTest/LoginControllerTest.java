@@ -73,7 +73,7 @@ public class LoginControllerTest {
         ////////                    LoginControllerTest                                         //
         /////////////////////////////////////////////////////////////////////////////////////////
 
-        LoginControllerInterface logData = new LoginController(ausgabeObLoginAccesOrDenied, userNameAusEingabe, passwortAusEingabe,mainActivity);
+        //LoginControllerInterface logData = new LoginController(ausgabeObLoginAccesOrDenied, userNameAusEingabe, passwortAusEingabe,mainActivity);
 
         // Assert.assertTrue(zustand==ActiveState.LOGIN);
 
