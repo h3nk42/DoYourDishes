@@ -14,7 +14,7 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="username"
+        android:hint="@string/userName"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/toLoginButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,16 +65,6 @@
         app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/showLoginDataTextView"
-        android:layout_width="92dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:textAlignment="center"
-        android:textColor="#FF0000"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="9dp" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="253dp"
@@ -84,11 +74,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="toLoginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

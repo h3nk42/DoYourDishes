@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;
@@ -44,7 +43,7 @@ public class HomeController implements HomeControllerInterface {
 
     private User activeUser;
     private Plan plan;
-    private ControlState state;
+    private DebugState state;
     private String planName;
     private String userName;
     private String userPlanId;
@@ -71,7 +70,8 @@ public class HomeController implements HomeControllerInterface {
         if(activeUser.getPlan().equals("null")) {
             changeLayout("NO_PLAN");
         } else {
-            // TODO hier muss wenn es mehrere user im plan gibt anders vorgeangen werden (in asyncTask impl)
+            // TODO wenn mehrere user im plan muessen diese zum Plan hinzugefuegt werden wie gebe ich PLAN an naechste activity weiter?
+            // TODO was ist mit tasks ?? => tasks erst in plan activity fetchen
             List<String> planUsers = new ArrayList<String>();
             planUsers.add(activeUser.getUserName());
             this.plan = new Plan(userPlanOwner, planName,userPlanId,planUsers);
@@ -154,7 +154,7 @@ public class HomeController implements HomeControllerInterface {
         Toast toast = Toast.makeText(homeActivity, responseText, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 20, 200);
         toast.show();
-        this.state = ControlState.LOG_IN_ERROR;
+        this.state = DebugState.LOG_IN_ERROR;
         Log.d(TAG, "updateUi: state == " + this.state);
     }
 

@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.view.gui.HomeActivity;
@@ -15,30 +14,26 @@ import com.view.gui.LoginActivity;
  *  This class implements control functionality for the Login_Activity
  * @value userNameEditText holds the userName input field given in constructor by LoginActivity
  * @value passwordEditText holds the password input field given in constructor by LoginActivity
- * @value TextView holds an output field given in constructor by LoginActivity
  * @value loginActivity holds the controlled Activity given in constructor by LoginActivity
+ * @value loginButton holds the loginButton so it can be deactivated while active async request
  * @value state holds the instance of state, mainly for testing purposes
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
 public class LoginController implements LoginControllerInterface{
     private static final String TAG = "LoginController";
-
     final EditText userNameEditText;
     final EditText passwordEditText;
-    final TextView showLoginDataTextView;
     final Button loginButton;
     private LoginActivity loginActivity;
-    public ControlState state;
+    public DebugState state;
 
-
-    public LoginController(Button _loginButton, TextView _loginTextView, EditText _userNameTextView, EditText _passwordTextView, LoginActivity _mainActivity ) {
-        this.showLoginDataTextView = _loginTextView;
+    public LoginController(Button _loginButton, EditText _userNameTextView, EditText _passwordTextView, LoginActivity _mainActivity ) {
         this.userNameEditText = _userNameTextView;
         this.passwordEditText = _passwordTextView;
         this.loginActivity = _mainActivity;
         this.loginButton = _loginButton;
-        this.state = ControlState.NOT_LOGGED_IN;
+        this.state = DebugState.NOT_LOGGED_IN;
         Log.d(TAG, "Constructor: state == " + this.state);
     }
 
@@ -54,35 +49,38 @@ public class LoginController implements LoginControllerInterface{
     }
 
     /**
-     *  This method is used as a callBack in AsyncTask to show a Toast with information on UI
+     *  this method shows a Toast on the View, also called from asyncTask to show requestErrors
      */
     @Override
-    public void showToast(String responseText) {
-        //showLoginDataTextView.setText(responseText);
+    public void showToast(String toastText) {
         loginButton.setEnabled(true);
-        switch(responseText){
+        switch(toastText){
             case("INVALID_INPUT"):
-                responseText = "no username/password given" ;
+                toastText = "no username/password given" ;
                 break;
             case("WRONG_USER_OR_PW"):
-                responseText = "wrong name/password combo" ;
+                toastText = "wrong name/password combo" ;
         }
-
-        Toast toast = Toast.makeText(loginActivity, responseText, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 20, 100);
+        Toast toast = Toast.makeText(loginActivity, toastText, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 20, 630);
         toast.show();
-        this.state = ControlState.LOG_IN_ERROR;
+        this.state = DebugState.LOG_IN_ERROR;
         Log.d(TAG, "updateUi: state == " + this.state);
     }
 
     /**
-     *  This method is used as a callBack in AsyncTask to start the HOME_VIEW when login was successfull
+     * This method is used as a callBack in AsyncTask to start the Home_Activity when login was successful
+     * all the params are passed to the home_activity, so it immediateley knows who is logged in and if it should show the in_plan or not_in_plan layout
+     * @param _token the JWT token after login
+     * @param _resUserName the userName taken from login response
+     * @param _resUserPlanId the PlanId taken from login response ( == "null" if user in no plan )
+     * @param _planName the planName of the users plan ( == "null" if user is in no plan )
+     * @param _planOwner the planOwner of the users plan ( == "null" if user is in no plan )
      */
 
     @Override
     public void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
-        this.state = ControlState.LOGGED_IN;
-
+        this.state = DebugState.LOGGED_IN;
         Intent intent = new Intent(loginActivity, HomeActivity.class);
         intent.putExtra("TOKEN", _token);
         intent.putExtra("USERNAME", _resUserName);
@@ -94,12 +92,11 @@ public class LoginController implements LoginControllerInterface{
     }
 
     /**
-     *  This method empties the Data in inputs, called when the user restarts this activity ( going back with the arrow, from HomeView )
+     *  This method empties the Data in inputs, called when the user restarts this activity (from login_activity)
      */
     @Override
     public void resetData() {
         loginButton.setEnabled(true);
-        showLoginDataTextView.setText("");
         userNameEditText.setText("");
         passwordEditText.setText("");
     }

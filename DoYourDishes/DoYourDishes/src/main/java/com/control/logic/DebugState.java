@@ -1,6 +1,10 @@
 package com.control.logic;
 
-public enum ControlState {
+public enum DebugState {
+
+    IN_LANDING,
+    TO_REGISTER,
+    TO_LOGIN,
 
     LOGGED_IN,
     LOG_IN_ERROR,
@@ -8,6 +12,8 @@ public enum ControlState {
 
     NOT_REGISTERED,
     REGISTER_USER_ERROR,
+    REGISTERED_AND_LOGGED_IN,
+
 
 
     CREATE_USER,             //Username:String  password:String

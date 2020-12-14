@@ -9,32 +9,41 @@
    >
 
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="217dp"
+        android:layout_height="217dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dyd_sponge24" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="200dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="250dp"
+        android:gravity="center"
         app:cardBackgroundColor="@color/teal"
+        app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
-        android:layout_gravity="center"
-        app:cardElevation="20dp"
-        >
+        app:layout_constraintStart_toStartOf="parent">
         <!-- Card contents -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/planNameTextView"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
+                android:fontFamily="@font/poppins_bold"
                 android:text=".."
                 android:textColor="@color/fontColorDark" />
 
@@ -42,13 +51,23 @@
                 android:id="@+id/goToPlanViewButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:textSize="14sp"
                 app:icon="@drawable/baseline_arrow_right_alt_24"
                 app:iconSize="50dp" />
+
+            <Button
+                android:id="@+id/deletePlanButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="20dp"
+                app:icon="@drawable/baseline_delete_forever_24"
+                app:iconSize="25dp" />
 
         </LinearLayout>
 

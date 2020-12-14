@@ -16,9 +16,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private HomeController homeController;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +23,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Intent intent = getIntent();
-
         homeController = new HomeController(
                 intent.getStringExtra("TOKEN"),
                 intent.getStringExtra("PLANNAME"),
@@ -37,7 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         homeController.finishPrevActivities();
 
     }
+
     public void createPlan(View view){
         homeController.createPlanDialog();
     }
+
 }

@@ -6,49 +6,53 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.control.logic.LoginController;
 import com.view.R;
 
+/**
+ *  this is the activity that handles user logIn
+ * @value loginActivity holds itself to pass to control and so the activity can get finsihed from another activity
+ * @value loginWasOpened gets set to true if a single instance of this activity was existent,
+ * so the Homeactivity knows which activities to .finish() when started
+ * @value TAG for debugger logging
+ * @value loginController holds instance of control class
+ */
 
 public class LoginActivity extends AppCompatActivity {
+
     public static LoginActivity loginActivity;
     public static Boolean loginWasOpened = false;
-
-
     private static final String TAG="LoginActivity";
-    private TextView showLoginDataTextView;
-    private EditText userNameEditText;
-    private EditText passwordEditText;
-    private LoginController loginLogic;
-    private Button loginButton;
+    private LoginController loginController;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: in");
         super.onCreate(savedInstanceState);
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-      //  Intent activityChangeIntent = new Intent(MainActivity.this, BluetoothActivity.class);
-        //                MainActivity.this.startActivity(activityChangeIntent);
+
         loginActivity = this;
         loginWasOpened = true;
-        this.showLoginDataTextView = (TextView) findViewById(R.id.showLoginDataTextView);
-        this.userNameEditText = (EditText) findViewById(R.id.userNameEditTextView);
-        this.passwordEditText = (EditText) findViewById(R.id.passwordEditTextView);
-        this.loginButton = findViewById(R.id.toLoginButton);
-        this.loginLogic = new LoginController(loginButton, showLoginDataTextView, userNameEditText, passwordEditText, loginActivity);
+
+        this.loginController = new LoginController(
+                findViewById(R.id.toLoginButton),
+                (EditText) findViewById(R.id.userNameEditTextView),
+                (EditText) findViewById(R.id.passwordEditTextView),
+                this);
         Log.d(TAG, "onCreate: out");
     }
 
+    /**
+     * gets called by loginButton
+     * @param view
+     */
     public void login(View view) {
-        loginLogic.tryLogin();
+        loginController.tryLogin();
     }
-
 
     @Override
     protected void onStop() {
@@ -81,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         Log.d(TAG, "onRestart: in");
-        loginLogic.resetData();
+        loginController.resetData();
         super.onRestart();
         Log.d(TAG, "onRestart: out");
     }
