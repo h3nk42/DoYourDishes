@@ -7,6 +7,7 @@ import androidx.test.filters.LargeTest;
 
 import com.view.R;
 import com.view.gui.HomeActivity;
+import com.view.gui.LandingActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -37,7 +38,7 @@ public class EspressoTestTest {
 
     @Before
     public void launchActivity() {
-        ActivityScenario.launch(HomeActivity.class);
+        ActivityScenario.launch(LandingActivity.class);
     }
 
 
