@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.view.R;
 import com.view.gui.HomeActivity;
 import com.view.gui.LoginActivity;
 
@@ -56,9 +57,11 @@ public class LoginController implements LoginControllerInterface{
         loginButton.setEnabled(true);
         switch(toastText){
             case("INVALID_INPUT"):
+                //toastText = R.string.TOAST_STRING_NO_USERNAME_OR_PASSWORD_GIVEN;
                 toastText = "no username/password given" ;
                 break;
             case("WRONG_USER_OR_PW"):
+                //toastText = String.valueOf(R.string.TOAST_STRING_WRONG_NAME_OR_PASSWORD_COMBO);
                 toastText = "wrong name/password combo" ;
         }
         Toast toast = Toast.makeText(loginActivity, toastText, Toast.LENGTH_SHORT);

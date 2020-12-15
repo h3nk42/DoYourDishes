@@ -16,4 +16,6 @@
     <string name="userName">userName</string>
     <string name="registerUserName">userName | len > 3</string>
     <string name="confirmPassword">confirm password</string>
+    <string name="TOAST_STRING_NO_USERNAME_OR_PASSWORD_GIVEN">no username/password given</string>
+    <string name="TOAST_STRING_WRONG_NAME_OR_PASSWORD_COMBO">wrong name/password combo</string>
 </resources>
