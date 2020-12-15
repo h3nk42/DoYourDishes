@@ -10,8 +10,8 @@ package TestsJUnit;
 
 import android.app.Activity;
 
-import com.control.logic.DebugState;
-import com.control.logic.LandingControllerInterface;
+import com.control.controllerLogic.DebugState;
+import com.control.controllerLogic.LandingControllerInterface;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.control.logic;
+package com.control.controllerLogic;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.control.asyncLogic.AsyncTask;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;

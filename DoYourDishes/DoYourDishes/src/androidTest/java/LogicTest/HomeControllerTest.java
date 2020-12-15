@@ -2,11 +2,9 @@ package LogicTest;
 
 import android.widget.TextView;
 
-import com.control.logic.HomeController;
+import com.control.controllerLogic.HomeController;
 import com.view.gui.HomeActivity;
 
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class HomeControllerTest {

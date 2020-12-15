@@ -20,26 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/drawable/baseline_delete_forever_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/values/environment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/AsyncTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/ControlState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/DebugState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LandingControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/LoginControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/logic/RegisterControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/HomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LandingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LandingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/RegisterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_in_plan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_in_plan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_no_plan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_no_plan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_register.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +92,8 @@
       <workItem from="1607734924766" duration="2311000" />
       <workItem from="1607857301080" duration="305000" />
       <workItem from="1607875448893" duration="8471000" />
-      <workItem from="1607961756194" duration="2391000" />
+      <workItem from="1607961756194" duration="3459000" />
+      <workItem from="1608037069777" duration="1357000" />
     </task>
     <servers />
   </component>

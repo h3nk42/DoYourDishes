@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.Window;
 
 
-import com.control.logic.HomeController;
+import com.control.controllerLogic.HomeController;
 import com.view.R;
 
 

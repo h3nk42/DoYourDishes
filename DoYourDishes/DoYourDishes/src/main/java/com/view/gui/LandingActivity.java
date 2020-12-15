@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.control.logic.LandingController;
+import com.control.controllerLogic.LandingController;
 import com.view.R;
 
 /**

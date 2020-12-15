@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.control.logic.LoginController;
+import com.control.controllerLogic.LoginController;
 import com.view.R;
 
 /**

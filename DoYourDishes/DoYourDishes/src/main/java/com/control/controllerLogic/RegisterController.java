@@ -1,4 +1,4 @@
-package com.control.logic;
+package com.control.controllerLogic;
 
 import android.content.Intent;
 import android.util.Log;
@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
+import com.control.asyncLogic.AsyncTask;
 import com.google.android.material.textfield.TextInputEditText;
 import com.view.gui.HomeActivity;
 import com.view.gui.RegisterActivity;

@@ -1,7 +1,10 @@
-package com.control.logic;
+package com.control.asyncLogic;
 
 import android.util.Log;
 
+import com.control.controllerLogic.HomeController;
+import com.control.controllerLogic.LoginController;
+import com.control.controllerLogic.RegisterController;
 import com.control.networkHttp.HttpRequest;
 
 import org.jetbrains.annotations.NotNull;
@@ -53,6 +56,9 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
                 break;
         }
     }
+
+
+
 
     public AsyncTask(String _userName, String _password, String _method, RegisterController _registerController) {
         method = _method;

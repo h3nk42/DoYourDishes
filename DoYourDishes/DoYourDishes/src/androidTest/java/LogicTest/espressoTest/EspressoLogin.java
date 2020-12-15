@@ -11,12 +11,11 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import com.control.logic.DebugState;
+import com.control.controllerLogic.DebugState;
 import com.view.R;
 import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;

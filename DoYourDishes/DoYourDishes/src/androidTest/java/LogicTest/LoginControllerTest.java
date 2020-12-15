@@ -2,8 +2,6 @@ package LogicTest;
 
 import android.widget.TextView;
 
-import com.control.logic.LoginController;
-import com.control.logic.LoginControllerInterface;
 import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.HttpRequest;
 import com.view.gui.LoginActivity;
