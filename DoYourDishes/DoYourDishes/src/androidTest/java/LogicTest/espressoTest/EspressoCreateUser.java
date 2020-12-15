@@ -39,8 +39,8 @@ import static org.hamcrest.core.AllOf.allOf;
 @LargeTest
 public class EspressoCreateUser {
     DebugState state;
-    public static final String USERNAME_STRING_TO_BE_TYPED = "hotrod111";
-    public static final String PASSWORD_STRING_TO_BE_TYPED = "hotrod1111";
+    public static final String USERNAME_STRING_TO_BE_TYPED = "henk182";
+    public static final String PASSWORD_STRING_TO_BE_TYPED = "hotrod182app";
     public static final String PLAN_STRING_TO_BE_TYPED = "EspressoPlan1";
 
 /*    // das erste was der Test machen soll, ei jedem restart (hier: bilde Homeactivity [Toplevel Activity])

@@ -1,9 +1,6 @@
 package LogicTest;
 
 
-import com.control.logic.TaskControllerInterface;
-import com.control.logic.UserControllerInterface;
-
 import org.junit.Test;
 
 public class ControlTest {

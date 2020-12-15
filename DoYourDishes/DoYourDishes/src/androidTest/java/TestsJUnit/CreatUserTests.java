@@ -11,16 +11,9 @@ package TestsJUnit;
 import android.app.Activity;
 
 import com.control.logic.DebugState;
-import com.control.logic.LandingController;
 import com.control.logic.LandingControllerInterface;
-import com.control.logic.UserControllerInterface;
 
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 public class CreatUserTests {
 

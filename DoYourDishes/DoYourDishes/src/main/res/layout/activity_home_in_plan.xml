@@ -39,6 +39,7 @@
             android:orientation="vertical"
             android:padding="8dp">
 
+
             <TextView
                 android:id="@+id/planNameTextView"
                 android:layout_width="136dp"
