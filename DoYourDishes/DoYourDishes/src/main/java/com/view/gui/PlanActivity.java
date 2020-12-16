@@ -41,7 +41,7 @@ public class PlanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_plan_tasks);
+        setContentView(R.layout.activity_plan);
 
         this.tabLayout = findViewById(R.id.tabLayoutNavigation);
         this.viewPager = findViewById(R.id.planContent);
