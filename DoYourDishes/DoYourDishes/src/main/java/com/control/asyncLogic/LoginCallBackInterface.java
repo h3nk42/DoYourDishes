@@ -13,5 +13,8 @@ public interface LoginCallBackInterface {
      */
     void loginCallBack(String[] loginData);
 
+    /**
+     *  is called when the asyncTask login should be started/executed
+     */
     void loginCallAsync();
 }
