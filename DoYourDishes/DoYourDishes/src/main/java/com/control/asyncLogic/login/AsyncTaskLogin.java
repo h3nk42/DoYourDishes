@@ -1,25 +1,26 @@
 package com.control.asyncLogic.login;
 import android.util.Log;
 
+import com.control.asyncLogic.login.loginController.LoginFacade;
 import com.control.networkHttp.HttpRequest;
 import org.json.JSONObject;
 import okhttp3.FormBody;
 
-class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
+public class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
 
 
     private static final String TAG = "AsyncTaskLogin";
     private String _userName;
     private String _password;
-    private LoginCallBack loginCallBackInterface;
+    private LoginFacade loginFacade;
     private FormBody requestBody;
     private HttpRequest httpEngine = new HttpRequest();
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
-    public AsyncTaskLogin(String _userName, String _password, LoginCallBack loginCallBackInterface) {
+    public AsyncTaskLogin(String _userName, String _password, LoginFacade loginCallBackInterface) {
         this._userName = _userName;
         this._password = _password;
-        this.loginCallBackInterface = loginCallBackInterface;
+        this.loginFacade = loginCallBackInterface;
     }
 
     @Override
@@ -54,6 +55,6 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        loginCallBackInterface.loginCallBack(respArr);
+        loginFacade.loginCallBack(respArr);
     }
 }

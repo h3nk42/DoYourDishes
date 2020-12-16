@@ -1,7 +1,8 @@
-package com.control.asyncLogic.login;
+package com.control.asyncLogic.login.loginController;
 
 import com.control.asyncLogic.fetchPlan.AsyncTaskFetchPlan;
 import com.control.asyncLogic.fetchPlan.FetchPlanCallBackInterface;
+import com.control.asyncLogic.login.AsyncTaskLogin;
 import com.control.controllerLogic.LoginController;
 
 
@@ -57,7 +58,7 @@ class LoginCallBackImpl implements LoginCallBack, FetchPlanCallBackInterface {
         this.userName = userName;
         this.password = password;
 
-        AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);
+        AsyncTaskLogin request = new AsyncTaskLogin(userName, password, new LoginFacadeImpl(this));
         request.execute();
     }
 

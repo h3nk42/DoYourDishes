@@ -1,4 +1,4 @@
-package com.control.asyncLogic.login;
+package com.control.asyncLogic.login.loginController;
 
 import com.control.controllerLogic.LoginController;
 

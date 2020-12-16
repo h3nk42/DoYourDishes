@@ -1,6 +1,4 @@
-package com.control.asyncLogic.login;
-
-import android.util.Log;
+package com.control.asyncLogic.login.loginController;
 
 import com.control.controllerLogic.LoginController;
 
