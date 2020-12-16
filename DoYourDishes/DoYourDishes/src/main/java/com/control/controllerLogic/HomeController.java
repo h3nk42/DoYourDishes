@@ -10,6 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.control.asyncLogic.AsyncTask;
+import com.control.asyncLogic.createPlan.CreatePlanFacade;
+import com.control.asyncLogic.createPlan.CreatePlanFacadeFactory;
+import com.control.asyncLogic.createPlan.CreatePlanUser;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;
@@ -31,10 +36,11 @@ import java.util.List;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class HomeController implements HomeControllerInterface {
+public class HomeController implements HomeControllerInterface, CreatePlanUser {
 
     private static final String TAG = "HomeController";
     private final HomeActivity homeActivity;
+    private CreatePlanUser createPlanUser = this;
     private final String token;
     private final HomeController homeController = this;
 
@@ -121,8 +127,8 @@ public class HomeController implements HomeControllerInterface {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                AsyncTask request = new AsyncTask(token, "CREATE_PLAN", input.getText().toString(), homeController);
-                request.execute();
+                CreatePlanFacade createPlanFacade = CreatePlanFacadeFactory.produceCreatePlanFacade();
+                createPlanFacade.createPlanCallAsync(token, input.getText().toString(), createPlanUser);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -143,7 +149,6 @@ public class HomeController implements HomeControllerInterface {
     }
 
     public void showToast(String responseText) {
-        //showLoginDataTextView.setText(responseText);
         switch(responseText){
             case("INVALID_INPUT"):
                 responseText = "Plan name too long! maxlen 15" ;
@@ -160,4 +165,16 @@ public class HomeController implements HomeControllerInterface {
     }
 
 
+    @Override
+    public void successCallbackCreatePlan(String _planOwner,String _planName, String _planId) {
+        List<String> planUsers = new ArrayList<String>();
+        planUsers.add(activeUser.getUserName());
+        this.plan = new Plan(_planOwner, _planName, _planId, planUsers);
+        changeLayout("IN_PLAN");
+    }
+
+    @Override
+    public void errorCallbackCreatePlan(String errorInfo) {
+        showToast(errorInfo);
+    }
 }

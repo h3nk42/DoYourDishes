@@ -15,5 +15,5 @@ public interface RegisterControllerInterface {
     /**
      * go over to HomeView when register is successful
      */
-    void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner);
+    void startHomeActivity(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner);
 }

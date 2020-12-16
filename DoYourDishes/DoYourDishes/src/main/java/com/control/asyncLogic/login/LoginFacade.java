@@ -1,8 +1,5 @@
 package com.control.asyncLogic.login;
 
-import com.control.asyncLogic.login.LoginUser;
-import com.control.controllerLogic.LoginController;
-
 /**
  * this interface works with the asynchronous logIn task
  *

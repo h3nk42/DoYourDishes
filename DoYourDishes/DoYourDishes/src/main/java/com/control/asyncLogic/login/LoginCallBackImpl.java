@@ -37,7 +37,7 @@ class LoginCallBackImpl implements LoginCallBack {
         this.userName = userName;
         this.password = password;
 
-        AsyncTaskLogin request = new AsyncTaskLogin(userName, password, new LoginFacadeImpl(this));
+        AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);
         request.execute();
     }
 

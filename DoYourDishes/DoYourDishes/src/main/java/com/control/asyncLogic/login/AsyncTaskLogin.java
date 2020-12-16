@@ -11,15 +11,15 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
     private static final String TAG = "AsyncTaskLogin";
     private String _userName;
     private String _password;
-    private LoginFacade loginFacade;
+    private LoginCallBackImpl loginCallBackImpl;
     private FormBody requestBody;
     private HttpRequest httpEngine = new HttpRequest();
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
-    public AsyncTaskLogin(String _userName, String _password, LoginFacade loginCallBackInterface) {
+    public AsyncTaskLogin(String _userName, String _password, LoginCallBackImpl loginCallBackImpl) {
         this._userName = _userName;
         this._password = _password;
-        this.loginFacade = loginCallBackInterface;
+        this.loginCallBackImpl = loginCallBackImpl;
     }
 
     @Override
@@ -54,6 +54,6 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        loginFacade.loginCallBack(respArr);
+        loginCallBackImpl.loginCallBack(respArr);
     }
 }

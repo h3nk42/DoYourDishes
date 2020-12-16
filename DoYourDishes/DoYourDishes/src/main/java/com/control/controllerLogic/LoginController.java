@@ -128,7 +128,6 @@ public class LoginController implements LoginControllerInterface, LoginUser, Fet
                 this.responsePlanName,
                 this.responsePlanOwner
         );
-        Log.d(TAG, "startHomeView: 1: " + this.responseToken + "2: " + this.responseUserName+ "3: " +this.responsePlanId + "4: " +  this.responsePlanName+ "5: " +  this.responsePlanOwner);
         Log.d(TAG, "startHomeView: state == " + this.state);
     }
     @Override

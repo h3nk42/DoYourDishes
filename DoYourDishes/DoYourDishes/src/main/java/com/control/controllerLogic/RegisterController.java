@@ -8,6 +8,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.control.asyncLogic.AsyncTask;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
+import com.control.asyncLogic.fetchPlan.FetchPlanUser;
+import com.control.asyncLogic.login.LoginFacadeFactory;
+import com.control.asyncLogic.registerUser.RegisterUserFacade;
+import com.control.asyncLogic.registerUser.RegisterUserFacadeFactory;
+import com.control.asyncLogic.registerUser.RegisterUserUser;
 import com.google.android.material.textfield.TextInputEditText;
 import com.view.gui.HomeActivity;
 import com.view.gui.RegisterActivity;
@@ -22,7 +29,7 @@ import com.view.gui.RegisterActivity;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class RegisterController implements RegisterControllerInterface {
+public class RegisterController implements RegisterControllerInterface, RegisterUserUser {
 
     private static final String TAG = "RegisterController";
 
@@ -32,6 +39,9 @@ public class RegisterController implements RegisterControllerInterface {
     final Button registerButton;
     private RegisterActivity registerActivity;
     public DebugState state;
+    private String responseToken;
+    private String responseUserName;
+    private String responsePlanId;
 
     public RegisterController(Button _registerButton, TextInputEditText _userNameTextView, TextInputEditText _passwordTextView, TextInputEditText _confirmPasswordEditText, RegisterActivity _registerActivity) {
         this.userNameEditText = _userNameTextView;
@@ -55,12 +65,21 @@ public class RegisterController implements RegisterControllerInterface {
         String cPassword = confirmPasswordEditText.getText().toString();
         String userName = userNameEditText.getText().toString();
 
-        if ( password.equals(cPassword) ){
-            AsyncTask request = new AsyncTask(userName, password, "REGISTER_USER", this);
-            request.execute();
-        } else {
+        if (!(password.equals(cPassword)) ) {
             showToast("passwords don't match");
             this.state = DebugState.REGISTER_USER_ERROR;
+        }
+        else if(password.length()<5) {
+            showToast("password too short");
+            this.state = DebugState.REGISTER_USER_ERROR;
+        }
+        else if(userName.length()<4) {
+            showToast("username too short");
+            this.state = DebugState.REGISTER_USER_ERROR;
+        }
+        else {
+            RegisterUserFacade registerUserFacade = RegisterUserFacadeFactory.produceRegisterUserFacade();
+            registerUserFacade.registerUserCallAsync(userName, password, this);
         }
     }
 
@@ -96,7 +115,7 @@ public class RegisterController implements RegisterControllerInterface {
      * the null params still get send because otherwise the home_activity crashes.
      */
     @Override
-    public void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
+    public void startHomeActivity(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
         this.state = DebugState.REGISTERED_AND_LOGGED_IN;
         Intent intent = new Intent(registerActivity, HomeActivity.class);
         intent.putExtra("TOKEN", _token);
@@ -108,4 +127,20 @@ public class RegisterController implements RegisterControllerInterface {
         Log.d(TAG, "startHomeView: state == " + this.state);
     }
 
+    @Override
+    public void errorCallbackRegisterUser(String errorInfo) {
+        registerButton.setEnabled(true);
+        showToast(errorInfo);
+    }
+
+    @Override
+    public void successCallbackRegisterUser(String _token, String _resUserName, String _resUserPlanId) {
+            startHomeActivity(
+                    _token,
+                    _resUserName,
+                    _resUserPlanId,
+                    "null",
+                    "null"
+            );
+    }
 }

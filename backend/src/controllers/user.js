@@ -7,6 +7,11 @@ const ObjectId = require('mongoose').Types.ObjectId
 const {retErr} = require('../utils/index');
 const {checkInputs} = require('../utils/index')
 
+const jwt = require('jsonwebtoken')
+require('dotenv').config();
+
+const secret = process.env.JWT_SECRET;
+
 
 
 exports.createUser = async function (req, res) {
@@ -26,7 +31,16 @@ exports.createUser = async function (req, res) {
         if(err){
             return  retErr(res, err, 418, 'DB_ERROR');
         }
-        return res.status(200).json({success: true, data: user});
+
+        const token = jwt.sign({userName: userName}, secret,
+            {
+                expiresIn: 86400,
+            });
+        const userToReturn = {user: user, token: token};
+        console.log(user)
+        console.log(token)
+        userToReturn.user.password = undefined;
+        return res.status(200).json({success: true, data: userToReturn});
     })
 }
 

@@ -254,7 +254,7 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
             String resUserName = stringValues.get("responseUserName");
             String resUserPlanId = stringValues.get("responseUserPlanId");
             String resToken = stringValues.get("responseToken");
-        registerController.startHomeView(
+        registerController.startHomeActivity(
                 resToken,
                 resUserName,
                 resUserPlanId,

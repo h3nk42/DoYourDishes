@@ -48,6 +48,7 @@ exports.createPlan = async (req, res) => {
     plan.save((err, plan) => {
         if (err) return res.json({success: false, error: err});
         User.updateOne({userName: msgSender}, {$set: {plan:plan._id}}, (err, updatedUser ) => { if(!err) {} } )
+        console.log(plan);
         return res.json({success: true, data: plan});
     });
 }
