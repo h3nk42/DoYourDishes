@@ -272,26 +272,20 @@ public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
         String responseUserPlanId = stringValues.get("responseUserPlanId");
         String responseToken = stringValues.get("responseToken");
         if (exceptionThrown) {
-            loginController.showToast("network error");
+            loginController.errorCallbackLogIn("network error");
         } else if (responseError) {
             String responseErrorMessage = stringValues.get("responseErrorMessage");
-            loginController.showToast(responseErrorMessage);
+            loginController.errorCallbackLogIn(responseErrorMessage);
         } else {
             if(userIsInPlan) {
                 String responsePlanName = stringValues.get("responsePlanName");
                 String responsePlanOwner = stringValues.get("responsePlanOwner");
-                loginController.startHomeView(
-                        responseToken,
-                        responseUserName,
-                        responseUserPlanId,
+                loginController.successCallbackFetchPlan(
                         responsePlanName,
                         responsePlanOwner
                 );
             } else {
-                loginController.startHomeView(
-                        responseToken,
-                        responseUserName,
-                        responseUserPlanId,
+                loginController.successCallbackFetchPlan(
                         "null",
                         "null"
                 );

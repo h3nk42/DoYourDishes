@@ -1,12 +1,11 @@
 package com.control.asyncLogic.login;
 import android.util.Log;
 
-import com.control.asyncLogic.login.loginController.LoginFacade;
 import com.control.networkHttp.HttpRequest;
 import org.json.JSONObject;
 import okhttp3.FormBody;
 
-public class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
 
 
     private static final String TAG = "AsyncTaskLogin";

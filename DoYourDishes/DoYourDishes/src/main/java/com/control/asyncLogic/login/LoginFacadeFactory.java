@@ -1,4 +1,4 @@
-package com.control.asyncLogic.login.loginController;
+package com.control.asyncLogic.login;
 
 public class LoginFacadeFactory {
 

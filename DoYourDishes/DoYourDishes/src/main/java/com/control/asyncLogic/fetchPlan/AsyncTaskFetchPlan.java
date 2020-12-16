@@ -8,19 +8,19 @@ import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-public class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
 
 
     private static final String TAG = "AsyncTaskFetchPLan";
     private String _token;
-    private FetchPlanCallBackInterface fetchPlanCallBackInterface;
+    private FetchPlanCallBackImpl fetchPlanCallBackImpl;
     private FormBody requestBody;
     private HttpRequest httpEngine = new HttpRequest();
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
-    public AsyncTaskFetchPlan( String _token, FetchPlanCallBackInterface fetchPlanCallBackInterface) {
+    public AsyncTaskFetchPlan( String _token, FetchPlanCallBackImpl fetchPlanCallBackImpl) {
         this._token = _token;
-        this.fetchPlanCallBackInterface = fetchPlanCallBackInterface;
+        this.fetchPlanCallBackImpl = fetchPlanCallBackImpl;
     }
 
     @Override
@@ -50,6 +50,6 @@ public class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,Strin
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        fetchPlanCallBackInterface.fetchPlanCallBack(respArr);
+        fetchPlanCallBackImpl.fetchPlanCallBack(respArr);
     }
 }

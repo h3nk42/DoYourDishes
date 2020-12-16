@@ -7,8 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.control.asyncLogic.login.loginController.LoginFacade;
-import com.control.asyncLogic.login.loginController.LoginFacadeFactory;
+import com.control.asyncLogic.fetchPlan.FetchPlanUser;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
+import com.control.asyncLogic.login.LoginUser;
+import com.control.asyncLogic.login.LoginFacade;
+import com.control.asyncLogic.login.LoginFacadeFactory;
 import com.view.gui.HomeActivity;
 import com.view.gui.LoginActivity;
 
@@ -22,13 +26,19 @@ import com.view.gui.LoginActivity;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class LoginController implements LoginControllerInterface{
+public class LoginController implements LoginControllerInterface, LoginUser, FetchPlanUser {
     private static final String TAG = "LoginController";
     final EditText userNameEditText;
     final EditText passwordEditText;
     final Button loginButton;
     private LoginActivity loginActivity;
     public DebugState state;
+
+    private String responseToken;
+    private String responseUserName;
+    private String responsePlanId;
+    private String responsePlanName;
+    private String responsePlanOwner;
 
     public LoginController(Button _loginButton, EditText _userNameTextView, EditText _passwordTextView, LoginActivity _mainActivity ) {
         this.userNameEditText = _userNameTextView;
@@ -51,15 +61,20 @@ public class LoginController implements LoginControllerInterface{
                 passwordEditText.getText().toString(),
                 this
         );
-
+        loginButton.setEnabled(false);
     }
 
     /**
      *  this method shows a Toast on the View, also called from asyncTask to show requestErrors
      */
     @Override
-    public void showToast(String toastText) {
+    public void errorCallbackLogIn(String errorInfo) {
         loginButton.setEnabled(true);
+        showToast(errorInfo);
+    }
+
+
+    public void showToast(String toastText) {
         switch(toastText){
             case("INVALID_INPUT"):
                 //toastText = R.string.TOAST_STRING_NO_USERNAME_OR_PASSWORD_GIVEN;
@@ -73,21 +88,57 @@ public class LoginController implements LoginControllerInterface{
         toast.setGravity(Gravity.TOP, 20, 630);
         toast.show();
         this.state = DebugState.LOG_IN_ERROR;
-        Log.d(TAG, "updateUi: state == " + this.state);
+    }
+
+    @Override
+    public void successCallbackLogin (String _token, String _resUserName, String _resUserPlanId) {
+        this.responseToken = _token;
+        this.responseUserName = _resUserName;
+        this.responsePlanId = _resUserPlanId;
+        if (_resUserPlanId.equals("null")) {
+            startHomeActivity(
+                    _token,
+                    _resUserName,
+                    _resUserPlanId,
+                    "null",
+                    "null"
+            );
+        }else{
+            FetchPlanFacade fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
+            fetchPlanFacade.fetchPlanCallAsync(_token, this);
+        }
     }
 
     /**
      * This method is used as a callBack in AsyncTask to start the Home_Activity when login was successful
      * all the params are passed to the home_activity, so it immediateley knows who is logged in and if it should show the in_plan or not_in_plan layout
-     * @param _token the JWT token after login
-     * @param _resUserName the userName taken from login response
-     * @param _resUserPlanId the PlanId taken from login response ( == "null" if user in no plan )
      * @param _planName the planName of the users plan ( == "null" if user is in no plan )
      * @param _planOwner the planOwner of the users plan ( == "null" if user is in no plan )
      */
 
     @Override
-    public void startHomeView(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
+    public void successCallbackFetchPlan(String _planName, String _planOwner) {
+        this.state = DebugState.LOGGED_IN;
+        this.responsePlanName = _planName;
+        this.responsePlanOwner = _planOwner;
+        startHomeActivity(
+                this.responseToken,
+                this.responseUserName,
+                this.responsePlanId,
+                this.responsePlanName,
+                this.responsePlanOwner
+        );
+        Log.d(TAG, "startHomeView: 1: " + this.responseToken + "2: " + this.responseUserName+ "3: " +this.responsePlanId + "4: " +  this.responsePlanName+ "5: " +  this.responsePlanOwner);
+        Log.d(TAG, "startHomeView: state == " + this.state);
+    }
+    @Override
+    public void errorCallbackFetchPlan(String errorInfo) {
+        loginButton.setEnabled(true);
+        showToast(errorInfo);
+    }
+
+    @Override
+    public void startHomeActivity(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner) {
         this.state = DebugState.LOGGED_IN;
         Intent intent = new Intent(loginActivity, HomeActivity.class);
         intent.putExtra("TOKEN", _token);

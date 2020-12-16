@@ -1,5 +1,6 @@
-package com.control.asyncLogic.login.loginController;
+package com.control.asyncLogic.login;
 
+import com.control.asyncLogic.login.LoginUser;
 import com.control.controllerLogic.LoginController;
 
 /**
@@ -18,5 +19,5 @@ public interface LoginFacade {
     /**
      *  is called when the asyncTask login should be started/executed
      */
-    void loginCallAsync(String userName, String password, LoginController loginController);
+    void loginCallAsync(String userName, String password, LoginUser loginUser);
 }

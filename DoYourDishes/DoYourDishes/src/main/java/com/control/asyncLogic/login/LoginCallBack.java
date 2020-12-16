@@ -1,6 +1,6 @@
-package com.control.asyncLogic.login.loginController;
+package com.control.asyncLogic.login;
 
-import com.control.controllerLogic.LoginController;
+import com.control.asyncLogic.login.LoginUser;
 
 /**
  * this interface works with the asynchronous logIn task
@@ -18,5 +18,5 @@ interface LoginCallBack {
     /**
      *  is called when the asyncTask login should be started/executed
      */
-    void loginCallAsync(String userName, String password, LoginController loginActivity);
+    void loginCallAsync(String userName, String password, LoginUser loginUser);
 }

@@ -1,6 +1,4 @@
-package com.control.asyncLogic.login.loginController;
-
-import com.control.controllerLogic.LoginController;
+package com.control.asyncLogic.login;
 
 class LoginFacadeImpl implements LoginFacade {
 
@@ -16,8 +14,8 @@ class LoginFacadeImpl implements LoginFacade {
     }
 
     @Override
-    public void loginCallAsync(String userName, String password, LoginController loginController) {
-        this.loginCallBack.loginCallAsync(userName, password, loginController);
+    public void loginCallAsync(String userName, String password, LoginUser loginUser) {
+        this.loginCallBack.loginCallAsync(userName, password, loginUser);
     }
 
 }
