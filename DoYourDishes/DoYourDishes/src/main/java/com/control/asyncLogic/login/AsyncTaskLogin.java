@@ -1,7 +1,10 @@
 package com.control.asyncLogic.login;
 import android.util.Log;
 
-import com.control.networkHttp.HttpRequest;
+
+import com.control.networkHttp.HttpRequestFacade;
+import com.control.networkHttp.HttpRequestFacadeFactory;
+
 import org.json.JSONObject;
 import okhttp3.FormBody;
 
@@ -13,13 +16,15 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
     private String _password;
     private LoginCallBackImpl loginCallBackImpl;
     private FormBody requestBody;
-    private HttpRequest httpEngine = new HttpRequest();
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
+    private HttpRequestFacade httpRequestFacade;
 
     public AsyncTaskLogin(String _userName, String _password, LoginCallBackImpl loginCallBackImpl) {
         this._userName = _userName;
         this._password = _password;
         this.loginCallBackImpl = loginCallBackImpl;
+
+        this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
     }
 
     @Override
@@ -31,7 +36,7 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
                 .add("password", _password)
                 .build();
         try {
-            JSONObject response = httpEngine.POST(BackendURL + "/auth/login", requestBody, "");
+            JSONObject response = httpRequestFacade.POST(BackendURL + "/auth/login", requestBody, "");
             Log.d(TAG, "doInBackground response: " + response);
             if (response.has("token")) {
                 responseArr[0] = "loginSuccess";

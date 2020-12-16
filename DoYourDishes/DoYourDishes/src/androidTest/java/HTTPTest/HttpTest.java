@@ -1,7 +1,7 @@
 package HTTPTest;
 
-import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.HttpRequest;
+import com.control.networkHttp.HttpRequestImpl;
 import com.view.gui.LoginActivity;
 
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class HttpTest {
     public void buttonLaedUndRuftNeueActivityAuf(){
         LoginActivity mainActivity = new LoginActivity();
 
-        HTTPInterface httpsEngine = new HttpRequest();
+        HttpRequest httpsEngine = new HttpRequestImpl();
 
         // Button wird gedrückt
 

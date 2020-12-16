@@ -2,8 +2,8 @@ package LogicTest;
 
 import android.widget.TextView;
 
-import com.control.networkHttp.HTTPInterface;
 import com.control.networkHttp.HttpRequest;
+import com.control.networkHttp.HttpRequestImpl;
 import com.view.gui.LoginActivity;
 
 import org.json.JSONObject;
@@ -45,7 +45,7 @@ public class LoginControllerTest {
         passwortAusEingabe.setText(password);
 
         // Create http connection and create request on Server
-        HTTPInterface http = new HttpRequest();
+        HttpRequest http = new HttpRequestImpl();
 
         //Create a RequestBody requestBody for HttpRequest
         RequestBody requestBody;

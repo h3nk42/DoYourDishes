@@ -7,11 +7,6 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
-import com.control.asyncLogic.AsyncTask;
-import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
-import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
-import com.control.asyncLogic.fetchPlan.FetchPlanUser;
-import com.control.asyncLogic.login.LoginFacadeFactory;
 import com.control.asyncLogic.registerUser.RegisterUserFacade;
 import com.control.asyncLogic.registerUser.RegisterUserFacadeFactory;
 import com.control.asyncLogic.registerUser.RegisterUserUser;

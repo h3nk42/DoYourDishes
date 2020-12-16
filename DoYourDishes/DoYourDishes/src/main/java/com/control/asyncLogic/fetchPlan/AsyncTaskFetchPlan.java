@@ -2,7 +2,8 @@ package com.control.asyncLogic.fetchPlan;
 
 import android.util.Log;
 
-import com.control.networkHttp.HttpRequest;
+import com.control.networkHttp.HttpRequestFacade;
+import com.control.networkHttp.HttpRequestFacadeFactory;
 
 import org.json.JSONObject;
 
@@ -15,12 +16,15 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
     private String _token;
     private FetchPlanCallBackImpl fetchPlanCallBackImpl;
     private FormBody requestBody;
-    private HttpRequest httpEngine = new HttpRequest();
+    private HttpRequestFacade httpRequestFacade;
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
     public AsyncTaskFetchPlan( String _token, FetchPlanCallBackImpl fetchPlanCallBackImpl) {
         this._token = _token;
         this.fetchPlanCallBackImpl = fetchPlanCallBackImpl;
+
+        this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
+
     }
 
     @Override
@@ -31,7 +35,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
         requestBody = new FormBody.Builder()
                 .build();
         try {
-            response = httpEngine.GET(BackendURL + "/plan/findPlanToOwner", requestBody, _token);
+            response = httpRequestFacade.GET(BackendURL + "/plan/findPlanToOwner", requestBody, _token);
             if(response.has("data")){
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "fetchPlanSuccess";

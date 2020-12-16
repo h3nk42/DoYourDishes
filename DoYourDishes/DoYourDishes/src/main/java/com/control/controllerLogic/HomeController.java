@@ -9,12 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.control.asyncLogic.AsyncTask;
 import com.control.asyncLogic.createPlan.CreatePlanFacade;
 import com.control.asyncLogic.createPlan.CreatePlanFacadeFactory;
 import com.control.asyncLogic.createPlan.CreatePlanUser;
-import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
-import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;

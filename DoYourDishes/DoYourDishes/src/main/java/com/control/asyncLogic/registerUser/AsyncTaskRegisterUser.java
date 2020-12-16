@@ -2,9 +2,9 @@ package com.control.asyncLogic.registerUser;
 
 import android.util.Log;
 
-import com.android.volley.BuildConfig;
-import com.control.asyncLogic.login.LoginFacade;
-import com.control.networkHttp.HttpRequest;
+import com.control.networkHttp.HttpRequestFacade;
+import com.control.networkHttp.HttpRequestFacadeFactory;
+
 
 import org.json.JSONObject;
 
@@ -17,13 +17,16 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
     private String _userName;
     private String _password;
     private FormBody requestBody;
-    private HttpRequest httpEngine = new HttpRequest();
+    private HttpRequestFacade httpRequestFacade;
     private final String BackendURL =  "https://doyourdishes.herokuapp.com/api";
 
     public AsyncTaskRegisterUser(String _userName, String _password, RegisterUserCallBackImpl registerUserCallBackImpl) {
         this._userName = _userName;
         this._password = _password;
         this.registerUserCallBackImpl = registerUserCallBackImpl;
+
+        this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
+
     }
 
     @Override
@@ -35,8 +38,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
                 .add("password", _password)
                 .build();
         try {
-            JSONObject response = httpEngine.POST(BackendURL + "/user/createUser", requestBody, "");
-            //Log.d(TAG, "doInBackground response: " + response);
+            JSONObject response = httpRequestFacade.POST(BackendURL + "/user/createUser", requestBody, "");
             if (response.has("data")) {
                 responseArr[0] = "registerSuccess";
                 Log.d(TAG, "doInBackground: " + response.getJSONObject("data").getJSONObject("user"));

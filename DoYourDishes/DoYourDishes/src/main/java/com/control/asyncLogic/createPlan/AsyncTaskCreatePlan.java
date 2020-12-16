@@ -2,7 +2,8 @@ package com.control.asyncLogic.createPlan;
 
 import android.util.Log;
 
-import com.control.networkHttp.HttpRequest;
+import com.control.networkHttp.HttpRequestFacade;
+import com.control.networkHttp.HttpRequestFacadeFactory;
 
 import org.json.JSONObject;
 
@@ -14,7 +15,7 @@ public class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,Stri
     private String _token;
     private CreatePlanCallbackImpl createPlanCallback;
     private FormBody requestBody;
-    private HttpRequest httpEngine = new HttpRequest();
+    private HttpRequestFacade httpRequestFacade;
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
     private String planName;
 
@@ -22,6 +23,9 @@ public class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,Stri
         this._token = _token;
         this.planName = _planName;
         this.createPlanCallback = createPlanCallback;
+
+        this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
+
     }
 
     @Override
@@ -33,7 +37,7 @@ public class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,Stri
                 .add("name", planName)
                 .build();
         try {
-            response = httpEngine.POST(BackendURL + "/plan/createPlan", requestBody, _token);
+            response = httpRequestFacade.POST(BackendURL + "/plan/createPlan", requestBody, _token);
             if(response.has("data")){
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "createPlanSuccess";

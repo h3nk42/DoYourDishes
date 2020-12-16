@@ -1,8 +1,5 @@
 package com.control.asyncLogic.createPlan;
 
-import com.control.asyncLogic.AsyncTask;
-import com.control.asyncLogic.fetchPlan.FetchPlanUser;
-
 public class CreatePlanCallbackImpl implements CreatePlanCallback {
 
     private CreatePlanUser createPlanUser;
