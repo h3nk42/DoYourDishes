@@ -58,7 +58,8 @@
                 android:gravity="center"
                 android:textSize="14sp"
                 app:icon="@drawable/baseline_arrow_right_alt_24"
-                app:iconSize="50dp" />
+                app:iconSize="50dp"
+                android:onClick="openPlanActivity"/>
 
             <Button
                 android:id="@+id/deletePlanButton"

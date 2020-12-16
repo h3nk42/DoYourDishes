@@ -2,6 +2,7 @@ package com.control.controllerLogic;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -22,6 +23,7 @@ import com.view.R;
 import com.view.gui.HomeActivity;
 import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
+import com.view.gui.PlanActivity;
 import com.view.gui.RegisterActivity;
 
 import java.util.ArrayList;
@@ -201,4 +203,10 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     public void errorCallbackDeletePlan(String errorInfo) {
         showToast(errorInfo);
     }
+
+    public void openPlanActivity(){
+        Intent intent = new Intent(homeActivity, PlanActivity.class);
+        homeActivity.startActivity(intent);
+    }
+
 }

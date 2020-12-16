@@ -19,7 +19,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
 
         Intent intent = getIntent();
@@ -40,5 +39,9 @@ public class HomeActivity extends AppCompatActivity {
 
     public void deletePlan(View view){
         homeController.deletePlan();
+    }
+
+    public void openPlanActivity(View view){
+        homeController.openPlanActivity();
     }
 }
