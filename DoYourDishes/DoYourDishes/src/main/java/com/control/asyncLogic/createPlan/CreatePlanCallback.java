@@ -2,7 +2,7 @@ package com.control.asyncLogic.createPlan;
 
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 
-public interface CreatePlanCallback {
+interface CreatePlanCallback {
 
     void createPlanCallBack(String[] planData);
 

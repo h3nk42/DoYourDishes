@@ -3,7 +3,7 @@ package com.control.asyncLogic.createPlan;
 
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 
-public class CreatePlanFacadeImpl implements CreatePlanFacade {
+class CreatePlanFacadeImpl implements CreatePlanFacade {
 
     private CreatePlanCallback createPlanCallback;
 

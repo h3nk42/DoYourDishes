@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-public class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,String[]>{
 
     private static final String TAG = "AsyncTaskCreatePlan";
     private String _token;

@@ -1,6 +1,6 @@
 package com.control.asyncLogic.createPlan;
 
-public class CreatePlanCallbackImpl implements CreatePlanCallback {
+class CreatePlanCallbackImpl implements CreatePlanCallback {
 
     private CreatePlanUser createPlanUser;
 
