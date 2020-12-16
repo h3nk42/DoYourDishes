@@ -1,13 +1,21 @@
 package com.control.asyncLogic.registerUser;
 
-import com.control.asyncLogic.login.LoginUser;
-
+/**
+ *  defines the methods that interact with the AsyncTask [RegisterUSer]
+ */
 interface RegisterUserCallBack {
 
+    /**
+     *  method gets called by AsyncTask when the response came back (onPostExecute)
+     * @value loginData holds the values responded from HTTP  request
+     */
     void registerUserCallBack(String[] loginData);
 
     /**
-     *  is called when the asyncTask login should be started/executed
+     * gets called by the controller that wants do send a [RegisterUser] Request
+     * @param userName holds userName taken from EditText
+     * @param password holds password taken from EditText
+     * @param registerUserUser holds the controller using the [RegisterUser] Task
      */
     void registerUserCallAsync(String userName, String password, RegisterUserUser registerUserUser);
 }

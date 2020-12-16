@@ -65,10 +65,6 @@ public class PlanActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.parseColor("#695d47"));
 
 
-
-
-
-
         planController = new PlanController(this);
     }
 

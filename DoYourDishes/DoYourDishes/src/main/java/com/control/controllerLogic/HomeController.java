@@ -80,8 +80,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         if(activeUser.getPlan().equals("null")) {
             changeLayout("NO_PLAN");
         } else {
-            // TODO wenn mehrere user im plan muessen diese zum Plan hinzugefuegt werden wie gebe ich PLAN an naechste activity weiter?
-            // TODO was ist mit tasks ?? => tasks erst in plan activity fetchen
             List<String> planUsers = new ArrayList<String>();
             planUsers.add(activeUser.getUserName());
             this.plan = new Plan(userPlanOwner, planName,userPlanId,planUsers);

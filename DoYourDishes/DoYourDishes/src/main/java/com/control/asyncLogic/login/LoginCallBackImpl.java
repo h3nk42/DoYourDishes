@@ -40,5 +40,4 @@ class LoginCallBackImpl implements LoginCallBack {
         AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);
         request.execute();
     }
-
 }
