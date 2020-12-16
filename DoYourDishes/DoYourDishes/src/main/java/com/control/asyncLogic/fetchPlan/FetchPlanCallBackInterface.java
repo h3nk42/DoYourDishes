@@ -1,4 +1,4 @@
-package com.control.asyncLogic;
+package com.control.asyncLogic.fetchPlan;
 
 /**
  * this interface works with the asynchronous fetchPlan task

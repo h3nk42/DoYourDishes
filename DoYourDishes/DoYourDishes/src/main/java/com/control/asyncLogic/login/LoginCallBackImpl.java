@@ -1,9 +1,11 @@
-package com.control.asyncLogic;
+package com.control.asyncLogic.login;
 
+import com.control.asyncLogic.fetchPlan.AsyncTaskFetchPlan;
+import com.control.asyncLogic.fetchPlan.FetchPlanCallBackInterface;
 import com.control.controllerLogic.LoginController;
 
 
-public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallBackInterface {
+class LoginCallBackImpl implements LoginCallBack, FetchPlanCallBackInterface {
 
     LoginController loginController;
     private String userName;
@@ -18,11 +20,6 @@ public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallB
 
 
 
-    public LoginCallBackImpl(LoginController loginActivity, String userName, String password){
-        this.loginController = loginActivity;
-        this.userName = userName;
-        this.password = password;
-    }
 
     @Override
     public void loginCallBack(String[] loginData) {
@@ -55,7 +52,11 @@ public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallB
     }
 
     @Override
-    public void loginCallAsync(){
+    public void loginCallAsync(String userName, String password, LoginController loginActivity){
+        this.loginController = loginActivity;
+        this.userName = userName;
+        this.password = password;
+
         AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);
         request.execute();
     }

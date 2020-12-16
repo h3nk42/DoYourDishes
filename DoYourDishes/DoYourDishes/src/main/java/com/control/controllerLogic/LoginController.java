@@ -7,7 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.control.asyncLogic.LoginCallBackImpl;
+import com.control.asyncLogic.login.LoginFacade;
+import com.control.asyncLogic.login.LoginFacadeFactory;
 import com.view.gui.HomeActivity;
 import com.view.gui.LoginActivity;
 
@@ -44,14 +45,13 @@ public class LoginController implements LoginControllerInterface{
      */
     @Override
     public void tryLogin() {
-        LoginCallBackImpl makeLogin = new LoginCallBackImpl(
-                this,userNameEditText.getText().toString(),
-                passwordEditText.getText().toString()
+        LoginFacade loginFacade = LoginFacadeFactory.produceLoginFacade();
+        loginFacade.loginCallAsync(
+                userNameEditText.getText().toString(),
+                passwordEditText.getText().toString(),
+                this
         );
-        makeLogin.loginCallAsync();
-       /* loginButton.setEnabled(false);
-        AsyncTask request = new AsyncTask(userNameEditText.getText().toString(), passwordEditText.getText().toString(), "LOG_IN", this);
-        request.execute();*/
+
     }
 
     /**

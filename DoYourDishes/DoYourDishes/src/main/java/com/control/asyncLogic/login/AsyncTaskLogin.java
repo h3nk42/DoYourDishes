@@ -1,25 +1,22 @@
-package com.control.asyncLogic;
-
+package com.control.asyncLogic.login;
 import android.util.Log;
 
 import com.control.networkHttp.HttpRequest;
-
 import org.json.JSONObject;
-
 import okhttp3.FormBody;
 
-public class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
 
 
     private static final String TAG = "AsyncTaskLogin";
     private String _userName;
     private String _password;
-    private LoginCallBackInterface loginCallBackInterface;
+    private LoginCallBack loginCallBackInterface;
     private FormBody requestBody;
     private HttpRequest httpEngine = new HttpRequest();
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
-    public AsyncTaskLogin(String _userName, String _password, LoginCallBackInterface loginCallBackInterface) {
+    public AsyncTaskLogin(String _userName, String _password, LoginCallBack loginCallBackInterface) {
         this._userName = _userName;
         this._password = _password;
         this.loginCallBackInterface = loginCallBackInterface;
