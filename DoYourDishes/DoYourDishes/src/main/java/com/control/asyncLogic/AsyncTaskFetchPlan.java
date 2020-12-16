@@ -34,7 +34,7 @@ public class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,Strin
             response = httpEngine.GET(BackendURL + "/plan/findPlanToOwner", requestBody, _token);
             if(response.has("data")){
                 Log.d(TAG, "doInBackground: " + response);
-                responseArr[0] = "registerSuccess";
+                responseArr[0] = "fetchPlanSuccess";
                 responseArr[1] = response.getJSONObject("data").getString("owner");
                 responseArr[2] = response.getJSONObject("data").getString("name");
             }

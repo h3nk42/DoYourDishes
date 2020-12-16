@@ -5,7 +5,7 @@ import com.control.controllerLogic.LoginController;
 
 public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallBackInterface {
 
-    LoginController loginActivity;
+    LoginController loginController;
     private String userName;
     private String password;
 
@@ -19,7 +19,7 @@ public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallB
 
 
     public LoginCallBackImpl(LoginController loginActivity, String userName, String password){
-        this.loginActivity = loginActivity;
+        this.loginController = loginActivity;
         this.userName = userName;
         this.password = password;
     }
@@ -31,14 +31,14 @@ public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallB
             case("loginError"):
             case("loginException"):
                 String errorMessage = loginData[1];
-                loginActivity.showToast(errorMessage);
+                loginController.showToast(errorMessage);
                 break;
             case("loginSuccess"):
                 resToken = loginData[1];
                 respUserName = loginData[2];
                 responsePlanId = loginData[3];
                 if (responsePlanId.equals("null")) {
-                    loginActivity.startHomeView(
+                    loginController.startHomeView(
                             resToken,
                             respUserName,
                             responsePlanId,
@@ -61,17 +61,20 @@ public class LoginCallBackImpl implements LoginCallBackInterface, FetchPlanCallB
     }
 
     @Override
-    public void fetchPlanCallBack(String[] loginData) {
-        if(loginData[0].equals("registerSuccess")) {
-            respPlanName = loginData[1];
-            respPlanOwner = loginData[2];
-            loginActivity.startHomeView(
+    public void fetchPlanCallBack(String[] planData) {
+        String infoField = planData[0];
+        if(infoField.equals("fetchPlanSuccess")) {
+            respPlanName = planData[1];
+            respPlanOwner = planData[2];
+            loginController.startHomeView(
                     resToken,
                     respUserName,
                     responsePlanId,
                     respPlanName,
                     respPlanOwner
             );
+        } else {
+            loginController.showToast(planData[1]);
         }
     }
 
