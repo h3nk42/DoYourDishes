@@ -14,6 +14,5 @@ public class PlanController {
 
 
     public void openUsers(){
-        planActivity.setContentView(R.layout.activity_plan_users);
     }
 }
