@@ -38,4 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         homeController.createPlanDialog();
     }
 
+    public void deletePlan(View view){
+        homeController.deletePlan();
+    }
 }

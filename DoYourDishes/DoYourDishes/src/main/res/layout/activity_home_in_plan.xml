@@ -68,7 +68,8 @@
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="20dp"
                 app:icon="@drawable/baseline_delete_forever_24"
-                app:iconSize="25dp" />
+                app:iconSize="25dp"
+                android:onClick="deletePlan"/>
 
         </LinearLayout>
 

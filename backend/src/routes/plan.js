@@ -26,7 +26,7 @@ router.post(
 
 router.delete(
     '/deletePlan',
-    [body('id').not().isEmpty().withMessage('planName is required')],
+    //[body('id').not().isEmpty().withMessage('planName is required')],
     passport.authenticate('jwt',{session: false}),
     planControl.deletePlan);
 

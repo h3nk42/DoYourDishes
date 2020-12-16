@@ -27,6 +27,7 @@ exports.generateServerErrorCode = (res, code, fullError, msg, location = 'server
 }
 
 exports.retErr = (res, err, errCode = 400, customMessage) => {
+    console.log(customMessage)
     return res.status(errCode).json({ errors: err, customMessage});
 }
 

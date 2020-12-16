@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 import com.control.asyncLogic.createPlan.CreatePlanFacade;
 import com.control.asyncLogic.createPlan.CreatePlanFacadeFactory;
 import com.control.asyncLogic.createPlan.CreatePlanUser;
+import com.control.asyncLogic.deletePlan.DeletePlanFacade;
+import com.control.asyncLogic.deletePlan.DeletePlanFacadeFactory;
+import com.control.asyncLogic.deletePlan.DeletePlanUser;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;
@@ -33,11 +37,12 @@ import java.util.List;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class HomeController implements HomeControllerInterface, CreatePlanUser {
+public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser {
 
     private static final String TAG = "HomeController";
     private final HomeActivity homeActivity;
     private CreatePlanUser createPlanUser = this;
+    private DeletePlanUser deletePlanUser = this;
     private final String token;
     private final HomeController homeController = this;
 
@@ -66,7 +71,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser {
         this.activeUser = new User(userName,userPlanId);
         showToast("you're logged in!");
         renderLayout();
-
     }
 
 
@@ -92,6 +96,25 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser {
         if( RegisterActivity.registerWasOpen){
             RegisterActivity.registerActivity.finish();
         }
+    }
+
+    public void deletePlan(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
+        builder.setTitle("really delete plan?");
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DeletePlanFacade deletePlanFacade = DeletePlanFacadeFactory.produceDeletePlanFacade();
+                deletePlanFacade.deletePlanCallAsync(token, deletePlanUser);
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
 
@@ -137,14 +160,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser {
         builder.show();
     }
 
-
-    public void callBackCreatedPlan(String _ownerName, String _planName, String _planId){
-        List<String> planUsers = new ArrayList<String>();
-        planUsers.add(activeUser.getUserName());
-        this.plan = new Plan(_ownerName, _planName, _planId, planUsers);
-        changeLayout("IN_PLAN");
-    }
-
     public void showToast(String responseText) {
         switch(responseText){
             case("INVALID_INPUT"):
@@ -172,6 +187,18 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser {
 
     @Override
     public void errorCallbackCreatePlan(String errorInfo) {
+        showToast(errorInfo);
+    }
+
+    @Override
+    public void successCallbackDeletePlan(String responseText) {
+        activeUser.setPlan("null");
+        renderLayout();
+        showToast(responseText);
+    }
+
+    @Override
+    public void errorCallbackDeletePlan(String errorInfo) {
         showToast(errorInfo);
     }
 }

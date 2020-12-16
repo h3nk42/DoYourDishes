@@ -54,8 +54,19 @@ class HttpRequestImpl implements HttpRequest {
     }
 
     @Override
-    public JSONObject DELETE(String path, RequestBody requestBody, String token) {
-        // TODO implement DELETE for http
-        return null;
+    public JSONObject DELETE(String path, RequestBody requestBody, String token) throws Exception {
+        Request request = new Request.Builder()
+                .url(path)
+                .delete(requestBody)
+                .addHeader("Authorization", "Bearer " + token)
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            JSONObject jsonObject = new JSONObject(response.body().string());
+            return jsonObject;
+        } catch (IOException | JSONException e) {
+            e.getLocalizedMessage();
+            throw new Exception(e);
+        }
     }
 }
