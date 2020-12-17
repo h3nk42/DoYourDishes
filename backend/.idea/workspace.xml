@@ -20,13 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserFragmentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/ViewPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/AsyncTaskFetchPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/AsyncTaskFetchPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/HomeLogic/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/HomeLogic/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/PlanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/PlanActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +97,7 @@
       <workItem from="1608122592595" duration="41000" />
       <workItem from="1608122666920" duration="450000" />
       <workItem from="1608125545740" duration="7282000" />
-      <workItem from="1608208738976" duration="1042000" />
+      <workItem from="1608208738976" duration="1640000" />
     </task>
     <servers />
   </component>

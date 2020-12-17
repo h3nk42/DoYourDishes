@@ -80,9 +80,6 @@ public class PlanActivity extends AppCompatActivity {
                 this);
     }
 
-    public void openUsers(View view) {
-        planController.openUsers();
-    }
 
     public PlanController getPlanController(){
         return this.planController;

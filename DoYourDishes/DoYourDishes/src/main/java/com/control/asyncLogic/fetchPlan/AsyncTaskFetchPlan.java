@@ -52,7 +52,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 users = new ArrayList<User>();
                 for(int i = 0; i < userArr.length(); i++){
                     JSONObject tempUser = userArr.getJSONObject(i);
-                    User newUser = new User(tempUser.getString("userName"),planId, tempUser.getInt("points"));
+                    User newUser = new User(tempUser.getString("userName"), planId, tempUser.getInt("points"));
                     users.add(newUser);
                     Log.d(TAG, "doInBackground: " + newUser);
                 }

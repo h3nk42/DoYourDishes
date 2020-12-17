@@ -12,24 +12,18 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/planNameTextViewFragmentUsers"
-            android:layout_width="316dp"
-            android:layout_height="110dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="planName"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
-
-        <TextView
-            android:id="@+id/usersFragmentTextView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/usersFragmentRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:layout_margin="20dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:layout_height="580dp"
+            android:drawSelectorOnTop="false" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add User" />
+
     </LinearLayout>
 
 

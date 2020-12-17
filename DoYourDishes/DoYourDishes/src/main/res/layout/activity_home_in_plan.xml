@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="217dp"
-        android:layout_height="217dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="106dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="604dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dyd_sponge24" />
@@ -56,10 +56,10 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="40dp"
                 android:gravity="center"
+                android:onClick="openPlanActivity"
                 android:textSize="14sp"
                 app:icon="@drawable/baseline_arrow_right_alt_24"
-                app:iconSize="50dp"
-                android:onClick="openPlanActivity"/>
+                app:iconSize="50dp" />
 
             <Button
                 android:id="@+id/deletePlanButton"
@@ -68,9 +68,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="20dp"
+                android:onClick="deletePlan"
                 app:icon="@drawable/baseline_delete_forever_24"
-                app:iconSize="25dp"
-                android:onClick="deletePlan"/>
+                app:iconSize="25dp" />
 
         </LinearLayout>
 
@@ -81,8 +81,8 @@
         android:id="@+id/welcomeUserNameTextView"
         android:layout_width="331dp"
         android:layout_height="129dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Welcome!"
         android:textSize="30sp"
@@ -93,13 +93,14 @@
         android:id="@+id/deleteUserButton"
         android:layout_width="252dp"
         android:layout_height="43dp"
+        android:onClick="deleteUser"
         android:text="Delete your Account"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card"
-        android:onClick="deleteUser"
-        android:textColor="@color/white"
-        />
+        app:layout_constraintVertical_bias="0.281" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
