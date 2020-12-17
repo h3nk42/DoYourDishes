@@ -1,6 +1,8 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.LandingLogic;
 
 import android.content.Intent;
+
+import com.control.controllerLogic.DebugState;
 import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
 import com.view.gui.RegisterActivity;

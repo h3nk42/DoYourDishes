@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.control.controllerLogic.LoginController;
+import com.control.controllerLogic.LoginLogic.LoginController;
 import com.view.R;
 
 /**

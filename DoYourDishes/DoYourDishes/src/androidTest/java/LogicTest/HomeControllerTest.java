@@ -2,7 +2,7 @@ package LogicTest;
 
 import android.widget.TextView;
 
-import com.control.controllerLogic.HomeController;
+import com.control.controllerLogic.HomeLogic.HomeController;
 import com.view.gui.HomeActivity;
 
 import org.junit.Test;

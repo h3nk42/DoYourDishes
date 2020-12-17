@@ -11,7 +11,7 @@ package TestsJUnit;
 import android.app.Activity;
 
 import com.control.controllerLogic.DebugState;
-import com.control.controllerLogic.LandingControllerInterface;
+import com.control.controllerLogic.LandingLogic.LandingControllerInterface;
 
 import org.junit.Test;
 

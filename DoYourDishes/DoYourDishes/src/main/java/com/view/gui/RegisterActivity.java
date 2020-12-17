@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.control.controllerLogic.RegisterController;
+import com.control.controllerLogic.RegisterLogic.RegisterController;
 import com.google.android.material.textfield.TextInputEditText;
 import com.view.R;
 

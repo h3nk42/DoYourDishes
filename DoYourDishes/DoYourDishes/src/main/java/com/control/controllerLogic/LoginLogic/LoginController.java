@@ -1,4 +1,4 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.LoginLogic;
 
 import android.content.Intent;
 import android.util.Log;
@@ -13,6 +13,7 @@ import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.login.LoginUser;
 import com.control.asyncLogic.login.LoginFacade;
 import com.control.asyncLogic.login.LoginFacadeFactory;
+import com.control.controllerLogic.DebugState;
 import com.view.gui.HomeActivity;
 import com.view.gui.LoginActivity;
 

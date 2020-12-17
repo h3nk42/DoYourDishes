@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.view.R;
+import com.view.gui.PlanActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +17,9 @@ import com.view.R;
  * create an instance of this fragment.
  */
 public class ScoreFragment extends Fragment {
+
+
+    private PlanActivity planActivity;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

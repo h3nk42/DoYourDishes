@@ -1,4 +1,4 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.RegisterLogic;
 
 import android.content.Intent;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.control.asyncLogic.registerUser.RegisterUserFacade;
 import com.control.asyncLogic.registerUser.RegisterUserFacadeFactory;
 import com.control.asyncLogic.registerUser.RegisterUserUser;
+import com.control.controllerLogic.DebugState;
 import com.google.android.material.textfield.TextInputEditText;
 import com.view.gui.HomeActivity;
 import com.view.gui.RegisterActivity;

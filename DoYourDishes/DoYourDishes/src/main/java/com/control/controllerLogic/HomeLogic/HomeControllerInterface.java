@@ -1,4 +1,4 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.HomeLogic;
 
 public interface HomeControllerInterface {
 

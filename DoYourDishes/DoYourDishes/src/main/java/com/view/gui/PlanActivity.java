@@ -1,5 +1,6 @@
 package com.view.gui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.control.controllerLogic.PlanController;
+import com.control.controllerLogic.PlanLogic.PlanController;
 import com.google.android.material.tabs.TabLayout;
 import com.view.R;
 import com.view.gui.fragments.ScoreFragment;
@@ -64,12 +65,18 @@ public class PlanActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.parseColor("#695d47"));
 
+        Intent intent = getIntent();
 
-        planController = new PlanController(this);
+        planController = new PlanController(
+                intent.getStringExtra("TOKEN"),
+                intent.getStringExtra("PLANNAME"),
+                intent.getStringExtra("USERNAME"),
+                intent.getStringExtra("USERPLANID"),
+                intent.getStringExtra("PLANOWNER"),
+                this);
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
-
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
@@ -105,5 +112,9 @@ public class PlanActivity extends AppCompatActivity {
 
     public void openUsers(View view) {
         planController.openUsers();
+    }
+
+    public PlanController getPlanController(){
+        return this.planController;
     }
 }

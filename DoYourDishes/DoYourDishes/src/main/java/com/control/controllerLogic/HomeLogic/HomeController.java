@@ -1,4 +1,4 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.HomeLogic;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ import com.control.asyncLogic.deletePlan.DeletePlanUser;
 import com.control.asyncLogic.deleteUser.DeleteUserFacade;
 import com.control.asyncLogic.deleteUser.DeleteUserFacadeFactory;
 import com.control.asyncLogic.deleteUser.DeleteUserUser;
+import com.control.controllerLogic.DebugState;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;
@@ -59,7 +59,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     private User activeUser;
     private Plan plan;
     private DebugState state;
-    private String planName;
+    private String userPlanName;
     private String userName;
     private String userPlanId;
     private String userPlanOwner;
@@ -68,7 +68,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     public HomeController(String _token, String _planName, String _userName, String _userPlanId, String _userPlanOwner, HomeActivity _homeActivity) {
         this.homeActivity = _homeActivity;
         this.token = _token;
-        this.planName = _planName;
+        this.userPlanName = _planName;
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
@@ -84,7 +84,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         } else {
             List<String> planUsers = new ArrayList<String>();
             planUsers.add(activeUser.getUserName());
-            this.plan = new Plan(userPlanOwner, planName,userPlanId,planUsers);
+            this.plan = new Plan(userPlanOwner, userPlanName,userPlanId,planUsers);
             changeLayout("IN_PLAN");
         }
     }
@@ -206,6 +206,11 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     public void openPlanActivity(){
         Intent intent = new Intent(homeActivity, PlanActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERNAME", userName);
+        intent.putExtra("USERPLANID", userPlanId);
+        intent.putExtra("PLANNAME", userPlanName);
+        intent.putExtra("PLANOWNER", userPlanOwner);
         homeActivity.startActivity(intent);
     }
 
@@ -230,6 +235,10 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void successCallbackDeleteUser(String responseText) {
+        goBackToLandingActivity();
+    }
+
+    public void goBackToLandingActivity(){
         Intent intent = new Intent(homeActivity, LandingActivity.class);
         homeActivity.startActivity(intent);
         homeActivity.finish();

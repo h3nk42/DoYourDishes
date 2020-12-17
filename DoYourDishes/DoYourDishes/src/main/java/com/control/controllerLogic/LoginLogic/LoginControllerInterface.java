@@ -1,4 +1,4 @@
-package com.control.controllerLogic;
+package com.control.controllerLogic.LoginLogic;
 
 /**
  * The LoginController controls the functionality of the Login_Activity
