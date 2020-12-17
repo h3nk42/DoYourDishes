@@ -89,4 +89,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/deleteUserButton"
+        android:layout_width="252dp"
+        android:layout_height="43dp"
+        android:text="Delete your Account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        android:onClick="deleteUser"
+        android:textColor="@color/white"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

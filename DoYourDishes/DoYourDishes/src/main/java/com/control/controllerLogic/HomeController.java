@@ -17,6 +17,9 @@ import com.control.asyncLogic.createPlan.CreatePlanUser;
 import com.control.asyncLogic.deletePlan.DeletePlanFacade;
 import com.control.asyncLogic.deletePlan.DeletePlanFacadeFactory;
 import com.control.asyncLogic.deletePlan.DeletePlanUser;
+import com.control.asyncLogic.deleteUser.DeleteUserFacade;
+import com.control.asyncLogic.deleteUser.DeleteUserFacadeFactory;
+import com.control.asyncLogic.deleteUser.DeleteUserUser;
 import com.model.dataModel.Plan;
 import com.model.dataModel.User;
 import com.view.R;
@@ -39,12 +42,13 @@ import java.util.List;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser {
+public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser, DeleteUserUser {
 
     private static final String TAG = "HomeController";
     private final HomeActivity homeActivity;
     private CreatePlanUser createPlanUser = this;
     private DeletePlanUser deletePlanUser = this;
+    private DeleteUserUser deleteUserUser = this;
     private final String token;
     private final HomeController homeController = this;
 
@@ -62,14 +66,12 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
 
     public HomeController(String _token, String _planName, String _userName, String _userPlanId, String _userPlanOwner, HomeActivity _homeActivity) {
-
         this.homeActivity = _homeActivity;
         this.token = _token;
         this.planName = _planName;
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
-
         this.activeUser = new User(userName,userPlanId);
         showToast("you're logged in!");
         renderLayout();
@@ -207,4 +209,34 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         homeActivity.startActivity(intent);
     }
 
+    public void deleteUser(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
+        builder.setTitle("really delete your account?");
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DeleteUserFacade deleteUserFacade = DeleteUserFacadeFactory.produceDeleteUserFacade();
+                deleteUserFacade.deleteUserCallAsync(token, deleteUserUser);
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    public void successCallbackDeleteUser(String responseText) {
+        Intent intent = new Intent(homeActivity, LandingActivity.class);
+        homeActivity.startActivity(intent);
+        homeActivity.finish();
+    }
+
+    @Override
+    public void errorCallbackDeleteUser(String errorInfo) {
+        showToast(errorInfo);
+    }
 }

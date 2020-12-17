@@ -44,4 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     public void openPlanActivity(View view){
         homeController.openPlanActivity();
     }
+
+    public void deleteUser(View view){
+        homeController.deleteUser();
+    }
 }

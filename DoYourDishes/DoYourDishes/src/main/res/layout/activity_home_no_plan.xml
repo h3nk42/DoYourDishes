@@ -9,6 +9,22 @@
    >
 
 
+    <Button
+        android:id="@+id/deleteUserButton"
+        android:layout_width="252dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="44dp"
+        android:text="Delete your Account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:onClick="deleteUser"
+        android:textColor="@color/white"
+        />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="160dp"

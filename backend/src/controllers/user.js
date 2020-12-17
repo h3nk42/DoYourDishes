@@ -62,31 +62,24 @@ exports.delUser = async (req, res) => {
     let userModel = await User.findOne({userName: msgSender}, (err, data)=>{})
 
     Plan.deleteOne({owner: msgSender}, (err,data) =>{
-        if (err)
-            return res.status(401).json({
-            success: false,
-            message: err
-        })
-
+        if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
         // if plans have been deleted, also delete tasks
         if(data.n>0){
             Task.deleteMany({plan: planToDelete._id}, (err) => {})
-            User.updateMany({plan: planToDelete._id}, {$set: {plan: null}}, (err, data) =>{})
+            User.updateMany({plan: planToDelete._id}, {$set: {plan: null}}, (err, data) =>{
+                if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
+            })
         }
         //if user is in an existing plan but not owner, remove him/her from plan
 
         else if(data.n===0 && userModel.plan != null) {
             Plan.updateOne({_id: userModel.plan}, {$pull: {users: {userName: msgSender}}}, (err,data) =>{
-
+                if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
             })
         }
     }).then(()=>{
         User.deleteOne({userName: req.user.userName}, (err, data) =>{
-            if (err)
-                return res.status(401).json({
-                    success: false,
-                    message: err
-                })
+            if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
             return res.status(200).json({success:true, data: data})
         })
     })
