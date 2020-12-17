@@ -74,6 +74,9 @@ public class PlanActivity extends AppCompatActivity {
                 intent.getStringExtra("USERNAME"),
                 intent.getStringExtra("USERPLANID"),
                 intent.getStringExtra("PLANOWNER"),
+                tasksFragment,
+                usersFragment,
+                scoreFragment,
                 this);
     }
 

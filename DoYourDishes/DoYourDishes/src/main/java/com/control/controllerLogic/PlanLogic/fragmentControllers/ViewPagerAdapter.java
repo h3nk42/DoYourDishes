@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.view.gui.fragments.ScoreFragment;
+import com.view.gui.fragments.TasksFragment;
+import com.view.gui.fragments.UsersFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

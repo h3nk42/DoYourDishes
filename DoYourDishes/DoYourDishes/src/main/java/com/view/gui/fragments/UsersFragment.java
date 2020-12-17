@@ -19,7 +19,7 @@ import com.view.gui.PlanActivity;
  * Use the {@link UsersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UsersFragment extends Fragment implements FetchPlanUser {
+public class UsersFragment extends Fragment {
 
 
 
@@ -85,13 +85,7 @@ public class UsersFragment extends Fragment implements FetchPlanUser {
         return RootView;
     }
 
-    @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner) {
-
-    }
-
-    @Override
-    public void errorCallbackFetchPlan(String errorInfo) {
-
+    public void renderData(String updateString){
+        this.usersTextView.setText(updateString);
     }
 }
