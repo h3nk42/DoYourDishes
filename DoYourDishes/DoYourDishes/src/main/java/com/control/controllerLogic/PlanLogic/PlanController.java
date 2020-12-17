@@ -22,7 +22,7 @@ public class PlanController {
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
-        this.activeUser = new User(userName,userPlanId);
+        this.activeUser = new User(userName,userPlanId, 0);
     }
 
     public void openUsers(){

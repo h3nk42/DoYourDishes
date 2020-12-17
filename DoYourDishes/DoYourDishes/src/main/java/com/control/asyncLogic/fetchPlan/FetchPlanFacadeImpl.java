@@ -1,5 +1,9 @@
 package com.control.asyncLogic.fetchPlan;
 
+import com.model.dataModel.User;
+
+import java.util.List;
+
 class FetchPlanFacadeImpl implements FetchPlanFacade {
 
     private FetchPlanCallback fetchPlanCallback;
@@ -8,10 +12,6 @@ class FetchPlanFacadeImpl implements FetchPlanFacade {
         this.fetchPlanCallback = _fetchPlanCallback;
     }
 
-    @Override
-    public void fetchPlanCallBack(String[] loginData) {
-        this.fetchPlanCallback.fetchPlanCallBack(loginData);
-    }
 
     @Override
     public void fetchPlanCallAsync(String _token, FetchPlanUser fetchPlanUser) {

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.view.R;
 import com.view.gui.fragments.ScoreFragment;
@@ -74,40 +75,6 @@ public class PlanActivity extends AppCompatActivity {
                 intent.getStringExtra("USERPLANID"),
                 intent.getStringExtra("PLANOWNER"),
                 this);
-    }
-
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
-
-        private List<Fragment> fragments = new ArrayList<>();
-        private List<String> fragmentTitle = new ArrayList<>();
-
-
-        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
-            super(fm, behavior);
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            fragments.add(fragment);
-            fragmentTitle.add(title);
-            notifyDataSetChanged();
-        }
-
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentTitle.size();
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return fragmentTitle.get(position);
-        }
     }
 
     public void openUsers(View view) {

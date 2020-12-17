@@ -14,8 +14,11 @@ import com.control.asyncLogic.login.LoginUser;
 import com.control.asyncLogic.login.LoginFacade;
 import com.control.asyncLogic.login.LoginFacadeFactory;
 import com.control.controllerLogic.DebugState;
+import com.model.dataModel.User;
 import com.view.gui.HomeActivity;
 import com.view.gui.LoginActivity;
+
+import java.util.List;
 
 /**
  *  This class implements control functionality for the Login_Activity
@@ -118,7 +121,7 @@ public class LoginController implements LoginControllerInterface, LoginUser, Fet
      */
 
     @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner) {
+    public void successCallbackFetchPlan(String _planName, String _planOwner,  List<User> users) {
         this.state = DebugState.LOGGED_IN;
         this.responsePlanName = _planName;
         this.responsePlanOwner = _planOwner;

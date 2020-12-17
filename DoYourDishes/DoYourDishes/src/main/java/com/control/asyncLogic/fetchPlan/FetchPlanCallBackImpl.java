@@ -1,12 +1,16 @@
 package com.control.asyncLogic.fetchPlan;
 
+import com.model.dataModel.User;
+
+import java.util.List;
+
 class FetchPlanCallBackImpl implements FetchPlanCallback{
 
     FetchPlanUser fetchPlanUser;
 
 
     @Override
-    public void fetchPlanCallBack(String[] planData) {
+    public void fetchPlanCallBack(String[] planData,  List<User> users) {
         String responseInfo = planData[0];
         if(responseInfo.equals("fetchPlanSuccess")){
             String resPlanOwner =  planData[1];

@@ -4,8 +4,13 @@ import android.util.Log;
 
 import com.control.networkHttp.HttpRequestFacade;
 import com.control.networkHttp.HttpRequestFacadeFactory;
+import com.model.dataModel.User;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.FormBody;
 
@@ -13,6 +18,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
 
 
     private static final String TAG = "AsyncTaskFetchPLan";
+    private List<User> users;
     private String _token;
     private FetchPlanCallBackImpl fetchPlanCallBackImpl;
     private FormBody requestBody;
@@ -41,6 +47,15 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 responseArr[0] = "fetchPlanSuccess";
                 responseArr[1] = response.getJSONObject("data").getString("owner");
                 responseArr[2] = response.getJSONObject("data").getString("name");
+                String planId = response.getJSONObject("data").getString("_id");
+                JSONArray userArr = response.getJSONObject("data").getJSONArray("users");
+                users = new ArrayList<User>();
+                for(int i = 0; i < userArr.length(); i++){
+                    JSONObject tempUser = userArr.getJSONObject(i);
+                    User newUser = new User(tempUser.getString("userName"),planId, tempUser.getInt("points"));
+                    users.add(newUser);
+                    Log.d(TAG, "doInBackground: " + newUser);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,6 +69,6 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        fetchPlanCallBackImpl.fetchPlanCallBack(respArr);
+        fetchPlanCallBackImpl.fetchPlanCallBack(respArr, users);
     }
 }

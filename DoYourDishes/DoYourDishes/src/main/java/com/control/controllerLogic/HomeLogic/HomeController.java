@@ -72,7 +72,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
-        this.activeUser = new User(userName,userPlanId);
+        this.activeUser = new User(userName,userPlanId, 0);
         showToast("you're logged in!");
         renderLayout();
     }
@@ -184,6 +184,9 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         List<String> planUsers = new ArrayList<String>();
         planUsers.add(activeUser.getUserName());
         this.plan = new Plan(_planOwner, _planName, _planId, planUsers);
+        this.userPlanName = _planName;
+        this.userPlanId = _planId;
+        this.userPlanOwner = _planOwner;
         changeLayout("IN_PLAN");
     }
 
