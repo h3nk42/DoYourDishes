@@ -7,7 +7,6 @@ import android.widget.EditText;
 
 import com.control.asyncLogic.addUserToPlan.AddUserFacade;
 import com.control.asyncLogic.addUserToPlan.AddUserFacadeFactory;
-import com.control.asyncLogic.addUserToPlan.AddUserUser;
 import com.control.controllerLogic.PlanLogic.PlanController;
 
 import com.view.gui.fragments.UsersFragment;

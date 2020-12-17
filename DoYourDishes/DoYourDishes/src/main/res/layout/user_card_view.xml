@@ -49,7 +49,7 @@
                 android:textColor="@color/fontColorDark" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/removeUserFromPlanButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="38dp"
                 android:layout_height="wrap_content"

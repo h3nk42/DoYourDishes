@@ -73,7 +73,7 @@ public class UsersFragment extends Fragment {
         this.recyclerView = (RecyclerView) RootView.findViewById(R.id.usersFragmentRecyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         this.recyclerView.setLayoutManager(llm);
-        RecyclerViewAdapterUser adapter = new RecyclerViewAdapterUser(userList);
+        RecyclerViewAdapterUser adapter = new RecyclerViewAdapterUser(userList, this.planController);
         this.recyclerView.setAdapter(adapter);
 
         this.rootView = RootView;
@@ -81,7 +81,7 @@ public class UsersFragment extends Fragment {
     }
 
     public void renderData(List<User> usersToRender){
-        RecyclerViewAdapterUser newAdapter = new RecyclerViewAdapterUser(usersToRender);
+        RecyclerViewAdapterUser newAdapter = new RecyclerViewAdapterUser(usersToRender, this.planController);
         this.recyclerView.setAdapter(newAdapter);
     }
 

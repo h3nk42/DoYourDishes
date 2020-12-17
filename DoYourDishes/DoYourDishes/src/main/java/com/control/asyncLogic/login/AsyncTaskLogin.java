@@ -55,7 +55,7 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
         catch (Exception e) {
            // e.printStackTrace();
             responseArr[0] = "loginException";
-            if(e.toString().startsWith("java.lang.Exception: java.net.UnknownHostException:"))
+            if(e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout"))
             {
                 responseArr[1] = "server needed to wake up! try again :)";
                 return responseArr;

@@ -11,6 +11,7 @@ import com.control.asyncLogic.addUserToPlan.AddUserUser;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
+import com.control.asyncLogic.removeUserFromPlan.RemoveUserUser;
 import com.control.controllerLogic.DebugState;
 import com.model.dataModel.User;
 
@@ -23,7 +24,7 @@ import com.view.gui.fragments.UsersFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanController implements FetchPlanUser, AddUserUser {
+public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser {
 
     private static String token;
     public static String userPlanName;
@@ -76,7 +77,6 @@ public class PlanController implements FetchPlanUser, AddUserUser {
     @Override
     public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users) {
         this.users = users;
-
         this.usersFragment.renderData(users);
     }
 
@@ -114,5 +114,13 @@ public class PlanController implements FetchPlanUser, AddUserUser {
         return token;
     }
 
+    @Override
+    public void successCallbackRemoveUser(String __successMessage) {
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
 
+    @Override
+    public void errorCallbackRemoveUser(String errorInfo) {
+        showToast(errorInfo);
+    }
 }

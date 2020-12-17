@@ -57,6 +57,13 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
             }
         } catch (Exception e) {
             e.printStackTrace();
+
+            if(e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout"))
+            {
+                responseArr[1] = "server needed to wake up! try again :)";
+                return responseArr;
+            }
+
             responseArr[0] = "registerException";
             responseArr[1] = e.toString();
             Log.d(TAG, "doInBackground e: " + e.toString());
