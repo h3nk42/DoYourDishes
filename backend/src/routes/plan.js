@@ -33,8 +33,15 @@ router.delete(
 router.post(
     '/addUser',
     [
-        body('userName').not().isEmpty().withMessage('Your username is required')],
+        body('userName').not().isEmpty().withMessage(' username is required')],
         passport.authenticate('jwt',{session: false}),
     planControl.addUser )
+
+router.post(
+    '/removeUser',
+    [
+        body('userName').not().isEmpty().withMessage(' username is required')],
+    passport.authenticate('jwt',{session: false}),
+    planControl.removeUser )
 
 module.exports = router;

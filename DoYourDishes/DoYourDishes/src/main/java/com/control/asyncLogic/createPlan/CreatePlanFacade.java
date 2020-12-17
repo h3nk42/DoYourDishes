@@ -1,5 +1,6 @@
 package com.control.asyncLogic.createPlan;
 
+import com.control.asyncLogic.addUserToPlan.AddUserUser;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 
 public interface CreatePlanFacade {

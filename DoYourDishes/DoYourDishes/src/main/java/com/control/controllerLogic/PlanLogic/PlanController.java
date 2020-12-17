@@ -1,12 +1,17 @@
 package com.control.controllerLogic.PlanLogic;
 
+import android.util.Log;
+import android.view.Gravity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.control.asyncLogic.addUserToPlan.AddUserUser;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
+import com.control.controllerLogic.DebugState;
 import com.model.dataModel.User;
 
 import com.view.R;
@@ -18,10 +23,9 @@ import com.view.gui.fragments.UsersFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanController implements FetchPlanUser {
+public class PlanController implements FetchPlanUser, AddUserUser {
 
-    public static String readmyString = "user array";
-    private final String token;
+    private static String token;
     public static String userPlanName;
     private final String userName;
     private final String userPlanId;
@@ -29,13 +33,13 @@ public class PlanController implements FetchPlanUser {
     private final User activeUser;
 
     public List<User> users;
-    public ArrayList<String> usersArrayList;
 
     private UsersFragment usersFragment;
     private TasksFragment tasksFragment;
     private ScoreFragment scoreFragment;
     private TextView planNameTopBarTextView;
     PlanActivity planActivity;
+    private FetchPlanFacade fetchPlanFacade;
 
 
 
@@ -63,8 +67,8 @@ public class PlanController implements FetchPlanUser {
         this.planNameTopBarTextView = (TextView) planActivity.findViewById(R.id.planNameTopBarTextView);
         planNameTopBarTextView.setText(" " +_planName);
 
-        FetchPlanFacade fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
-        fetchPlanFacade.fetchPlanCallAsync(_token, this);
+        fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
 
     }
 
@@ -73,11 +77,42 @@ public class PlanController implements FetchPlanUser {
     public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users) {
         this.users = users;
 
-        this.usersFragment.renderData();
+        this.usersFragment.renderData(users);
     }
 
     @Override
     public void errorCallbackFetchPlan(String errorInfo) {
 
     }
+
+    @Override
+    public void successCallbackAddUser(String __successMessage) {
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
+
+    @Override
+    public void errorCallbackAddUser(String errorInfo) {
+        showToast(errorInfo);
+    }
+
+    public void showToast(String responseText) {
+        switch(responseText){
+            case("INVALID_INPUT"):
+                responseText = "no username given" ;
+                break;
+            case("WRONG_USER_OR_PW"):
+                responseText = "wrong name/password combo" ;
+            case("USER_DOES_NOT_EXIST"):
+                responseText = "no user found with that name" ;
+        }
+        Toast toast = Toast.makeText(planActivity, responseText, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 20, 200);
+        toast.show();
+    }
+
+    public String getToken(){
+        return token;
+    }
+
+
 }

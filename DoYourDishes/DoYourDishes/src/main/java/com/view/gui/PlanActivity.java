@@ -7,12 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+
 import androidx.viewpager.widget.ViewPager;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
@@ -23,8 +19,6 @@ import com.view.gui.fragments.ScoreFragment;
 import com.view.gui.fragments.TasksFragment;
 import com.view.gui.fragments.UsersFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlanActivity extends AppCompatActivity {
 
@@ -68,7 +62,7 @@ public class PlanActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        planController = new PlanController(
+        this.planController = new PlanController(
                 intent.getStringExtra("TOKEN"),
                 intent.getStringExtra("PLANNAME"),
                 intent.getStringExtra("USERNAME"),
@@ -78,10 +72,14 @@ public class PlanActivity extends AppCompatActivity {
                 usersFragment,
                 scoreFragment,
                 this);
-    }
 
+    }
 
     public PlanController getPlanController(){
         return this.planController;
+    }
+
+    public void addUser(View view){
+        usersFragment.addUser();
     }
 }

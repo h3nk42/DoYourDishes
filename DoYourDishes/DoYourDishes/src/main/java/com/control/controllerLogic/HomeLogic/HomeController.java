@@ -91,7 +91,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void finishPrevActivities(){
-        LandingActivity.landingActivity.finish();
+        //LandingActivity.landingActivity.finish();
         if(LoginActivity.loginWasOpened) {
             LoginActivity.loginActivity.finish();
         }

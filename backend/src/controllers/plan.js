@@ -95,6 +95,34 @@ exports.addUser = async (req, res) => {
     return res.status(200).json({data: true});
 }
 
+exports.removeUser = async (req, res) => {
+    if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
+    let msgSender = req.user.userName,
+        userToRemove = req.body.userName;
+    let userMsgSender = await User.findOne({userName: msgSender}, (err)=>{
+    })
+    let plan = await Plan.findOne({owner: req.user.userName}, (err, plan) => {
+        if(err)  return  retErr(res, err, 418, 'DB_ERROR');
+    })
+    if(plan.owner !== msgSender) return  retErr(res, err, 418, 'USER_NOT_OWNER_OF_PLAN');
+    if(!plan) return  retErr(res, {}, 418, 'PLAN_NOT_FOUND');
+    let user = await User.findOne({userName: userToRemove}, (err)=>{
+    })
+    if (!user) return  retErr(res, {}, 418, 'USER_DOES_NOT_EXIST');
+    console.log(String(userMsgSender.plan))
+    console.log(String(user.plan))
+    if(String(user.plan) !== String(userMsgSender.plan) ) return  retErr(res, {}, 418, 'USER_NOT_IN_THIS_PLAN');
+
+    await Plan.updateOne({_id: userMsgSender.plan}, {$pull: {users: {userName: userToRemove}}}, (err,data) =>{
+        if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
+    })
+    await User.updateOne({userName: userToRemove} , {$set: {plan: null}}, (err, data) => {
+        if(err) return retErr(res, err, 418, 'DB_ERROR');
+    })
+    return res.status(200).json({data: true});
+}
+
+
 
 exports.kickUser = (req, res) => {
 
