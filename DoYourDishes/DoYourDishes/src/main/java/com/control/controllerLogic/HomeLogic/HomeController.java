@@ -67,6 +67,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     private String userName;
     private String userPlanId;
     private String userPlanOwner;
+    private Boolean firstTime = true;
 
 
     public HomeController(String _token, String _planName, String _userName, String _userPlanId, String _userPlanOwner, HomeActivity _homeActivity) {
@@ -77,10 +78,12 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
         this.activeUser = new User(userName,userPlanId, 0);
-        showToast("you're logged in!");
+        if(firstTime){
+            showToast("you're logged in!");
+            firstTime = false;
+        }
         renderLayout();
     }
-
 
     public void renderLayout() {
         if(activeUser.getPlan().equals("null")) {
@@ -90,6 +93,23 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
             planUsers.add(activeUser.getUserName());
             this.plan = new Plan(userPlanOwner, userPlanName,userPlanId,planUsers);
             changeLayout("IN_PLAN");
+        }
+    }
+
+    private void changeLayout(String whichLayout){
+        switch(whichLayout){
+            case("NO_PLAN"):
+                homeActivity.setContentView(R.layout.activity_home_no_plan);
+                welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
+                welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
+                break;
+            case("IN_PLAN"):
+                homeActivity.setContentView(R.layout.activity_home_in_plan);
+                planNameTextView = (TextView) homeActivity.findViewById(R.id.planNameTextView);
+                welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
+                welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
+                this.planNameTextView.setText(plan.getName());
+                break;
         }
     }
 
@@ -123,23 +143,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         builder.show();
     }
 
-
-    private void changeLayout(String whichLayout){
-        switch(whichLayout){
-            case("NO_PLAN"):
-                homeActivity.setContentView(R.layout.activity_home_no_plan);
-                welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
-                welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
-                break;
-            case("IN_PLAN"):
-                homeActivity.setContentView(R.layout.activity_home_in_plan);
-                planNameTextView = (TextView) homeActivity.findViewById(R.id.planNameTextView);
-                welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
-                welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
-                this.planNameTextView.setText(plan.getName());
-                break;
-        }
-    }
 
     public void createPlanDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
@@ -258,12 +261,10 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users, List<Task> tasks) {
-        showToast(_planName);
     }
 
     @Override
     public void errorCallbackFetchPlan(String errorInfo) {
-        showToast(errorInfo);
         activeUser.setPlan("null");
         renderLayout();
     }

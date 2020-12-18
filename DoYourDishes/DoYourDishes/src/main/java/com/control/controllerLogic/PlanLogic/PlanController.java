@@ -1,5 +1,6 @@
 package com.control.controllerLogic.PlanLogic;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -139,9 +140,6 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     public void successCallbackRemoveUser(String __successMessage, Boolean _deleteHimself) {
         if(_deleteHimself){
             finishPlanActivity();
-            planActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
-            planActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
-            Log.d(TAG, "successCallbackRemoveUser: executed finishPlan and backbtton");
         } else {
             fetchPlanFacade.fetchPlanCallAsync(token, this);
         }
