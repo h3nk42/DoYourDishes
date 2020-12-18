@@ -19,8 +19,12 @@ import com.control.asyncLogic.deletePlan.DeletePlanUser;
 import com.control.asyncLogic.deleteUser.DeleteUserFacade;
 import com.control.asyncLogic.deleteUser.DeleteUserFacadeFactory;
 import com.control.asyncLogic.deleteUser.DeleteUserUser;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
+import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
+import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 import com.control.controllerLogic.DebugState;
 import com.model.dataModel.Plan;
+import com.model.dataModel.Task;
 import com.model.dataModel.User;
 import com.view.R;
 import com.view.gui.HomeActivity;
@@ -42,7 +46,7 @@ import java.util.List;
  * @value TAG, purpose is using it on Log.d for debugging
  */
 
-public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser, DeleteUserUser {
+public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser, DeleteUserUser, FetchPlanUser {
 
     private static final String TAG = "HomeController";
     private final HomeActivity homeActivity;
@@ -250,5 +254,22 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     @Override
     public void errorCallbackDeleteUser(String errorInfo) {
         showToast(errorInfo);
+    }
+
+    @Override
+    public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users, List<Task> tasks) {
+        showToast(_planName);
+    }
+
+    @Override
+    public void errorCallbackFetchPlan(String errorInfo) {
+        showToast(errorInfo);
+        activeUser.setPlan("null");
+        renderLayout();
+    }
+
+    public void refreshData(){
+        FetchPlanFacade fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
     }
 }

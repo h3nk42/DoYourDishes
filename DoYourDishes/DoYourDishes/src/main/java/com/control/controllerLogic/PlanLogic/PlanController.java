@@ -2,6 +2,7 @@ package com.control.controllerLogic.PlanLogic;
 
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser, DeleteTaskUser, FulfillTaskUser {
 
+    private static final String TAG = "PlanController";
     private static String token;
     public static String userPlanName;
     private final String userName;
@@ -134,8 +136,15 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     }
 
     @Override
-    public void successCallbackRemoveUser(String __successMessage) {
-        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    public void successCallbackRemoveUser(String __successMessage, Boolean _deleteHimself) {
+        if(_deleteHimself){
+            finishPlanActivity();
+            planActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+            planActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+            Log.d(TAG, "successCallbackRemoveUser: executed finishPlan and backbtton");
+        } else {
+            fetchPlanFacade.fetchPlanCallAsync(token, this);
+        }
     }
 
     @Override
@@ -172,5 +181,18 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     @Override
     public void errorCallbackFulfillTask(String errorInfo) {
         showToast(errorInfo);
+    }
+
+    public void fetchData(){
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
+
+    public void finishPlanActivity(){
+        planActivity.finish();
+        return;
+    }
+
+    public String getActiveUserName(){
+        return this.userName;
     }
 }

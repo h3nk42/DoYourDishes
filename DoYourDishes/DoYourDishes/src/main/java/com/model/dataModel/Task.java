@@ -56,6 +56,7 @@ public class Task {
                 ", plan='" + plan + '\'' +
                 ", pointsWorth=" + pointsWorth +
                 ", lastTimeDone=" + lastTimeDone +
+                ", taskId='" + taskId + '\'' +
                 '}';
     }
 

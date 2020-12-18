@@ -18,15 +18,17 @@ public class AsyncTaskRemoveUser extends AsyncTask<String,String,String[]> {
     private String _token;
     private String _userNameToRemove;
     private RemoveUserCallback removeUserCallback;
+    private Boolean _deleteHimself;
     private FormBody requestBody;
     private HttpRequestFacade httpRequestFacade;
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
-    public AsyncTaskRemoveUser( String _token,String _userNameToRemove, RemoveUserCallback removeUserCallback) {
+    public AsyncTaskRemoveUser( String _token,String _userNameToRemove, RemoveUserCallback removeUserCallback, Boolean _deleteHimself) {
         this._token = _token;
         this._userNameToRemove = _userNameToRemove;
         this.removeUserCallback = removeUserCallback;
+        this._deleteHimself = _deleteHimself;
         this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
     }
 
@@ -60,6 +62,6 @@ public class AsyncTaskRemoveUser extends AsyncTask<String,String,String[]> {
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        removeUserCallback.removeUserCallBack(respArr);
+        removeUserCallback.removeUserCallBack(respArr, _deleteHimself);
     }
 }

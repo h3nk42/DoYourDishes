@@ -150,15 +150,15 @@ exports.fulfillTask = async (req, res) => {
         if (err)return  retErr(res, {}, 418, 'DB_ERROR');
     })
     //increment points in user array on plan
-    await Plan.updateOne({_id: planId, users: {$elemMatch: {userName: msgSender}}}, {$inc: {"users.$.points": task.pointsWorth }}, (err, data) => {
+    Plan.updateOne({_id: planId, users: {$elemMatch: {userName: msgSender}}}, {$inc: {"users.$.points": task.pointsWorth }}, (err, data) => {
         if (err) return  retErr(res, {}, 418, 'DB_ERROR');
-
+        Plan.updateOne({_id: planId, tasks: {$elemMatch: {taskId: ObjectId(taskId)}}},  {$set: {"tasks.$.lastTimeDone": Date.now() }}, (err, data) => {
+            if (err) return  retErr(res, {}, 418, 'DB_ERROR');
+            return res.status(200).json({data: true});
+        })
     })
 
-    Plan.updateOne({_id: planId, tasks: {$elemMatch: {taskId: ObjectId(taskId)}}},  {$set: {"tasks.$.lastTimeDone": Date.now() }}, (err, data) => {
-        if (err) return  retErr(res, {}, 418, 'DB_ERROR');
-        return res.status(200).json({data: true});
-    })
+
 
 }
 

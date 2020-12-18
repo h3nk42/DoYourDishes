@@ -73,10 +73,13 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                     tasks.add(newTask);
                     Log.d(TAG, "doInBackground: " + newTask);
                 }
+            } else if(response.has("customMessage")){
+                responseArr[0] = "fetchPlanError";
+                responseArr[1] = response.getString("customMessage");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            responseArr[0] = "registerException";
+            responseArr[0] = "fetchPlanException";
             responseArr[1] = e.toString();
             Log.d(TAG, "doInBackground e: " + e.toString());
         }

@@ -11,7 +11,7 @@ public class RemoveUserFacadeImpl implements RemoveUserFacade {
     }
 
     @Override
-    public void removeUserCallAsync(String _token, String _userNameToRemove, RemoveUserUser removeUserUser) {
-        this.removeUserCallback.removeUserCallAsync(_token,_userNameToRemove, removeUserUser);
+    public void removeUserCallAsync(String _token, String _userNameToRemove, RemoveUserUser removeUserUser, Boolean _deleteHimself) {
+        this.removeUserCallback.removeUserCallAsync(_token,_userNameToRemove, removeUserUser, _deleteHimself);
     }
 }

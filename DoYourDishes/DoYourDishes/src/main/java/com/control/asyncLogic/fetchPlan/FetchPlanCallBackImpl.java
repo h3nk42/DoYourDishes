@@ -17,7 +17,7 @@ class FetchPlanCallBackImpl implements FetchPlanCallback{
             String resPlanOwner =  planData[1];
             String resPlanName = planData[2];
             fetchPlanUser.successCallbackFetchPlan(resPlanName, resPlanOwner, users, tasks);
-        } else if (responseInfo.equals("registerException")) {
+        } else if (responseInfo.equals("fetchPlanException") || responseInfo.equals("fetchPlanError")) {
             String errorInfo = planData[1];
             fetchPlanUser.errorCallbackFetchPlan(errorInfo);
         }

@@ -20,6 +20,7 @@ import com.model.dataModel.Task;
 import com.view.R;
 import com.view.gui.PlanActivity;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,13 +56,13 @@ public class TasksFragment extends Fragment {
         planActivity = (PlanActivity) getActivity();
         Log.d(TAG, "onCreateView: " + planActivity);
         this.planController = planActivity.getPlanController();
+        planController.fetchData();
         Log.d(TAG, "onCreateView: " + planController);
 
 
         this.taskFragmentController = new TaskFragmentController( this.planController, this);
 
         List<Task> taskList = new ArrayList<Task>();
-
         this.recyclerView = (RecyclerView) RootView.findViewById(R.id.tasksFragmentRecyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         this.recyclerView.setLayoutManager(llm);

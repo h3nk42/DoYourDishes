@@ -32,6 +32,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        homeController.refreshData();
+    }
+
     public void createPlan(View view){
         homeController.createPlanDialog();
     }
