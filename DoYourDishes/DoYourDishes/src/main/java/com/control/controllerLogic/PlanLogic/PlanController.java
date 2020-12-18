@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import com.control.asyncLogic.addTaskToPlan.AddTaskUser;
 import com.control.asyncLogic.addUserToPlan.AddUserUser;
+import com.control.asyncLogic.deleteTask.DeleteTaskUser;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
+import com.control.asyncLogic.fulfillTask.FulfillTaskUser;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserUser;
 import com.control.controllerLogic.DebugState;
 import com.model.dataModel.Task;
@@ -26,7 +28,7 @@ import com.view.gui.fragments.UsersFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser {
+public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser, DeleteTaskUser, FulfillTaskUser {
 
     private static String token;
     public static String userPlanName;
@@ -136,6 +138,27 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
 
     @Override
     public void errorCallbackAddTask(String errorInfo) {
+        showToast(errorInfo);
+    }
+
+    @Override
+    public void successCallbackDeleteTask(String responseText) {
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
+
+    @Override
+    public void errorCallbackDeleteTask(String errorInfo) {
+        showToast(errorInfo);
+
+    }
+
+    @Override
+    public void successCallbackFulfillTask(String responseText) {
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
+
+    @Override
+    public void errorCallbackFulfillTask(String errorInfo) {
         showToast(errorInfo);
     }
 }

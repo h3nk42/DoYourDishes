@@ -45,6 +45,7 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
         BigInteger timesTamp = taskList.get(position).getLastTimeDone();
         timesTamp = timesTamp.divide(BigInteger.valueOf(1000));
         timesTamp = BigInteger.valueOf(System.currentTimeMillis() / 1000L).subtract(timesTamp);
+        timesTamp = timesTamp.add(BigInteger.valueOf(2));
         taskViewHolder.taskName.setText(taskList.get(position).getName());
         taskViewHolder.pointsWorth.setText("Worth: " + taskList.get(position).getPointsWorth().toString() + " points");
         taskViewHolder.lastTimeDone.setText("done " + timesTamp.toString() + " s ago");

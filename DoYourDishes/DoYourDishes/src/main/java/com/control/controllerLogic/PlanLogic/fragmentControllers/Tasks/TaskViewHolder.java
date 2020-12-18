@@ -7,6 +7,11 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.control.asyncLogic.deleteTask.DeleteTaskFacade;
+import com.control.asyncLogic.deleteTask.DeleteTaskFacadeFactory;
+import com.control.asyncLogic.deleteUser.DeleteUserFacadeFactory;
+import com.control.asyncLogic.fulfillTask.FulfillTaskFacade;
+import com.control.asyncLogic.fulfillTask.FulfillTaskFacadeFactory;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacade;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacadeFactory;
 import com.control.controllerLogic.PlanLogic.PlanController;
@@ -36,10 +41,15 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
         fulfillTaskButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                FulfillTaskFacade fulfillTaskFacade = FulfillTaskFacadeFactory.produceFulfillTaskFacade();
+                fulfillTaskFacade.fulfillTaskCallAsync(planController.getToken(), taskId, planController);
+            }
+        });
 
-              /* RemoveUserFacade removeUserFacade = RemoveUserFacadeFactory.produceRemoveUserFacade();
-                removeUserFacade.removeUserCallAsync(planController.getToken(), taskId, planController);*/
-
+        deleteTaskButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DeleteTaskFacade deleteTaskFacade = DeleteTaskFacadeFactory.produceDeleteTaskFacade();
+                deleteTaskFacade.deleteTaskCallAsync(planController.getToken(), taskId, planController);
             }
         });
     }
