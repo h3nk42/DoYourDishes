@@ -21,7 +21,7 @@ router.delete('/delSingleTask',
 router.post('/createTask',
     [
         body('name').not().isEmpty().withMessage('TaskName is required'),
-        body('name').isLength({min:1, max: 10}),
+        body('name').isLength({min:1, max:18}),
         body('pointsWorth').not().isEmpty().withMessage('pointsWorth is required'),
         body('pointsWorth').isFloat({min: 1, max: 100 }).withMessage('pointsWorth is required')
     ],

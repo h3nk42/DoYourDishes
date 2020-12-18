@@ -20,22 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/AsyncTaskFulfillTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskCallbackImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskFacadeFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskFacadeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fulfillTask/FulfillTaskUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/AsyncTaskDeleteTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/AsyncTaskDeleteTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskCallbackImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskCallbackImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacadeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacadeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacadeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskFacadeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/deleteTask/DeleteTaskUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/RecyclerViewAdapterTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/RecyclerViewAdapterTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/TaskViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/TaskViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/task_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/task_card_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +101,7 @@
       <workItem from="1608122666920" duration="450000" />
       <workItem from="1608125545740" duration="7282000" />
       <workItem from="1608208738976" duration="7353000" />
-      <workItem from="1608303004724" duration="6742000" />
+      <workItem from="1608303004724" duration="7912000" />
     </task>
     <servers />
   </component>

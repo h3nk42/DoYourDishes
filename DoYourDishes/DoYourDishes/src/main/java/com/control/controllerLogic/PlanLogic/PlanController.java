@@ -6,6 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.control.asyncLogic.addTaskToPlan.AddTaskUser;
 import com.control.asyncLogic.addUserToPlan.AddUserUser;
@@ -45,6 +46,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     private ScoreFragment scoreFragment;
     private TextView planNameTopBarTextView;
     PlanActivity planActivity;
+    FetchPlanUser fetchPlanUser = this;
     private FetchPlanFacade fetchPlanFacade;
 
 
@@ -75,6 +77,16 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
 
         fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
         fetchPlanFacade.fetchPlanCallAsync(token, this);
+
+
+        final SwipeRefreshLayout pullToRefresh = planActivity.findViewById(R.id.pullToRefresh);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchPlanFacade.fetchPlanCallAsync(token, fetchPlanUser);
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
     }
 

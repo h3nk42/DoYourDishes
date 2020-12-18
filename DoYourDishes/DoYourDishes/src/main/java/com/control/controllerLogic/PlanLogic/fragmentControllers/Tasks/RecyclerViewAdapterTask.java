@@ -3,24 +3,25 @@ package com.control.controllerLogic.PlanLogic.fragmentControllers.Tasks;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
-import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.UserViewHolder;
 import com.model.dataModel.Task;
-import com.model.dataModel.User;
+
 import com.view.R;
 
 import java.math.BigInteger;
-import java.time.Instant;
+
 import java.util.List;
 
 public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder>{
 
     List<Task> taskList;
     private PlanController planController;
+    private View cardView;
 
     public RecyclerViewAdapterTask(List<Task> taskList, PlanController planController){
         this.taskList = taskList;
@@ -35,8 +36,8 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card_view, parent, false);
-        TaskViewHolder taskViewHolder = new TaskViewHolder(v,planController);
+        this.cardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card_view, parent, false);
+        TaskViewHolder taskViewHolder = new TaskViewHolder(cardView,planController);
         return taskViewHolder;
     }
 
@@ -50,6 +51,17 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
         taskViewHolder.pointsWorth.setText("Worth: " + taskList.get(position).getPointsWorth().toString() + " points");
         taskViewHolder.lastTimeDone.setText("done " + timesTamp.toString() + " s ago");
         taskViewHolder.taskId = taskList.get(position).getTaskId();
+
+        //render the color based on when the task was done last
+        RelativeLayout rl = (RelativeLayout) cardView.findViewById(R.id.taskRelativeLayout);
+        if(timesTamp.intValue() < 60) {
+            rl.setBackgroundColor(0xFF87f589);
+        } else if (timesTamp.intValue() < 120 ) {
+            rl.setBackgroundColor(0xFFf5e887);
+        } else {
+            rl.setBackgroundColor(0xFFf58787);
+        }
+
     }
 
     @Override

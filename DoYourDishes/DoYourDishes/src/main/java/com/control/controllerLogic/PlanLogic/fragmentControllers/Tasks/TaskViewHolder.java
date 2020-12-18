@@ -25,11 +25,13 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     Button fulfillTaskButton;
     Button deleteTaskButton;
     String taskId;
+    View itemView;
 
     private PlanController planController;
 
     TaskViewHolder(View itemView, PlanController planController) {
         super(itemView);
+        this.itemView = itemView;
         cv = (CardView) itemView.findViewById(R.id.taskCardView);
         taskName = (TextView) itemView.findViewById(R.id.taskName);
         pointsWorth = (TextView) itemView.findViewById(R.id.taskPoints);
@@ -52,5 +54,9 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 deleteTaskFacade.deleteTaskCallAsync(planController.getToken(), taskId, planController);
             }
         });
+    }
+
+    public View getView() {
+        return itemView;
     }
 }
