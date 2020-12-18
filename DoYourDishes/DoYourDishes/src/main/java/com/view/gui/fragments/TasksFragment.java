@@ -3,67 +3,81 @@ package com.view.gui.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.view.R;
+import com.control.controllerLogic.PlanLogic.PlanController;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.Tasks.RecyclerViewAdapterTask;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.Tasks.TaskFragmentController;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.RecyclerViewAdapterUser;
+import com.model.dataModel.Task;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TasksFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.view.R;
+import com.view.gui.PlanActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class TasksFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String TAG = "TasksFragment";
+    private PlanActivity planActivity;
+    private PlanController planController;
+    private TaskFragmentController taskFragmentController;
+    private RecyclerView recyclerView;
+    private View rootView;
 
     public TasksFragment() {
         // Required empty public constructor
     }
 
 
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TasksFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TasksFragment newInstance(String param1, String param2) {
-        TasksFragment fragment = new TasksFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tasks, container, false);
+
+        View RootView = inflater.inflate(R.layout.fragment_tasks, container, false);
+
+        planActivity = (PlanActivity) getActivity();
+        Log.d(TAG, "onCreateView: " + planActivity);
+        this.planController = planActivity.getPlanController();
+        Log.d(TAG, "onCreateView: " + planController);
+
+
+        this.taskFragmentController = new TaskFragmentController( this.planController, this);
+
+        List<Task> taskList = new ArrayList<Task>();
+
+        this.recyclerView = (RecyclerView) RootView.findViewById(R.id.tasksFragmentRecyclerView);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        this.recyclerView.setLayoutManager(llm);
+        RecyclerViewAdapterTask taskAdapter = new RecyclerViewAdapterTask(taskList, this.planController);
+        this.recyclerView.setAdapter(taskAdapter);
+
+        this.rootView = RootView;
+        return RootView;
+    }
+
+    public void renderData(List<Task> tasksToRender){
+        RecyclerViewAdapterTask newTaskAdapter = new RecyclerViewAdapterTask(tasksToRender, this.planController);
+        this.recyclerView.setAdapter(newTaskAdapter);
+    }
+
+    public void addTask(){
+        taskFragmentController.addTask();
     }
 }

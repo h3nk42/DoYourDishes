@@ -36,7 +36,8 @@
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="20dp">
         <!-- Card contents -->
         <LinearLayout
             android:layout_width="match_parent"

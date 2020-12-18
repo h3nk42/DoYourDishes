@@ -82,4 +82,8 @@ public class PlanActivity extends AppCompatActivity {
     public void addUser(View view){
         usersFragment.addUser();
     }
+
+    public void addTask(View view){
+        tasksFragment.addTask();
+    }
 }

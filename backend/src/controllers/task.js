@@ -118,7 +118,8 @@ exports.createTask = async (req, res) => {
                 {$push: {tasks: [{
                             taskName: name,
                             taskId: newtask._id,
-                            pointsWorth: pointsWorth}
+                            pointsWorth: pointsWorth,
+                            lastTimeDone: Date.now()}
                             ]}
                             },
                 (err, updatedPlan) => {
@@ -145,15 +146,20 @@ exports.fulfillTask = async (req, res) => {
     let plan = await Plan.findOne({_id: task.plan}, (err, plan) => { if (err) return  retErr(res, {}, 418, 'DB_ERROR');})
     if(!(plan.users.some(e=>e.userName === msgSender))) return retErr(res, {}, 418, 'USER_NOT_IN_THIS_PLAN');
 
-    Task.updateOne({_id: taskId},{$set:{lastTimeDone: Date.now()}}, (err, data) => {
+    await Task.updateOne({_id: taskId},{$set:{lastTimeDone: Date.now()}}, (err, data) => {
         if (err)return  retErr(res, {}, 418, 'DB_ERROR');
-
     })
     //increment points in user array on plan
-    Plan.updateOne({_id: planId, users: {$elemMatch: {userName: msgSender}}}, {$inc: {"users.$.points": task.pointsWorth }}, (err, data) => {
+    await Plan.updateOne({_id: planId, users: {$elemMatch: {userName: msgSender}}}, {$inc: {"users.$.points": task.pointsWorth }}, (err, data) => {
+        if (err) return  retErr(res, {}, 418, 'DB_ERROR');
+
+    })
+
+    Plan.updateOne({_id: planId, tasks: {$elemMatch: {taskId: ObjectId(taskId)}}},  {$set: {"tasks.$.lastTimeDone": Date.now() }}, (err, data) => {
         if (err) return  retErr(res, {}, 418, 'DB_ERROR');
         return res.status(200).json({data: true});
     })
+
 }
 
 

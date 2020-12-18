@@ -21,7 +21,7 @@ public class AddUserCallbackImpl implements AddUserCallback {
     @Override
     public void addUserCallAsync(String _token, String _userNameToAdd, AddUserUser addUserUser) {
         this.addUserUser = addUserUser;
-        AsyncTaskAddUser asyncTaskCreatePlan = new AsyncTaskAddUser(_token, _userNameToAdd, this);
-        asyncTaskCreatePlan.execute();
+        AsyncTaskAddUser asyncTaskAddUser = new AsyncTaskAddUser(_token, _userNameToAdd, this);
+        asyncTaskAddUser.execute();
     }
 }

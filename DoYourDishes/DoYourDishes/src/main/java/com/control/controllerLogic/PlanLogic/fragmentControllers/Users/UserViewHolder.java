@@ -1,4 +1,4 @@
-package com.control.controllerLogic.PlanLogic.fragmentControllers;
+package com.control.controllerLogic.PlanLogic.fragmentControllers.Users;
 
 import android.content.Intent;
 import android.view.View;

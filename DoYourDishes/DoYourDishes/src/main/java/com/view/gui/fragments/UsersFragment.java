@@ -2,8 +2,6 @@ package com.view.gui.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,13 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
-import com.control.controllerLogic.PlanLogic.fragmentControllers.RecyclerViewAdapterUser;
-import com.control.controllerLogic.PlanLogic.fragmentControllers.UserFragmentController;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.RecyclerViewAdapterUser;
+import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.UserFragmentController;
 import com.model.dataModel.User;
 import com.view.R;
 import com.view.gui.PlanActivity;
@@ -69,7 +64,6 @@ public class UsersFragment extends Fragment {
         this.userFragmentController = new UserFragmentController( this.planController, this);
 
         List<User> userList = new ArrayList<User>();
-
         this.recyclerView = (RecyclerView) RootView.findViewById(R.id.usersFragmentRecyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         this.recyclerView.setLayoutManager(llm);

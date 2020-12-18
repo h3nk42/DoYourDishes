@@ -3,18 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.fragments.TasksFragment">
+    tools:context=".gui.PlanActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:layout_width="386dp"
+        android:layout_height="708dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-        android:layout_margin="50dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="TASKS"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:typeface="normal" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasksFragmentRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="580dp"
+            android:drawSelectorOnTop="false" />
+
+        <Button
+            android:id="@+id/addTaskButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addTask"
+            android:text="Add Task" />
+
+    </LinearLayout>
 </FrameLayout>

@@ -1,4 +1,4 @@
-package com.control.controllerLogic.PlanLogic.fragmentControllers;
+package com.control.controllerLogic.PlanLogic.fragmentControllers.Users;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,8 +27,10 @@ public class UserFragmentController {
 
         final EditText input = new EditText(usersFragment.getActivity());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
-        input.setHint("username");
+        input.setHint("taskName");
         builder.setView(input);
+
+
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

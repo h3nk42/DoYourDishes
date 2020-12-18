@@ -1,4 +1,4 @@
-package com.control.controllerLogic.PlanLogic.fragmentControllers;
+package com.control.controllerLogic.PlanLogic.fragmentControllers.Users;
 
 import android.view.LayoutInflater;
 import android.view.View;

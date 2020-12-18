@@ -7,12 +7,14 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.control.asyncLogic.addTaskToPlan.AddTaskUser;
 import com.control.asyncLogic.addUserToPlan.AddUserUser;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacade;
 import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserUser;
 import com.control.controllerLogic.DebugState;
+import com.model.dataModel.Task;
 import com.model.dataModel.User;
 
 import com.view.R;
@@ -24,7 +26,7 @@ import com.view.gui.fragments.UsersFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser {
+public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser {
 
     private static String token;
     public static String userPlanName;
@@ -34,6 +36,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     private final User activeUser;
 
     public List<User> users;
+    private List<Task> tasks;
 
     private UsersFragment usersFragment;
     private TasksFragment tasksFragment;
@@ -75,9 +78,11 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
 
 
     @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users) {
+    public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users, List<Task> tasks) {
         this.users = users;
+        this.tasks = tasks;
         this.usersFragment.renderData(users);
+        this.tasksFragment.renderData(tasks);
     }
 
     @Override
@@ -98,7 +103,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
     public void showToast(String responseText) {
         switch(responseText){
             case("INVALID_INPUT"):
-                responseText = "no username given" ;
+                responseText = "invalid input" ;
                 break;
             case("WRONG_USER_OR_PW"):
                 responseText = "wrong name/password combo" ;
@@ -121,6 +126,16 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
 
     @Override
     public void errorCallbackRemoveUser(String errorInfo) {
+        showToast(errorInfo);
+    }
+
+    @Override
+    public void successCallbackAddTask(String __successMessage) {
+        fetchPlanFacade.fetchPlanCallAsync(token, this);
+    }
+
+    @Override
+    public void errorCallbackAddTask(String errorInfo) {
         showToast(errorInfo);
     }
 }

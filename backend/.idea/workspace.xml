@@ -20,21 +20,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/AsyncTaskRemoveUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserCallbackImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserFacadeFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserFacadeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/removeUserFromPlan/RemoveUserUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskCallbackImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskFacadeFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskFacadeImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AddTaskUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addTaskToPlan/AsyncTaskAddTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/RecyclerViewAdapterTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/TaskFragmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Tasks/TaskViewHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/drawable/baseline_done_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/drawable/dyd_sponge24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/double_input_dialog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/task_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addUserToPlan/AddUserCallbackImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/addUserToPlan/AddUserCallbackImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/AsyncTaskFetchPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/AsyncTaskFetchPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanCallBackImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanCallBackImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/fetchPlan/FetchPlanUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/LoginLogic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/LoginLogic/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/PlanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/RecyclerViewAdapterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/RecyclerViewAdapterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/RecyclerViewAdapterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Users/RecyclerViewAdapterUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Users/UserFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/UserViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/controllerLogic/PlanLogic/fragmentControllers/Users/UserViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/PlanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/PlanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/TasksFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/TasksFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/UsersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/UsersFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_no_plan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/activity_home_no_plan.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/fragment_tasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/fragment_tasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/fragment_users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/fragment_users.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/user_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/user_card_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/plan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/plan.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +78,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/testApiRoutes/apitest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -111,7 +129,8 @@
       <workItem from="1608122592595" duration="41000" />
       <workItem from="1608122666920" duration="450000" />
       <workItem from="1608125545740" duration="7282000" />
-      <workItem from="1608208738976" duration="6734000" />
+      <workItem from="1608208738976" duration="7353000" />
+      <workItem from="1608303004724" duration="5606000" />
     </task>
     <servers />
   </component>

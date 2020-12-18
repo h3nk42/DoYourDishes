@@ -4,11 +4,13 @@ import android.util.Log;
 
 import com.control.networkHttp.HttpRequestFacade;
 import com.control.networkHttp.HttpRequestFacadeFactory;
+import com.model.dataModel.Task;
 import com.model.dataModel.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
 
     private static final String TAG = "AsyncTaskFetchPLan";
     private List<User> users;
+    private List<Task> tasks;
     private String _token;
     private FetchPlanCallBackImpl fetchPlanCallBackImpl;
     private FormBody requestBody;
@@ -56,6 +59,20 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                     users.add(newUser);
                     Log.d(TAG, "doInBackground: " + newUser);
                 }
+                JSONArray taskArr = response.getJSONObject("data").getJSONArray("tasks");
+                tasks = new ArrayList<Task>();
+                for(int i = 0; i < taskArr.length(); i++){
+                    JSONObject tempTask = taskArr.getJSONObject(i);
+                    BigInteger bigTimeStamp = new BigInteger( tempTask.getString("lastTimeDone") );
+                    Task newTask = new Task(
+                            tempTask.getString("taskName"),
+                            planId,
+                            tempTask.getInt("pointsWorth"),
+                            bigTimeStamp,
+                            tempTask.getString("taskId"));
+                    tasks.add(newTask);
+                    Log.d(TAG, "doInBackground: " + newTask);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,6 +86,6 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
 
     @Override
     protected void onPostExecute(String[] respArr) {
-        fetchPlanCallBackImpl.fetchPlanCallBack(respArr, users);
+        fetchPlanCallBackImpl.fetchPlanCallBack(respArr, users, tasks);
     }
 }

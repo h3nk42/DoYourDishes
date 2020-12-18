@@ -1,23 +1,27 @@
 package com.model.dataModel;
 
+import java.math.BigInteger;
+
 public class Task {
     private String name;
     private String plan;
     private Integer pointsWorth;
-    private Integer lastTimeDone;
+    private BigInteger lastTimeDone;
+    private String taskId;
 
-    public Task(String _name, String _plan, Integer _pointsWorth, Integer _lastTimeDone) {
+    public Task(String _name, String _plan, Integer _pointsWorth, BigInteger _lastTimeDone, String _taskid) {
         this.plan = _plan;
         this.name = _name;
         this.pointsWorth = _pointsWorth;
         this.lastTimeDone = _lastTimeDone;
+        this.taskId = _taskid;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setLastTimeDone(Integer lastTimeDone) {
+    public void setLastTimeDone(BigInteger lastTimeDone) {
         this.lastTimeDone = lastTimeDone;
     }
 
@@ -33,7 +37,7 @@ public class Task {
         return name;
     }
 
-    public Integer getLastTimeDone() {
+    public BigInteger getLastTimeDone() {
         return lastTimeDone;
     }
 
@@ -43,5 +47,23 @@ public class Task {
 
     public String getPlan() {
         return plan;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", plan='" + plan + '\'' +
+                ", pointsWorth=" + pointsWorth +
+                ", lastTimeDone=" + lastTimeDone +
+                '}';
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 }
