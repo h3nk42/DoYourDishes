@@ -1,13 +1,10 @@
 package com.control.asyncLogic.addTaskToPlan;
 
-import com.control.asyncLogic.addUserToPlan.AddUserCallback;
-import com.control.asyncLogic.addUserToPlan.AddUserUser;
+class AddTaskFacadeImpl implements AddTaskFacade {
 
-public class AddTaskFacadeImpl implements AddTaskFacade{
+    private final AddTaskCallback addTaskCallback;
 
-    private AddTaskCallback addTaskCallback;
-
-    AddTaskFacadeImpl (AddTaskCallback addTaskCallback) {
+    AddTaskFacadeImpl(AddTaskCallback addTaskCallback) {
         this.addTaskCallback = addTaskCallback;
     }
 
