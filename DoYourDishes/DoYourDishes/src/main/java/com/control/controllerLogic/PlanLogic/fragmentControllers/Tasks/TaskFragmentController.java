@@ -32,24 +32,6 @@ public class TaskFragmentController {
 
     public void addTask(){
 
-       /* MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(tasksFragment.getActivity());
-        builder.setTitle("Create a Task!");
-        builder.setView(R.layout.double_input_dialog);
-        builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ((AlertDialog) builder).findViewById(R.id.taskNameInputEditText)
-            }
-        });
-        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                }
-        );
-        builder.show();*/
-
         AlertDialog.Builder builder = new AlertDialog.Builder(tasksFragment.getActivity());
         builder.setTitle("enter userName!");
 
@@ -62,9 +44,6 @@ public class TaskFragmentController {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 handleClick();
-             /*   AddUserFacade addUserFacade = AddUserFacadeFactory.produceAddUserFacade();
-                addUserFacade.addUserCallAsync(planController.getToken(), input.getText().toString(), planController);*/
-
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

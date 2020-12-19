@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gui.PlanActivity">
 
-    <LinearLayout
-        android:layout_width="386dp"
-        android:layout_height="708dp"
-        android:layout_margin="10dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
         android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasksFragmentRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="580dp"
-            android:drawSelectorOnTop="false" />
 
         <Button
             android:id="@+id/addTaskButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="401dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
             android:onClick="addTask"
-            android:text="Add Task" />
+            android:text="Add Task"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasksFragmentRecyclerView"
+            android:layout_width="396dp"
+            android:layout_height="624dp"
+            android:drawSelectorOnTop="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

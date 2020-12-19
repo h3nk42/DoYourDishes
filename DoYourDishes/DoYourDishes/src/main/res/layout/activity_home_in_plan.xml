@@ -13,10 +13,11 @@
         android:id="@+id/textView5"
         android:layout_width="231dp"
         android:layout_height="52dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_light"
         android:text="it's nice to have you back"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeUserNameTextView" />
 
@@ -94,10 +95,11 @@
         android:id="@+id/welcomeUserNameTextView"
         android:layout_width="318dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Welcome!"
+        android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

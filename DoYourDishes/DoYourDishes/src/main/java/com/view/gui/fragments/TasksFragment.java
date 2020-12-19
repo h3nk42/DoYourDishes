@@ -51,7 +51,7 @@ public class TasksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View RootView = inflater.inflate(R.layout.fragment_tasks, container, false);
+
 
         planActivity = (PlanActivity) getActivity();
         Log.d(TAG, "onCreateView: " + planActivity);
@@ -59,9 +59,9 @@ public class TasksFragment extends Fragment {
         planController.fetchData();
         Log.d(TAG, "onCreateView: " + planController);
 
-
         this.taskFragmentController = new TaskFragmentController( this.planController, this);
 
+        View RootView = inflater.inflate(R.layout.fragment_tasks, container, false);
         List<Task> taskList = new ArrayList<Task>();
         this.recyclerView = (RecyclerView) RootView.findViewById(R.id.tasksFragmentRecyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());

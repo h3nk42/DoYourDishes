@@ -33,7 +33,6 @@
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/model/dataModel/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/TasksFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/view/gui/fragments/TasksFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/task_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/res/layout/task_card_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,7 @@
       <workItem from="1608122666920" duration="450000" />
       <workItem from="1608125545740" duration="7282000" />
       <workItem from="1608208738976" duration="7353000" />
-      <workItem from="1608303004724" duration="10987000" />
+      <workItem from="1608303004724" duration="11745000" />
     </task>
     <servers />
   </component>
