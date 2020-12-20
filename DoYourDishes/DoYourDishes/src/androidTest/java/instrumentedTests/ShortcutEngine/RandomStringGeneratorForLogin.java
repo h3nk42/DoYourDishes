@@ -1,4 +1,4 @@
-package LogicTest.CRUDPlanTests;
+package instrumentedTests.ShortcutEngine;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ public class RandomStringGeneratorForLogin {
     public String generateStringAndReturn() {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
+        int targetStringLength = 5;
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
         for (
@@ -23,5 +23,4 @@ public class RandomStringGeneratorForLogin {
         return generatedString;
 
     }
-
 }
