@@ -2,8 +2,9 @@ package LogicTest;
 
 import android.widget.TextView;
 
-import com.control.networkHttp.HttpRequest;
-import com.control.networkHttp.HttpRequestImpl;
+//import com.control.networkHttp.HttpRequest;
+//import com.control.networkHttp.HttpRequest;
+//import com.control.networkHttp.HttpRequestImpl;
 import com.view.gui.LoginActivity;
 
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ public class LoginControllerTest {
         passwortAusEingabe.setText(password);
 
         // Create http connection and create request on Server
-        HttpRequest http = new HttpRequestImpl();
+//        HttpRequest http = new HttpRequestImpl();
 
         //Create a RequestBody requestBody for HttpRequest
         RequestBody requestBody;
@@ -54,7 +55,7 @@ public class LoginControllerTest {
         //do http request with requestBody
         JSONObject JSONresponse = null;
         try {
-            JSONresponse = http.POST("http://10.0.2.2:3001/api/auth/login", requestBody, "");
+            //JSONresponse = http.POST("http://10.0.2.2:3001/api/auth/login", requestBody, "");
             //give response as String
             String AusgabeObLoginAccesOrDeniedAlsString = JSONresponse.getString("customMessage");
 

@@ -2,7 +2,7 @@
  * Testet ob ein Nutzer registriert werden kann
  */
 
-package LogicTest.espressoTest;
+package instrumentedTests.E2E;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -25,7 +25,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.core.AllOf.allOf;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -47,7 +46,7 @@ public class EspressoCreateUser {
 
     // einen User registrieren
     @Test
-    public void createUserGutTest1(){
+    public void createUserGutTest1() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
 
         // gib Username ein
@@ -71,7 +70,7 @@ public class EspressoCreateUser {
 
     // ein User registriert sich mit falscher Usernamelänge
     @Test
-    public void creatUserSchlechtTest1(){
+    public void creatUserSchlechtTest1() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
 
         // gib Username mit 2 Buchstaben ein
@@ -96,7 +95,7 @@ public class EspressoCreateUser {
 
     // ein User registriert sich mit falscher Passwortlänge, gibt 2 Zahlen ein
     @Test
-    public void creatUserSchlechtTest2(){
+    public void creatUserSchlechtTest2() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
 
         // gib Username mit 2 Buchstaben ein
@@ -121,7 +120,7 @@ public class EspressoCreateUser {
 
     // ein User registriert sich mit falscher confirmationpass
     @Test
-    public void creatUserSchlechtTest3(){
+    public void creatUserSchlechtTest3() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
 
         // gib Username mit 2 Buchstaben ein
@@ -145,7 +144,7 @@ public class EspressoCreateUser {
 
     // registriere Nutzer, logge ihn ein und erstelle einen plan
     @Test
-    public void registerThanLogin(){
+    public void registerThanLogin() {
 
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
 
@@ -168,7 +167,7 @@ public class EspressoCreateUser {
         onView(withId(R.id.createPlanButton)).perform(click());
 
         // klicke auf das plan name feld um plannamen einzugeben
-        onView(withHint("plan name")).perform(typeText(PLAN_STRING_TO_BE_TYPED),closeSoftKeyboard());
+        onView(withHint("plan name")).perform(typeText(PLAN_STRING_TO_BE_TYPED), closeSoftKeyboard());
 
         /*onView(allOf(
                 isDescendantOfA(withText("plan name")),
@@ -186,12 +185,6 @@ public class EspressoCreateUser {
         //TODO fehlt noch delete User danach damit man ihn wiedr anlegen kann
 
     }
-
-
-
-
-
-
 
 
 }
