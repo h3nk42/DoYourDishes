@@ -20,7 +20,7 @@ import com.view.R;
  * @value loginController holds instance of control class
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginActivityInterface {
 
     public static LoginActivity loginActivity;
     public static Boolean loginWasOpened = false;
@@ -49,36 +49,9 @@ public class LoginActivity extends AppCompatActivity {
      * gets called by loginButton
      * @param view
      */
+    @Override
     public void login(View view) {
         loginController.tryLogin();
-    }
-
-    @Override
-    protected void onStop() {
-        Log.d(TAG, "onStop: in");
-        super.onStop();
-        Log.d(TAG, "onStop: out");
-    }
-
-    @Override
-    protected void onStart() {
-        Log.d(TAG, "onStart: in");
-        super.onStart();
-        Log.d(TAG, "onStart: out");
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.d(TAG, "onDestroy: in");
-        super.onDestroy();
-        Log.d(TAG, "onDestroy: out");
-    }
-
-    @Override
-    protected void onPause() {
-        Log.d(TAG, "onPause: in");
-        super.onPause();
-        Log.d(TAG, "onPause: out");
     }
 
     @Override

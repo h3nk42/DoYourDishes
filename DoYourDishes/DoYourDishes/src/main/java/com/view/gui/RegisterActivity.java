@@ -19,7 +19,7 @@ import com.view.R;
  * @value registerController holds instance of control class
  */
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements RegisterActivityInterface{
 
     public static RegisterActivity registerActivity;
     public static Boolean registerWasOpen = false;
@@ -47,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
      * gets called by registerButton
      * @param view
      */
+    @Override
     public void registerUserClick(View view) {
         registerController.registerUser();
     }

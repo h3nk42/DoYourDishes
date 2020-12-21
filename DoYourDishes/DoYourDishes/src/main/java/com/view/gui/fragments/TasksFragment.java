@@ -14,18 +14,17 @@ import android.view.ViewGroup;
 import com.control.controllerLogic.PlanLogic.PlanController;
 import com.control.controllerLogic.PlanLogic.fragmentControllers.Tasks.RecyclerViewAdapterTask;
 import com.control.controllerLogic.PlanLogic.fragmentControllers.Tasks.TaskFragmentController;
-import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.RecyclerViewAdapterUser;
 import com.model.dataModel.Task;
 
 import com.view.R;
 import com.view.gui.PlanActivity;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class TasksFragment extends Fragment {
+public class TasksFragment extends Fragment implements TasksFragmentInterface {
 
 
     private static final String TAG = "TasksFragment";
@@ -73,11 +72,13 @@ public class TasksFragment extends Fragment {
         return RootView;
     }
 
+    @Override
     public void renderData(List<Task> tasksToRender){
         RecyclerViewAdapterTask newTaskAdapter = new RecyclerViewAdapterTask(tasksToRender, this.planController);
         this.recyclerView.setAdapter(newTaskAdapter);
     }
 
+    @Override
     public void addTask(){
         taskFragmentController.addTask();
     }

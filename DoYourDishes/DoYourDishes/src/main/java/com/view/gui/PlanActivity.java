@@ -20,7 +20,7 @@ import com.view.gui.fragments.TasksFragment;
 import com.view.gui.fragments.UsersFragment;
 
 
-public class PlanActivity extends AppCompatActivity {
+public class PlanActivity extends AppCompatActivity implements PlanActivityInterface {
 
 
     private PlanController planController;
@@ -74,15 +74,15 @@ public class PlanActivity extends AppCompatActivity {
                 this);
 
     }
-
+    @Override
     public PlanController getPlanController(){
         return this.planController;
     }
-
+    @Override
     public void addUser(View view){
         usersFragment.addUser();
     }
-
+    @Override
     public void addTask(View view){
         tasksFragment.addTask();
     }

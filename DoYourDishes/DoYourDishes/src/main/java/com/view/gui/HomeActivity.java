@@ -12,7 +12,7 @@ import com.control.controllerLogic.HomeLogic.HomeController;
 import com.view.R;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HomeActivityInterface {
 
     private HomeController homeController;
 
@@ -38,19 +38,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
         homeController.refreshData();
     }
-
+    @Override
     public void createPlan(View view){
         homeController.createPlanDialog();
     }
 
+    @Override
     public void deletePlan(View view){
         homeController.deletePlan();
     }
 
+    @Override
     public void openPlanActivity(View view){
         homeController.openPlanActivity();
     }
 
+    @Override
     public void deleteUser(View view){
         homeController.deleteUser();
     }

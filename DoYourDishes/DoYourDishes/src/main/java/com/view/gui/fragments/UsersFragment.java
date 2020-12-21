@@ -22,7 +22,7 @@ import com.view.gui.PlanActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersFragment extends Fragment {
+public class UsersFragment extends Fragment implements UsersFragmentInterface {
 
 
     private static final String TAG =  "UsersFragment";
@@ -74,11 +74,12 @@ public class UsersFragment extends Fragment {
         return RootView;
     }
 
+    @Override
     public void renderData(List<User> usersToRender){
         RecyclerViewAdapterUser newAdapter = new RecyclerViewAdapterUser(usersToRender, this.planController);
         this.recyclerView.setAdapter(newAdapter);
     }
-
+    @Override
     public void addUser(){
         userFragmentController.addUser();
     }

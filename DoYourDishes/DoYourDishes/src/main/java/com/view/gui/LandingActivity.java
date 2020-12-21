@@ -13,7 +13,7 @@ import com.view.R;
  * @value landingController holds the control for this activity (view)
  * @value landingActivity holds the instance of this activity to pass it to the control
  */
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity implements LandingActivityInterface {
 
     private LandingController landingController;
     public static LandingActivity landingActivity;
@@ -34,6 +34,7 @@ public class LandingActivity extends AppCompatActivity {
      * gets called by the to registration button
      * -> calls the control function
      */
+    @Override
     public void toRegisterUserClick(View view){
         landingController.goToRegisterUser();
     }
@@ -42,8 +43,8 @@ public class LandingActivity extends AppCompatActivity {
      * gets called by the to login button
      * -> calls the control function
      */
+    @Override
     public void toLoginClick(View view){
         landingController.goToLogin();
     }
-
 }

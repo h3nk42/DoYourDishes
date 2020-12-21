@@ -33,7 +33,7 @@ public class TaskFragmentController {
     public void addTask(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(tasksFragment.getActivity());
-        builder.setTitle("enter userName!");
+        builder.setTitle("enter Taskname!");
 
 
         this.inputView = tasksFragment.getActivity().getLayoutInflater().inflate(R.layout.double_input_dialog, null);
