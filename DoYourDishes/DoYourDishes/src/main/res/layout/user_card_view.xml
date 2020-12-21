@@ -19,9 +19,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:background="@color/teal"
-
             >
-
 
             <TextView
                 android:id="@+id/person_name"
