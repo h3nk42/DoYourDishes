@@ -85,19 +85,14 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
             showToast("you're logged in!");
             firstTime = false;
         }
-
         renderLayout();
-
-
+        refreshData();
     }
 
     public void renderLayout() {
         if(activeUser.getPlan().equals("null")) {
             changeLayout("NO_PLAN");
         } else {
-            List<String> planUsers = new ArrayList<String>();
-            planUsers.add(activeUser.getUserName());
-            this.plan = new Plan(userPlanOwner, userPlanName,userPlanId,planUsers);
             changeLayout("IN_PLAN");
         }
     }
@@ -114,7 +109,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
                 planNameTextView = (TextView) homeActivity.findViewById(R.id.planNameTextView);
                 welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
                 welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
-                this.planNameTextView.setText(plan.getName());
+                this.planNameTextView.setText(userPlanName);
                 break;
         }
     }
@@ -194,9 +189,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void successCallbackCreatePlan(String _planOwner,String _planName, String _planId) {
-        List<String> planUsers = new ArrayList<String>();
-        planUsers.add(activeUser.getUserName());
-        this.plan = new Plan(_planOwner, _planName, _planId, planUsers);
         this.userPlanName = _planName;
         this.userPlanId = _planId;
         this.userPlanOwner = _planOwner;
@@ -268,6 +260,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     @Override
     public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner, List<User> users, List<Task> tasks) {
         activeUser.setPlan(_planId);
+        this.plan = new Plan( _planOwner, _planName, _planId, users, tasks);
         renderLayout();
     }
 

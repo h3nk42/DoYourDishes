@@ -6,17 +6,10 @@ public class Plan {
     private String owner;
     private String name;
     private String planId;
-    private List<String> tasks;
-    private List<String> users;
+    private List<Task> tasks;
+    private List<User> users;
 
-    public Plan(String _owner, String _name, String _planId, List<String> _users) {
-        this.owner = _owner;
-        this.name = _name;
-        this.planId = _planId;
-        this.users = _users;
-    }
-
-    public Plan(String _owner, String _name, String _planId, List<String> _users, List<String> _tasks) {
+    public Plan(String _owner, String _name, String _planId, List<User> _users, List<Task> _tasks) {
         this.owner = _owner;
         this.name = _name;
         this.planId = _planId;
@@ -29,11 +22,11 @@ public class Plan {
         this.name = name;
     }
 
-    public void setTasks(List<String> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
-    public void setUsers(List<String>users) {
+    public void setUsers(List<User>users) {
         this.users = users;
     }
 
@@ -45,11 +38,11 @@ public class Plan {
         return owner;
     }
 
-    public List<String> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public List<String> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 }

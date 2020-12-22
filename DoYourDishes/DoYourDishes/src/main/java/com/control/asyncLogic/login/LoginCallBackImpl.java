@@ -4,8 +4,6 @@ package com.control.asyncLogic.login;
 class LoginCallBackImpl implements LoginCallBack {
 
     LoginUser loginUser;
-    private String userName;
-    private String password;
 
     private String resToken;
     private String responsePlanId;
@@ -34,8 +32,6 @@ class LoginCallBackImpl implements LoginCallBack {
     @Override
     public void loginCallAsync(String userName, String password, LoginUser loginUser){
         this.loginUser = loginUser;
-        this.userName = userName;
-        this.password = password;
 
         AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);
         request.execute();

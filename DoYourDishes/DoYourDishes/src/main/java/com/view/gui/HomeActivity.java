@@ -30,7 +30,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInter
                 intent.getStringExtra("PLANOWNER"),
                 this);
         homeController.finishPrevActivities();
-
     }
 
     @Override
