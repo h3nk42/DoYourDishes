@@ -95,7 +95,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
 
 
     @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users, List<Task> tasks) {
+    public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner, List<User> users, List<Task> tasks) {
         this.users = users;
         this.tasks = tasks;
         this.usersFragment.renderData(users);

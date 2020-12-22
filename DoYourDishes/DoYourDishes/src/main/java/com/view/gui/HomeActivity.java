@@ -34,6 +34,16 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInter
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        homeController.refreshData();
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        homeController.refreshData();
+    }
+    @Override
     protected void onResume() {
         super.onResume();
         homeController.refreshData();
@@ -56,6 +66,11 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInter
     @Override
     public void deleteUser(View view){
         homeController.deleteUser();
+    }
+
+    @Override
+    public void refreshData(View view){
+        homeController.refreshData();
     }
 
 }

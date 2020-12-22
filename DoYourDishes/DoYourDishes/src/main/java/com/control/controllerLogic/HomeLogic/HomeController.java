@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.control.asyncLogic.createPlan.CreatePlanFacade;
 import com.control.asyncLogic.createPlan.CreatePlanFacadeFactory;
 import com.control.asyncLogic.createPlan.CreatePlanUser;
@@ -49,12 +51,13 @@ import java.util.List;
 public class HomeController implements HomeControllerInterface, CreatePlanUser, DeletePlanUser, DeleteUserUser, FetchPlanUser {
 
     private static final String TAG = "HomeController";
-    private final HomeActivity homeActivity;
+    private HomeActivity homeActivity;
     private CreatePlanUser createPlanUser = this;
     private DeletePlanUser deletePlanUser = this;
     private DeleteUserUser deleteUserUser = this;
     private final String token;
     private final HomeController homeController = this;
+    private SwipeRefreshLayout pullToRefresh;
 
     private TextView welcomeUserTextView;
 
@@ -82,7 +85,10 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
             showToast("you're logged in!");
             firstTime = false;
         }
+
         renderLayout();
+
+
     }
 
     public void renderLayout() {
@@ -260,7 +266,9 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner, List<User> users, List<Task> tasks) {
+    public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner, List<User> users, List<Task> tasks) {
+        activeUser.setPlan(_planId);
+        renderLayout();
     }
 
     @Override

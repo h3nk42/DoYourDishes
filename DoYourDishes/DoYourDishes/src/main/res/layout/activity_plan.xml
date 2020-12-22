@@ -11,13 +11,13 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutNavigation"
-        android:layout_width="416dp"
-        android:layout_height="36dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:background="@color/fontColorDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planNameTopBarTextView"
+        app:layout_constraintTop_toTopOf="parent"
         app:tabSelectedTextColor="@color/orange"
         app:tabTextColor="@color/white">
 
@@ -30,7 +30,6 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="openUsers"
             android:text="@string/UserTab" />
 
         <com.google.android.material.tabs.TabItem

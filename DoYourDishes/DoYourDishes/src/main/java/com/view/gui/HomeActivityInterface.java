@@ -7,4 +7,6 @@ public interface HomeActivityInterface {
     void deletePlan(View view);
     void openPlanActivity(View view);
     void deleteUser(View view);
+
+    void refreshData(View view);
 }

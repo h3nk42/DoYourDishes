@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FetchPlanUser {
 
-    public void successCallbackFetchPlan(String _planName, String _planOwner,  List<User> users, List<Task> tasks);
+    public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner,  List<User> users, List<Task> tasks);
 
     public void errorCallbackFetchPlan(String errorInfo);
 }

@@ -122,7 +122,7 @@ public class LoginController implements LoginControllerInterface, LoginUser, Fet
      */
 
     @Override
-    public void successCallbackFetchPlan(String _planName, String _planOwner,  List<User> users, List<Task> tasks) {
+    public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner,  List<User> users, List<Task> tasks) {
         this.state = DebugState.LOGGED_IN;
         this.responsePlanName = _planName;
         this.responsePlanOwner = _planOwner;

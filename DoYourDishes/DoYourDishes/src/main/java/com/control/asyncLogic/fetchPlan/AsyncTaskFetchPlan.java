@@ -51,6 +51,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 responseArr[1] = response.getJSONObject("data").getString("owner");
                 responseArr[2] = response.getJSONObject("data").getString("name");
                 String planId = response.getJSONObject("data").getString("_id");
+                responseArr[3] = planId;
                 JSONArray userArr = response.getJSONObject("data").getJSONArray("users");
                 users = new ArrayList<User>();
                 for(int i = 0; i < userArr.length(); i++){
