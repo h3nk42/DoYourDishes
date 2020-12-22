@@ -6,5 +6,4 @@ public class HttpRequestFacadeFactory {
         HttpRequest httpRequest = new HttpRequestImpl();
         return new HttpRequestFacadeImpl(httpRequest);
     }
-
 }

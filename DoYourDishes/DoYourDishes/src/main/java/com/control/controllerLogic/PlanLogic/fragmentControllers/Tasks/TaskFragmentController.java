@@ -19,7 +19,7 @@ import com.view.R;
 import com.view.gui.fragments.TasksFragment;
 
 
-public class TaskFragmentController {
+public class TaskFragmentController implements TaskFragmentControllerInterface {
 
     private TasksFragment tasksFragment;
     private PlanController planController;
@@ -30,6 +30,7 @@ public class TaskFragmentController {
         this.tasksFragment = tasksFragment;
     }
 
+    @Override
     public void addTask(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(tasksFragment.getActivity());
@@ -55,7 +56,8 @@ public class TaskFragmentController {
         builder.show();
     }
 
-    private void handleClick() {
+    @Override
+    public void handleClick() {
         EditText taskNameInput =  (EditText) inputView.findViewById(R.id.taskNameInputEditText);
         EditText taskPointsInput =  (EditText) inputView.findViewById(R.id.taskPointsInputEditText);
 

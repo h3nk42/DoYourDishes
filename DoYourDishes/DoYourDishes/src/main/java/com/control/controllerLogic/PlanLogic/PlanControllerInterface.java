@@ -2,12 +2,13 @@ package com.control.controllerLogic.PlanLogic;
 
 public interface PlanControllerInterface {
 
-    boolean create();
+    void showToast(String responseText);
 
-    void read();
+    String getToken();
 
-    void update();
+    void fetchData();
 
-    void delete();
+    void finishPlanActivity();
 
+    String getActiveUserName();
 }

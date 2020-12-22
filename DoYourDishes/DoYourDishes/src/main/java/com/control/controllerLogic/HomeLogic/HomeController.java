@@ -57,7 +57,6 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     private DeleteUserUser deleteUserUser = this;
     private final String token;
     private final HomeController homeController = this;
-    private SwipeRefreshLayout pullToRefresh;
 
     private TextView welcomeUserTextView;
 
@@ -89,6 +88,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         refreshData();
     }
 
+    @Override
     public void renderLayout() {
         if(activeUser.getPlan().equals("null")) {
             changeLayout("NO_PLAN");
@@ -97,7 +97,8 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         }
     }
 
-    private void changeLayout(String whichLayout){
+    @Override
+    public void changeLayout(String whichLayout){
         switch(whichLayout){
             case("NO_PLAN"):
                 homeActivity.setContentView(R.layout.activity_home_no_plan);
@@ -125,6 +126,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         }
     }
 
+    @Override
     public void deletePlan(){
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("really delete plan?");
@@ -144,7 +146,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         builder.show();
     }
 
-
+    @Override
     public void createPlanDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("Name your plan!");
@@ -170,6 +172,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         builder.show();
     }
 
+    @Override
     public void showToast(String responseText) {
         switch(responseText){
             case("INVALID_INPUT"):
@@ -212,6 +215,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         showToast(errorInfo);
     }
 
+    @Override
     public void openPlanActivity(){
         Intent intent = new Intent(homeActivity, PlanActivity.class);
         intent.putExtra("TOKEN", token);
@@ -222,6 +226,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         homeActivity.startActivity(intent);
     }
 
+    @Override
     public void deleteUser(){
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("really delete your account?");
@@ -246,6 +251,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         goBackToLandingActivity();
     }
 
+    @Override
     public void goBackToLandingActivity(){
         Intent intent = new Intent(homeActivity, LandingActivity.class);
         homeActivity.startActivity(intent);
@@ -270,6 +276,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         renderLayout();
     }
 
+    @Override
     public void refreshData(){
         FetchPlanFacade fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
         fetchPlanFacade.fetchPlanCallAsync(token, this);

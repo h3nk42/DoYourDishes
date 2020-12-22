@@ -35,9 +35,6 @@ public class RegisterController implements RegisterControllerInterface, Register
     final Button registerButton;
     private RegisterActivity registerActivity;
     public DebugState state;
-    private String responseToken;
-    private String responseUserName;
-    private String responsePlanId;
 
     public RegisterController(Button _registerButton, TextInputEditText _userNameTextView, TextInputEditText _passwordTextView, TextInputEditText _confirmPasswordEditText, RegisterActivity _registerActivity) {
         this.userNameEditText = _userNameTextView;

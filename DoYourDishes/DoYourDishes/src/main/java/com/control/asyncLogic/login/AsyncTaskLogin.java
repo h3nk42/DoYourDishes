@@ -7,8 +7,6 @@ import com.control.networkHttp.HttpRequestFacadeFactory;
 
 import org.json.JSONObject;
 
-import java.net.UnknownHostException;
-import java.util.concurrent.TimeoutException;
 
 import okhttp3.FormBody;
 

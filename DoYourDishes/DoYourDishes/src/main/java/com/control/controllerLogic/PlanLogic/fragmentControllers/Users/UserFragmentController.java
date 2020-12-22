@@ -11,7 +11,7 @@ import com.control.controllerLogic.PlanLogic.PlanController;
 
 import com.view.gui.fragments.UsersFragment;
 
-public class UserFragmentController {
+public class UserFragmentController implements UserFragControllerInterface{
 
     private UsersFragment usersFragment;
     private PlanController planController;
@@ -21,6 +21,7 @@ public class UserFragmentController {
         this.usersFragment = usersFragment;
     }
 
+    @Override
     public void addUser(){
         AlertDialog.Builder builder = new AlertDialog.Builder(usersFragment.getActivity());
         builder.setTitle("enter userName!");

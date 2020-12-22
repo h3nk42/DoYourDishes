@@ -28,10 +28,9 @@ import com.view.gui.fragments.ScoreFragment;
 import com.view.gui.fragments.TasksFragment;
 import com.view.gui.fragments.UsersFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser, DeleteTaskUser, FulfillTaskUser {
+public class PlanController implements PlanControllerInterface, FetchPlanUser, AddUserUser, RemoveUserUser, AddTaskUser, DeleteTaskUser, FulfillTaskUser {
 
     private static final String TAG = "PlanController";
     private static String token;
@@ -117,6 +116,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
         showToast(errorInfo);
     }
 
+    @Override
     public void showToast(String responseText) {
         switch(responseText){
             case("INVALID_INPUT"):
@@ -132,6 +132,7 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
         toast.show();
     }
 
+    @Override
     public String getToken(){
         return token;
     }
@@ -181,15 +182,18 @@ public class PlanController implements FetchPlanUser, AddUserUser, RemoveUserUse
         showToast(errorInfo);
     }
 
+    @Override
     public void fetchData(){
         fetchPlanFacade.fetchPlanCallAsync(token, this);
     }
 
+    @Override
     public void finishPlanActivity(){
         planActivity.finish();
         return;
     }
 
+    @Override
     public String getActiveUserName(){
         return this.userName;
     }

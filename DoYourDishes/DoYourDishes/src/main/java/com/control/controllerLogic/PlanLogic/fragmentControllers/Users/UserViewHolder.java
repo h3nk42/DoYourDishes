@@ -1,6 +1,5 @@
 package com.control.controllerLogic.PlanLogic.fragmentControllers.Users;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +8,11 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.control.asyncLogic.deletePlan.DeletePlanFacade;
-import com.control.asyncLogic.deletePlan.DeletePlanFacadeFactory;
+
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacade;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacadeFactory;
 import com.control.controllerLogic.PlanLogic.PlanController;
-import com.model.dataModel.Plan;
+
 import com.view.R;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {

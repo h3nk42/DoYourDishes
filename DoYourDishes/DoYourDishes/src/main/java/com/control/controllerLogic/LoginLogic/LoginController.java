@@ -78,7 +78,7 @@ public class LoginController implements LoginControllerInterface, LoginUser, Fet
         showToast(errorInfo);
     }
 
-
+    @Override
     public void showToast(String toastText) {
         switch(toastText){
             case("INVALID_INPUT"):

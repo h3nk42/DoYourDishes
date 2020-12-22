@@ -15,7 +15,6 @@ exports.login = async (req, res) => {
     if (!errors.isEmpty()) {
         return  retErr(res, errors, 418, 'INVALID_INPUT');
     }
-
     const {userName, password} = req.body;
     const user = await User.findOne({userName: userName});
     if (user && user.userName) {

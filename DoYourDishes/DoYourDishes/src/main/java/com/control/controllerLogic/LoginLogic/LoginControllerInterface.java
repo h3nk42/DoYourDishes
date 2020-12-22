@@ -10,6 +10,8 @@ public interface LoginControllerInterface {
      */
     void tryLogin();
 
+    void showToast(String toastText);
+
     void startHomeActivity(String _token, String _resUserName, String _resUserPlanId, String _planName, String _planOwner);
 
     /**

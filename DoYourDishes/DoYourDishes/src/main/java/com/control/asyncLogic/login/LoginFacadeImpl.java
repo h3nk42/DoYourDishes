@@ -8,10 +8,6 @@ class LoginFacadeImpl implements LoginFacade {
         this.loginCallBack = _loginCallBack;
     }
 
-    @Override
-    public void loginCallBack(String[] loginData) {
-        this.loginCallBack.loginCallBack(loginData);
-    }
 
     @Override
     public void loginCallAsync(String userName, String password, LoginUser loginUser) {

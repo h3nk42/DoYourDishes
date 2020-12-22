@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/AsyncTaskLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/AsyncTaskLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacadeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacadeFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +108,7 @@
       <workItem from="1608208738976" duration="7353000" />
       <workItem from="1608303004724" duration="11745000" />
       <workItem from="1608580511816" duration="619000" />
+      <workItem from="1608657164815" duration="4276000" />
     </task>
     <servers />
   </component>

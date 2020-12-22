@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import okhttp3.RequestBody;
 
 public interface HttpRequestFacade {
-
     JSONObject GET(String path, RequestBody data, String token) throws Exception;
     JSONObject POST(String path, RequestBody data, String token) throws Exception;
     JSONObject DELETE(String path, RequestBody data, String token) throws Exception;
