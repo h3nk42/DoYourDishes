@@ -1,4 +1,4 @@
-package control;
+package componentTests;
 
 public class AddTaskToPlanTest {
 }

@@ -1,5 +1,11 @@
 package instrumentedTests.cRUDTaskTests;
 
+import androidx.test.core.app.ActivityScenario;
+
+import com.view.R;
+import com.view.gui.LandingActivity;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import instrumentedTests.ShortcutEngine.IcRUDShortcut;
@@ -7,6 +13,11 @@ import instrumentedTests.ShortcutEngine.RandomStringGeneratorForLogin;
 import instrumentedTests.ShortcutEngine.cRudEngine;
 
 public class CreateTaskTests {
+
+    @Before
+    public void launchActivity() {
+        ActivityScenario.launch(LandingActivity.class);
+    }
 
     RandomStringGeneratorForLogin rando = new RandomStringGeneratorForLogin();
     public final String USERNAME = rando.generateStringAndReturn() + "myName";

@@ -23,4 +23,16 @@ public class RandomStringGeneratorForLogin {
         return generatedString;
 
     }
+
+    public int generateIntAndReturn(){
+        int leftLimit = 1;
+        int rightLimit = 9;
+        int dezimal = 10;
+        Random random = new Random();
+
+        int randomLimitedInt = leftLimit + (int) (random.nextFloat() * (rightLimit-leftLimit+1));
+
+        return randomLimitedInt*dezimal;
+
+    }
 }

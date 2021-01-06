@@ -17,6 +17,10 @@ public class Task {
         this.taskId = _taskid;
     }
 
+    public Task()throws NullPointerException{
+        throw new NullPointerException("parameterless constructor");
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -30,6 +34,7 @@ public class Task {
     }
 
     public void setPointsWorth(Integer pointsWorth) {
+        guard(pointsWorth);
         this.pointsWorth = pointsWorth;
     }
 
@@ -67,4 +72,14 @@ public class Task {
     public void setTaskId(String taskId) {
         this.taskId = taskId;
     }
+
+    public void guard(Integer points){
+        //autounboxing/autoboxing
+        if(points<=0){
+            throw new IllegalArgumentException("Available Points have to be more than 0!");
+        }
+    }
+
+
+
 }

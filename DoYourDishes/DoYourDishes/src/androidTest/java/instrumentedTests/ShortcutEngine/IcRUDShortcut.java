@@ -26,7 +26,7 @@ public interface IcRUDShortcut {
     void createPlan(String planName);
 
     /**
-     * delete th plan you have (only one plan)
+     * delete the plan you have (only one plan)
      */
     void deletePlan();
 
@@ -42,5 +42,29 @@ public interface IcRUDShortcut {
      * @param points   points
      */
     void addTask(String taskname, int points);
+
+    /**
+     * OHNE DRUCK AUF DEN HARDWARE BUTTON um in Planansicht zurückzukehren
+     * @param taskname
+     * @param points
+     */
+    void addTask1(String taskname, int points);
+
+    void markAsDone(String taskName);
+
+    /**
+     * multiple Tasks
+     * delete your choosen Task in your Plan
+     * @param taskName taskname
+     */
+    void deleteTask(String taskName);
+
+    /**
+     * delete all Tasks in your Plan
+     */
+    void deleteTask();
+
+
+    void pressHardwareButtonBack();
 
 }
