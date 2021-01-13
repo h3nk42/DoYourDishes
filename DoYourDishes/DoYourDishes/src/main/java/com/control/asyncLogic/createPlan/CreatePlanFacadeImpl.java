@@ -1,13 +1,11 @@
 package com.control.asyncLogic.createPlan;
 
 
-import com.control.asyncLogic.fetchPlan.FetchPlanUser;
-
 class CreatePlanFacadeImpl implements CreatePlanFacade {
 
     private CreatePlanCallback createPlanCallback;
 
-    CreatePlanFacadeImpl (CreatePlanCallback createPlanCallback) {
+    CreatePlanFacadeImpl(CreatePlanCallback createPlanCallback) {
         this.createPlanCallback = createPlanCallback;
     }
 
@@ -18,6 +16,6 @@ class CreatePlanFacadeImpl implements CreatePlanFacade {
 
     @Override
     public void createPlanCallAsync(String _token, String _planName, CreatePlanUser createPlanUser) {
-        this.createPlanCallback.createPlanCallAsync(_token,_planName, createPlanUser);
+        this.createPlanCallback.createPlanCallAsync(_token, _planName, createPlanUser);
     }
 }

@@ -1,9 +1,6 @@
 package com.control.asyncLogic.fulfillTask;
 
-import com.control.asyncLogic.deleteTask.AsyncTaskDeleteTask;
-import com.control.asyncLogic.deleteTask.DeleteTaskUser;
-
-public class FulfillTaskCallbackImpl implements FulfillTaskCallback{
+public class FulfillTaskCallbackImpl implements FulfillTaskCallback {
 
     FulfillTaskUser fulfillTaskUser;
 
@@ -11,7 +8,7 @@ public class FulfillTaskCallbackImpl implements FulfillTaskCallback{
     public void fulfillTaskCallBack(String[] planData) {
 
         String responseInfo = planData[0];
-        if(responseInfo.equals("fulfillTaskSuccess")){
+        if (responseInfo.equals("fulfillTaskSuccess")) {
             fulfillTaskUser.successCallbackFulfillTask(responseInfo);
         } else if (responseInfo.equals("fulfillTaskError") || responseInfo.equals("fulfillTaskException")) {
             String errorInfo = planData[1];

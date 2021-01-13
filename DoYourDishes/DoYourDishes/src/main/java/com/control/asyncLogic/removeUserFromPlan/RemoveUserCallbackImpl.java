@@ -9,7 +9,7 @@ public class RemoveUserCallbackImpl implements RemoveUserCallback {
     public void removeUserCallBack(String[] responseData, Boolean _deleteHimself) {
 
         String responseInfo = responseData[0];
-        if(responseInfo.equals("removeUserSuccess")){
+        if (responseInfo.equals("removeUserSuccess")) {
             removeUserUser.successCallbackRemoveUser(responseInfo, _deleteHimself);
         } else if (responseInfo.equals("removeUserError") || responseInfo.equals("removeUserException")) {
             String errorInfo = responseData[1];

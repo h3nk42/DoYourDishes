@@ -1,17 +1,18 @@
 package com.view.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.control.controllerLogic.RegisterLogic.RegisterController;
 import com.google.android.material.textfield.TextInputEditText;
 import com.view.R;
 
 /**
- *  this is the activity that handles user logIn
+ * this is the activity that handles user logIn
+ *
  * @value registerActivity holds itself to pass to control and so the activity can get finished from another activity
  * @value registerWasOpen gets set to true if a single instance of this activity was existent,
  * so the Homeactivity knows which activities to .finish() when started
@@ -19,11 +20,11 @@ import com.view.R;
  * @value registerController holds instance of control class
  */
 
-public class RegisterActivity extends AppCompatActivity implements RegisterActivityInterface{
+public class RegisterActivity extends AppCompatActivity implements RegisterActivityInterface {
 
     public static RegisterActivity registerActivity;
     public static Boolean registerWasOpen = false;
-    private static final String TAG="LoginActivity";
+    private static final String TAG = "LoginActivity";
     private RegisterController registerController;
 
     @Override
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterActiv
 
     /**
      * gets called by registerButton
+     *
      * @param view
      */
     @Override

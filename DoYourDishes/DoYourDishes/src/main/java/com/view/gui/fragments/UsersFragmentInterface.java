@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface UsersFragmentInterface {
     void renderData(List<User> usersToRender);
+
     void addUser();
 }

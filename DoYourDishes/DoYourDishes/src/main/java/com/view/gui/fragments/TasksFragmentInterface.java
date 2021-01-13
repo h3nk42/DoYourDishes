@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface TasksFragmentInterface {
     void renderData(List<Task> tasksToRender);
+
     void addTask();
 }

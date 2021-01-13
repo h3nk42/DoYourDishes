@@ -20,7 +20,7 @@ public class AsyncTaskDeleteUser extends AsyncTask<String, String, String[]> {
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
-    public AsyncTaskDeleteUser( String _token, DeleteUserCallback deleteUserCallback) {
+    public AsyncTaskDeleteUser(String _token, DeleteUserCallback deleteUserCallback) {
         this._token = _token;
         this.deleteUserCallback = deleteUserCallback;
         this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
@@ -35,10 +35,10 @@ public class AsyncTaskDeleteUser extends AsyncTask<String, String, String[]> {
                 .build();
         try {
             response = httpRequestFacade.DELETE(BackendURL + "/user/delUser", requestBody, _token);
-            if(response.has("data")){
+            if (response.has("data")) {
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "deleteUserSuccess";
-            } else if(response.has("customMessage")){
+            } else if (response.has("customMessage")) {
                 responseArr[0] = "deleteUserError";
                 responseArr[1] = response.getString("customMessage");
             }

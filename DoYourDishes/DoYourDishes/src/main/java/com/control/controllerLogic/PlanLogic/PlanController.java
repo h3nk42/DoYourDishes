@@ -1,13 +1,9 @@
 package com.control.controllerLogic.PlanLogic;
 
-import android.content.Intent;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.control.asyncLogic.addTaskToPlan.AddTaskUser;
@@ -18,10 +14,8 @@ import com.control.asyncLogic.fetchPlan.FetchPlanFacadeFactory;
 import com.control.asyncLogic.fetchPlan.FetchPlanUser;
 import com.control.asyncLogic.fulfillTask.FulfillTaskUser;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserUser;
-import com.control.controllerLogic.DebugState;
 import com.model.dataModel.Task;
 import com.model.dataModel.User;
-
 import com.view.R;
 import com.view.gui.PlanActivity;
 import com.view.gui.fragments.ScoreFragment;
@@ -52,7 +46,6 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
     private FetchPlanFacade fetchPlanFacade;
 
 
-
     public PlanController(String _token,
                           String _planName,
                           String _userName,
@@ -62,7 +55,7 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
                           UsersFragment usersFragment,
                           ScoreFragment scoreFragment,
                           PlanActivity planActivity
-    ){
+    ) {
         this.tasksFragment = tasksFragment;
         this.usersFragment = usersFragment;
         this.scoreFragment = scoreFragment;
@@ -72,10 +65,10 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
-        this.activeUser = new User(userName,userPlanId, 0);
+        this.activeUser = new User(userName, userPlanId, 0);
 
         this.planNameTopBarTextView = (TextView) planActivity.findViewById(R.id.planNameTopBarTextView);
-        planNameTopBarTextView.setText(" " +_planName);
+        planNameTopBarTextView.setText(" " + _planName);
 
         fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
         fetchPlanFacade.fetchPlanCallAsync(token, this);
@@ -118,14 +111,14 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
 
     @Override
     public void showToast(String responseText) {
-        switch(responseText){
-            case("INVALID_INPUT"):
-                responseText = "invalid input" ;
+        switch (responseText) {
+            case ("INVALID_INPUT"):
+                responseText = "invalid input";
                 break;
-            case("WRONG_USER_OR_PW"):
-                responseText = "wrong name/password combo" ;
-            case("USER_DOES_NOT_EXIST"):
-                responseText = "no user found with that name" ;
+            case ("WRONG_USER_OR_PW"):
+                responseText = "wrong name/password combo";
+            case ("USER_DOES_NOT_EXIST"):
+                responseText = "no user found with that name";
         }
         Toast toast = Toast.makeText(planActivity, responseText, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 20, 200);
@@ -133,13 +126,13 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
     }
 
     @Override
-    public String getToken(){
+    public String getToken() {
         return token;
     }
 
     @Override
     public void successCallbackRemoveUser(String __successMessage, Boolean _deleteHimself) {
-        if(_deleteHimself){
+        if (_deleteHimself) {
             finishPlanActivity();
         } else {
             fetchPlanFacade.fetchPlanCallAsync(token, this);
@@ -183,18 +176,18 @@ public class PlanController implements PlanControllerInterface, FetchPlanUser, A
     }
 
     @Override
-    public void fetchData(){
+    public void fetchData() {
         fetchPlanFacade.fetchPlanCallAsync(token, this);
     }
 
     @Override
-    public void finishPlanActivity(){
+    public void finishPlanActivity() {
         planActivity.finish();
         return;
     }
 
     @Override
-    public String getActiveUserName(){
+    public String getActiveUserName() {
         return this.userName;
     }
 }

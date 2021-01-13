@@ -4,14 +4,13 @@ import androidx.test.core.app.ActivityScenario;
 
 import com.view.gui.LandingActivity;
 
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import instrumentedTests.ShortcutEngine.IcRUDShortcut;
-import instrumentedTests.ShortcutEngine.RandomStringGeneratorForLogin;
-import instrumentedTests.ShortcutEngine.cRudEngine;
+import instrumentedTests.ShortcutEngine.CrudEngine;
+import instrumentedTests.ShortcutEngine.ICrudShortcut;
+import instrumentedTests.ShortcutEngine.RandomGenerator;
+import instrumentedTests.ShortcutEngine.RandomGeneratorImpl;
 
 public class DeleteTaskTests {
 
@@ -20,7 +19,7 @@ public class DeleteTaskTests {
         ActivityScenario.launch(LandingActivity.class);
     }
 
-    RandomStringGeneratorForLogin rando = new RandomStringGeneratorForLogin();
+    RandomGenerator rando = new RandomGeneratorImpl();
     public final String USERNAME = rando.generateStringAndReturn() + "myName";
     public final String PASSWORD = rando.generateStringAndReturn() + "myPass";
     public final String PLAN = rando.generateStringAndReturn() + " Plan";
@@ -38,20 +37,24 @@ public class DeleteTaskTests {
     public final int POINTS4 = rando.generateIntAndReturn();
 
 
+    /**
+     * Lösche Task nachdem er erledigt wurde
+     * addTask;markAsDone;deleteTask mit HW Button explizit
+     */
     @Test
-    public void deleteTaskGutTest3(){
-        IcRUDShortcut icRUDShortcut;
-        icRUDShortcut = new cRudEngine();
+    public void deleteTaskGutTest3() {
+        ICrudShortcut icRUDShortcut;
+        icRUDShortcut = new CrudEngine();
 
         icRUDShortcut.createUser(USERNAME, PASSWORD);
         icRUDShortcut.createPlan(PLAN);
-        icRUDShortcut.addTask1(TASK1,POINTS1);
+        icRUDShortcut.addTask1(TASK1, POINTS1);
         icRUDShortcut.pressHardwareButtonBack();
-        icRUDShortcut.addTask1(TASK2,POINTS2);
+        icRUDShortcut.addTask1(TASK2, POINTS2);
         icRUDShortcut.pressHardwareButtonBack();
-        icRUDShortcut.addTask1(TASK3,POINTS3);
+        icRUDShortcut.addTask1(TASK3, POINTS3);
         icRUDShortcut.pressHardwareButtonBack();
-        icRUDShortcut.addTask1(TASK4,POINTS4);
+        icRUDShortcut.addTask1(TASK4, POINTS4);
 
 
         icRUDShortcut.markAsDone(TASK1);
@@ -69,21 +72,20 @@ public class DeleteTaskTests {
     }
 
 
-
-    //TODO deleteTask anpassen an TASKNAME
-    //läuft durch
-
+    /**
+     * erstelle Task und lösche gleich danach
+     */
     @Test
-    public void deleteTaskGutTest2(){
-        IcRUDShortcut icRUDShortcut;
-        icRUDShortcut = new cRudEngine();
+    public void deleteTaskGutTest2() {
+        ICrudShortcut icRUDShortcut;
+        icRUDShortcut = new CrudEngine();
 
         icRUDShortcut.createUser(USERNAME, PASSWORD);
         icRUDShortcut.createPlan(PLAN);
-        icRUDShortcut.addTask1(TASK1,POINTS1);
+        icRUDShortcut.addTask1(TASK1, POINTS1);
         icRUDShortcut.deleteTask(TASK1);
         icRUDShortcut.pressHardwareButtonBack();
-        icRUDShortcut.addTask1(TASK2,POINTS2);
+        icRUDShortcut.addTask1(TASK2, POINTS2);
         icRUDShortcut.deleteTask(TASK2);
         icRUDShortcut.pressHardwareButtonBack();
         icRUDShortcut.deletePlan();
@@ -92,26 +94,24 @@ public class DeleteTaskTests {
     }
 
 
-
     /**
      * Test erstelle einen Plan
      * erstelle einen User, erstelle einen Plan und lösche den Plan dann den User
      */
 
     //TODO HW Buttonclick ein/aus-bauen in addTask
-
-
     @Test
     public void deleteTaskGutTest1() {
-        IcRUDShortcut icRUDShortcut;
-        icRUDShortcut = new cRudEngine();
+        ICrudShortcut icRUDShortcut;
+        icRUDShortcut = new CrudEngine();
 
         icRUDShortcut.createUser(USERNAME, PASSWORD);
         icRUDShortcut.createPlan(PLAN);
-        icRUDShortcut.addTask(TASK1,POINTS1);
-        icRUDShortcut.addTask(TASK2,POINTS2);
-        icRUDShortcut.addTask(TASK3,POINTS3);
-        icRUDShortcut.addTask1(TASK4,POINTS4);
+        icRUDShortcut.addTask(TASK1, POINTS1);
+        icRUDShortcut.addTask(TASK2, POINTS2);
+        icRUDShortcut.addTask(TASK3, POINTS3);
+        icRUDShortcut.addTask(TASK4, POINTS4);
+        icRUDShortcut.clickOnPlan();
         icRUDShortcut.deleteTask(TASK3);
         icRUDShortcut.deleteTask(TASK2);
         icRUDShortcut.deleteTask(TASK1);
@@ -121,11 +121,6 @@ public class DeleteTaskTests {
         icRUDShortcut.deletUser();
 
     }
-
-
-
-
-
 
 
 }

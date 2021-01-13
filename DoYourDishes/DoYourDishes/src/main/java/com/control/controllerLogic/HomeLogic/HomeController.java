@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.control.asyncLogic.createPlan.CreatePlanFacade;
 import com.control.asyncLogic.createPlan.CreatePlanFacadeFactory;
 import com.control.asyncLogic.createPlan.CreatePlanUser;
@@ -35,7 +33,6 @@ import com.view.gui.LoginActivity;
 import com.view.gui.PlanActivity;
 import com.view.gui.RegisterActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -79,8 +76,8 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
         this.userName = _userName;
         this.userPlanId = _userPlanId;
         this.userPlanOwner = _userPlanOwner;
-        this.activeUser = new User(userName,userPlanId, 0);
-        if(firstTime){
+        this.activeUser = new User(userName, userPlanId, 0);
+        if (firstTime) {
             showToast("you're logged in!");
             firstTime = false;
         }
@@ -90,7 +87,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void renderLayout() {
-        if(activeUser.getPlan().equals("null")) {
+        if (activeUser.getPlan().equals("null")) {
             changeLayout("NO_PLAN");
         } else {
             changeLayout("IN_PLAN");
@@ -98,14 +95,14 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void changeLayout(String whichLayout){
-        switch(whichLayout){
-            case("NO_PLAN"):
+    public void changeLayout(String whichLayout) {
+        switch (whichLayout) {
+            case ("NO_PLAN"):
                 homeActivity.setContentView(R.layout.activity_home_no_plan);
                 welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
                 welcomeUserTextView.setText("Welcome " + activeUser.getUserName() + "!");
                 break;
-            case("IN_PLAN"):
+            case ("IN_PLAN"):
                 homeActivity.setContentView(R.layout.activity_home_in_plan);
                 planNameTextView = (TextView) homeActivity.findViewById(R.id.planNameTextView);
                 welcomeUserTextView = (TextView) homeActivity.findViewById(R.id.welcomeUserNameTextView);
@@ -116,18 +113,18 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void finishPrevActivities(){
+    public void finishPrevActivities() {
         //LandingActivity.landingActivity.finish();
-        if(LoginActivity.loginWasOpened) {
+        if (LoginActivity.loginWasOpened) {
             LoginActivity.loginActivity.finish();
         }
-        if( RegisterActivity.registerWasOpen){
+        if (RegisterActivity.registerWasOpen) {
             RegisterActivity.registerActivity.finish();
         }
     }
 
     @Override
-    public void deletePlan(){
+    public void deletePlan() {
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("really delete plan?");
         builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
@@ -147,7 +144,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void createPlanDialog(){
+    public void createPlanDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("Name your plan!");
 
@@ -174,12 +171,12 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
     @Override
     public void showToast(String responseText) {
-        switch(responseText){
-            case("INVALID_INPUT"):
-                responseText = "Plan name too long! maxlen 15" ;
+        switch (responseText) {
+            case ("INVALID_INPUT"):
+                responseText = "Plan name too long! maxlen 15";
                 break;
-            case("WRONG_USER_OR_PW"):
-                responseText = "wrong name/password combo" ;
+            case ("WRONG_USER_OR_PW"):
+                responseText = "wrong name/password combo";
         }
 
         Toast toast = Toast.makeText(homeActivity, responseText, Toast.LENGTH_SHORT);
@@ -191,7 +188,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
 
 
     @Override
-    public void successCallbackCreatePlan(String _planOwner,String _planName, String _planId) {
+    public void successCallbackCreatePlan(String _planOwner, String _planName, String _planId) {
         this.userPlanName = _planName;
         this.userPlanId = _planId;
         this.userPlanOwner = _planOwner;
@@ -216,7 +213,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void openPlanActivity(){
+    public void openPlanActivity() {
         Intent intent = new Intent(homeActivity, PlanActivity.class);
         intent.putExtra("TOKEN", token);
         intent.putExtra("USERNAME", userName);
@@ -227,7 +224,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void deleteUser(){
+    public void deleteUser() {
         AlertDialog.Builder builder = new AlertDialog.Builder(homeActivity);
         builder.setTitle("really delete your account?");
         builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
@@ -252,7 +249,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void goBackToLandingActivity(){
+    public void goBackToLandingActivity() {
         Intent intent = new Intent(homeActivity, LandingActivity.class);
         homeActivity.startActivity(intent);
         homeActivity.finish();
@@ -266,7 +263,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     @Override
     public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner, List<User> users, List<Task> tasks) {
         activeUser.setPlan(_planId);
-        this.plan = new Plan( _planOwner, _planName, _planId, users, tasks);
+        this.plan = new Plan(_planOwner, _planName, _planId, users, tasks);
         renderLayout();
     }
 
@@ -277,7 +274,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     }
 
     @Override
-    public void refreshData(){
+    public void refreshData() {
         FetchPlanFacade fetchPlanFacade = FetchPlanFacadeFactory.produceFetchPlanFacade();
         fetchPlanFacade.fetchPlanCallAsync(token, this);
     }

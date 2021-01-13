@@ -10,20 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
 import com.model.dataModel.Task;
-
 import com.view.R;
 
 import java.math.BigInteger;
-
 import java.util.List;
 
-public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder>{
+public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder> {
 
     List<Task> taskList;
     private PlanController planController;
     private View cardView;
 
-    public RecyclerViewAdapterTask(List<Task> taskList, PlanController planController){
+    public RecyclerViewAdapterTask(List<Task> taskList, PlanController planController) {
         this.taskList = taskList;
         this.planController = planController;
     }
@@ -37,7 +35,7 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         this.cardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card_view, parent, false);
-        TaskViewHolder taskViewHolder = new TaskViewHolder(cardView,planController);
+        TaskViewHolder taskViewHolder = new TaskViewHolder(cardView, planController);
         return taskViewHolder;
     }
 
@@ -54,9 +52,9 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
 
         //render the color based on when the task was done last
         RelativeLayout rl = (RelativeLayout) cardView.findViewById(R.id.taskRelativeLayout);
-        if(timesTamp.intValue() < 60) {
+        if (timesTamp.intValue() < 60) {
             rl.setBackgroundColor(0xFF87f589);
-        } else if (timesTamp.intValue() < 120 ) {
+        } else if (timesTamp.intValue() < 120) {
             rl.setBackgroundColor(0xFFf5e887);
         } else {
             rl.setBackgroundColor(0xFFf58787);

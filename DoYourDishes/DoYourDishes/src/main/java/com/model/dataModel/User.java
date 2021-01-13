@@ -12,7 +12,7 @@ public class User {
         this.pointsInPlan = pointsInPlan;
     }
 
-    public User()throws NullPointerException{
+    public User() throws NullPointerException {
         throw new NullPointerException();
     }
 
@@ -55,15 +55,13 @@ public class User {
         this.pointsInPlan = pointsInPlan;
     }
 
-    public void guard(String wennNull){
-        if (wennNull==null)throw new NullPointerException();
+    public void guard(String wennNull) {
+        if (wennNull == null) throw new NullPointerException();
     }
 
-    public void guard(Integer wennNull){
-        if (wennNull<0||wennNull==0) throw new IllegalArgumentException();
+    public void guard(Integer wennNull) {
+        if (wennNull < 0 || wennNull == 0) throw new IllegalArgumentException();
     }
-
-
 
 
 }

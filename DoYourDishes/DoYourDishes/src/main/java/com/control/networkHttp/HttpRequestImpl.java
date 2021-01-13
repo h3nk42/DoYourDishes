@@ -6,7 +6,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,7 +14,7 @@ import okhttp3.Response;
 
 class HttpRequestImpl implements HttpRequest {
 
-    private static final String TAG="httpFactory";
+    private static final String TAG = "httpFactory";
     private OkHttpClient client = new OkHttpClient();
 
     @Override
@@ -32,7 +31,7 @@ class HttpRequestImpl implements HttpRequest {
             return jsonObject;
         } catch (Exception e) {
             e.getLocalizedMessage();
-            Log.d(TAG, "GET: " + e );
+            Log.d(TAG, "GET: " + e);
             throw new Exception(e);
         }
     }

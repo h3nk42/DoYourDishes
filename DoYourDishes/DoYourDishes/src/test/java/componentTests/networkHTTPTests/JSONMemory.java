@@ -1,15 +1,24 @@
 package componentTests.networkHTTPTests;
 
+import org.json.JSONObject;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public interface JSONMemory {
 
-    //static void createJSONFileForLogin() throws IOException;
+    /**
+     * Create a JSON-File to use as response
+     *
+     * @throws IOException
+     */
+    void createJSONFileForLogin() throws IOException;
 
-    //void save(String einString) throws IOException;
-
-    //String restore() throws IOException;
-
-
+    /**
+     * Get JSON-File
+     *
+     * @return
+     */
+    JSONObject restoreJSONFileForLogin() throws FileNotFoundException;
 
 }

@@ -8,21 +8,20 @@ import android.widget.EditText;
 import com.control.asyncLogic.addUserToPlan.AddUserFacade;
 import com.control.asyncLogic.addUserToPlan.AddUserFacadeFactory;
 import com.control.controllerLogic.PlanLogic.PlanController;
-
 import com.view.gui.fragments.UsersFragment;
 
-public class UserFragmentController implements UserFragControllerInterface{
+public class UserFragmentController implements UserFragControllerInterface {
 
     private UsersFragment usersFragment;
     private PlanController planController;
 
-    public UserFragmentController (PlanController planController, UsersFragment usersFragment){
+    public UserFragmentController(PlanController planController, UsersFragment usersFragment) {
         this.planController = planController;
         this.usersFragment = usersFragment;
     }
 
     @Override
-    public void addUser(){
+    public void addUser() {
         AlertDialog.Builder builder = new AlertDialog.Builder(usersFragment.getActivity());
         builder.setTitle("enter userName!");
 
@@ -30,7 +29,6 @@ public class UserFragmentController implements UserFragControllerInterface{
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setHint("taskName");
         builder.setView(input);
-
 
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

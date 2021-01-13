@@ -17,7 +17,7 @@ public class Task {
         this.taskId = _taskid;
     }
 
-    public Task()throws NullPointerException{
+    public Task() throws NullPointerException {
         throw new NullPointerException("parameterless constructor");
     }
 
@@ -73,13 +73,12 @@ public class Task {
         this.taskId = taskId;
     }
 
-    public void guard(Integer points){
+    public void guard(Integer points) {
         //autounboxing/autoboxing
-        if(points<=0){
+        if (points <= 0) {
             throw new IllegalArgumentException("Available Points have to be more than 0!");
         }
     }
-
 
 
 }

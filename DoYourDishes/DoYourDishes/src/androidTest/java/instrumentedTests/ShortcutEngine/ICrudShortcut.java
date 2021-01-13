@@ -1,7 +1,6 @@
 package instrumentedTests.ShortcutEngine;
 
-public interface IcRUDShortcut {
-
+public interface ICrudShortcut {
     /**
      * Create User with username and password
      *
@@ -36,7 +35,7 @@ public interface IcRUDShortcut {
     void deletUser();
 
     /**
-     * add a task to your Plan
+     * add a task to your Plan + press Hardware Button back
      *
      * @param taskname taskname
      * @param points   points
@@ -44,27 +43,60 @@ public interface IcRUDShortcut {
     void addTask(String taskname, int points);
 
     /**
-     * OHNE DRUCK AUF DEN HARDWARE BUTTON um in Planansicht zurückzukehren
-     * @param taskname
-     * @param points
+     * add a task to your plan
+     *
+     * @param taskname - taskname to add
+     * @param points   -task points worth
      */
     void addTask1(String taskname, int points);
 
     void markAsDone(String taskName);
 
+    void markAsDone1(String taskName);
+
     /**
-     * multiple Tasks
+     * choosen Tasks
      * delete your choosen Task in your Plan
+     *
      * @param taskName taskname
      */
     void deleteTask(String taskName);
 
     /**
-     * delete all Tasks in your Plan
+     * click on hardware Button back
      */
-    void deleteTask();
-
-
     void pressHardwareButtonBack();
 
+    /**
+     * Add a User to your plan
+     *
+     * @param username - Username to add in your plan
+     */
+    void addUserToPlan(String username);
+
+    /**
+     * add a user to your plan whenin USer Fragment
+     *
+     * @param username
+     */
+    void addUserToPlan1(String username);
+
+    /**
+     * click on Plan button
+     */
+    void clickOnPlan();
+
+    /**
+     * click on User Fragment in Tab
+     */
+    void clickOnUsersTab();
+
+    /**
+     * remove a User from your Plan
+     *
+     * @param username - Username to be removed from plan
+     */
+    void removeUser(String username);
+
+    void clickRefresh();
 }

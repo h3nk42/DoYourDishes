@@ -5,7 +5,7 @@ public class FulfillTaskFacadeImpl implements FulfillTaskFacade {
 
     private FulfillTaskCallback fulfillTaskCallback;
 
-    FulfillTaskFacadeImpl (FulfillTaskCallback fulfillTaskCallback) {
+    FulfillTaskFacadeImpl(FulfillTaskCallback fulfillTaskCallback) {
         this.fulfillTaskCallback = fulfillTaskCallback;
     }
 

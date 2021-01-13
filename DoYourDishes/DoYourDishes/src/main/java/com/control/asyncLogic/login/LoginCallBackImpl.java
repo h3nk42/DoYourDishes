@@ -10,17 +10,16 @@ class LoginCallBackImpl implements LoginCallBack {
     private String respUserName;
 
 
-
     @Override
     public void loginCallBack(String[] loginData) {
         String infoField = loginData[0];
-        switch(infoField){
-            case("loginError"):
-            case("loginException"):
+        switch (infoField) {
+            case ("loginError"):
+            case ("loginException"):
                 String errorMessage = loginData[1];
                 loginUser.errorCallbackLogIn(errorMessage);
                 break;
-            case("loginSuccess"):
+            case ("loginSuccess"):
                 resToken = loginData[1];
                 respUserName = loginData[2];
                 responsePlanId = loginData[3];
@@ -30,7 +29,7 @@ class LoginCallBackImpl implements LoginCallBack {
     }
 
     @Override
-    public void loginCallAsync(String userName, String password, LoginUser loginUser){
+    public void loginCallAsync(String userName, String password, LoginUser loginUser) {
         this.loginUser = loginUser;
 
         AsyncTaskLogin request = new AsyncTaskLogin(userName, password, this);

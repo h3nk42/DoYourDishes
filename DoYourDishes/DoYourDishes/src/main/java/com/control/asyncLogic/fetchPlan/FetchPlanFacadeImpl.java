@@ -1,14 +1,10 @@
 package com.control.asyncLogic.fetchPlan;
 
-import com.model.dataModel.User;
-
-import java.util.List;
-
 class FetchPlanFacadeImpl implements FetchPlanFacade {
 
     private FetchPlanCallback fetchPlanCallback;
 
-    FetchPlanFacadeImpl (FetchPlanCallback _fetchPlanCallback) {
+    FetchPlanFacadeImpl(FetchPlanCallback _fetchPlanCallback) {
         this.fetchPlanCallback = _fetchPlanCallback;
     }
 

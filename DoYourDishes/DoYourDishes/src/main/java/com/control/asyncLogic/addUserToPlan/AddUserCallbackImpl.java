@@ -1,7 +1,6 @@
 package com.control.asyncLogic.addUserToPlan;
 
 
-
 public class AddUserCallbackImpl implements AddUserCallback {
 
     private AddUserUser addUserUser;
@@ -9,7 +8,7 @@ public class AddUserCallbackImpl implements AddUserCallback {
     @Override
     public void addUserCallBack(String[] planData) {
         String responseInfo = planData[0];
-        if(responseInfo.equals("createPlanSuccess")){
+        if (responseInfo.equals("createPlanSuccess")) {
             String successMessage = "placeHolder";
             addUserUser.successCallbackAddUser(successMessage);
         } else if (responseInfo.equals("createPlanError") || responseInfo.equals("createPlanException")) {

@@ -1,8 +1,5 @@
 package com.control.asyncLogic.deleteTask;
 
-import com.control.asyncLogic.deleteUser.AsyncTaskDeleteUser;
-import com.control.asyncLogic.deleteUser.DeleteUserUser;
-
 public class DeleteTaskCallbackImpl implements DeleteTaskCallback {
 
 
@@ -12,7 +9,7 @@ public class DeleteTaskCallbackImpl implements DeleteTaskCallback {
     public void deleteTaskCallBack(String[] planData) {
 
         String responseInfo = planData[0];
-        if(responseInfo.equals("deleteTaskSuccess")){
+        if (responseInfo.equals("deleteTaskSuccess")) {
             deleteTaskUser.successCallbackDeleteTask(responseInfo);
         } else if (responseInfo.equals("deleteTaskError") || responseInfo.equals("deleteTaskException")) {
             String errorInfo = planData[1];

@@ -19,32 +19,32 @@ public class TaskTests {
     Task task;
 
     @Before
-    public void erzeugeTask(){
-        task = new Task(TASKNAME,PLAN,POINTS,TIMEPASSED, TASKID);
+    public void erzeugeTask() {
+        task = new Task(TASKNAME, PLAN, POINTS, TIMEPASSED, TASKID);
     }
 
     @Test(expected = NullPointerException.class)
-    public void fehlerFallLeererKostruktor(){
+    public void fehlerFallLeererKostruktor() {
         Task task2Fail = new Task();
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void fehlerFallNullPunkte(){
+    public void fehlerFallNullPunkte() {
         task.setPointsWorth(0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void fehlerFallNegativePunktzahl(){
+    public void fehlerFallNegativePunktzahl() {
         task.setPointsWorth(-100);
     }
 
     @Test
-    public void gutBigTest(){
+    public void gutBigTest() {
         task.setName("vacuuming");
 
-        Assert.assertEquals(PLAN,task.getPlan());
-        Assert.assertEquals(TIMEPASSED,task.getLastTimeDone());
-        Assert.assertEquals("vacuuming",task.getName());
+        Assert.assertEquals(PLAN, task.getPlan());
+        Assert.assertEquals(TIMEPASSED, task.getLastTimeDone());
+        Assert.assertEquals("vacuuming", task.getName());
     }
 
 

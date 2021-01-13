@@ -16,7 +16,7 @@ import java.util.List;
 
 import okhttp3.FormBody;
 
-class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskFetchPlan extends android.os.AsyncTask<String, String, String[]> {
 
 
     private static final String TAG = "AsyncTaskFetchPLan";
@@ -28,7 +28,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
     private HttpRequestFacade httpRequestFacade;
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
-    public AsyncTaskFetchPlan( String _token, FetchPlanCallBackImpl fetchPlanCallBackImpl) {
+    public AsyncTaskFetchPlan(String _token, FetchPlanCallBackImpl fetchPlanCallBackImpl) {
         this._token = _token;
         this.fetchPlanCallBackImpl = fetchPlanCallBackImpl;
 
@@ -45,7 +45,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 .build();
         try {
             response = httpRequestFacade.GET(BackendURL + "/plan/findPlanToOwner", requestBody, _token);
-            if(response.has("data")){
+            if (response.has("data")) {
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "fetchPlanSuccess";
                 responseArr[1] = response.getJSONObject("data").getString("owner");
@@ -54,7 +54,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 responseArr[3] = planId;
                 JSONArray userArr = response.getJSONObject("data").getJSONArray("users");
                 users = new ArrayList<User>();
-                for(int i = 0; i < userArr.length(); i++){
+                for (int i = 0; i < userArr.length(); i++) {
                     JSONObject tempUser = userArr.getJSONObject(i);
                     User newUser = new User(tempUser.getString("userName"), planId, tempUser.getInt("points"));
                     users.add(newUser);
@@ -62,9 +62,9 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                 }
                 JSONArray taskArr = response.getJSONObject("data").getJSONArray("tasks");
                 tasks = new ArrayList<Task>();
-                for(int i = 0; i < taskArr.length(); i++){
+                for (int i = 0; i < taskArr.length(); i++) {
                     JSONObject tempTask = taskArr.getJSONObject(i);
-                    BigInteger bigTimeStamp = new BigInteger( tempTask.getString("lastTimeDone") );
+                    BigInteger bigTimeStamp = new BigInteger(tempTask.getString("lastTimeDone"));
                     Task newTask = new Task(
                             tempTask.getString("taskName"),
                             planId,
@@ -74,7 +74,7 @@ class AsyncTaskFetchPlan extends android.os.AsyncTask<String,String,String[]>{
                     tasks.add(newTask);
                     Log.d(TAG, "doInBackground: " + newTask);
                 }
-            } else if(response.has("customMessage")){
+            } else if (response.has("customMessage")) {
                 responseArr[0] = "fetchPlanError";
                 responseArr[1] = response.getString("customMessage");
             }

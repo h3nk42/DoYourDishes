@@ -7,9 +7,9 @@ class CreatePlanCallbackImpl implements CreatePlanCallback {
     @Override
     public void createPlanCallBack(String[] planData) {
         String responseInfo = planData[0];
-        if(responseInfo.equals("createPlanSuccess")){
+        if (responseInfo.equals("createPlanSuccess")) {
             String resPlanOwner = planData[1];
-            String resPlanName =  planData[2];
+            String resPlanName = planData[2];
             String resPlanId = planData[3];
             createPlanUser.successCallbackCreatePlan(resPlanOwner, resPlanName, resPlanId);
         } else if (responseInfo.equals("createPlanError") || responseInfo.equals("createPlanException")) {

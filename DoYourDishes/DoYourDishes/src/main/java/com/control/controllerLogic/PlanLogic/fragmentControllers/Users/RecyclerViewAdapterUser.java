@@ -11,15 +11,14 @@ import com.control.controllerLogic.PlanLogic.PlanController;
 import com.model.dataModel.User;
 import com.view.R;
 
-
 import java.util.List;
 
-public class RecyclerViewAdapterUser extends RecyclerView.Adapter<UserViewHolder>{
+public class RecyclerViewAdapterUser extends RecyclerView.Adapter<UserViewHolder> {
 
     List<User> userList;
     private PlanController planController;
 
-    public RecyclerViewAdapterUser(List<User> userList, PlanController planController){
+    public RecyclerViewAdapterUser(List<User> userList, PlanController planController) {
         this.userList = userList;
         this.planController = planController;
     }
@@ -33,7 +32,7 @@ public class RecyclerViewAdapterUser extends RecyclerView.Adapter<UserViewHolder
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_card_view, parent, false);
-        UserViewHolder uvh = new UserViewHolder(v,planController);
+        UserViewHolder uvh = new UserViewHolder(v, planController);
         return uvh;
     }
 

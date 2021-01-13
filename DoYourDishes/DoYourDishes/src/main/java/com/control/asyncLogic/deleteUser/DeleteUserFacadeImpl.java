@@ -1,12 +1,11 @@
 package com.control.asyncLogic.deleteUser;
 
 
-
 class DeleteUserFacadeImpl implements DeleteUserFacade {
 
     private DeleteUserCallback deleteUserCallback;
 
-    DeleteUserFacadeImpl (DeleteUserCallback deleteUserCallback) {
+    DeleteUserFacadeImpl(DeleteUserCallback deleteUserCallback) {
         this.deleteUserCallback = deleteUserCallback;
     }
 
