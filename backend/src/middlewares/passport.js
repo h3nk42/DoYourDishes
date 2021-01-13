@@ -1,6 +1,5 @@
 const ExtractJwt = require('passport-jwt').ExtractJwt
 const Strategy = require('passport-jwt').Strategy
-
 const User = require('../models/User');
 require('dotenv').config();
 
@@ -10,7 +9,6 @@ const config = {
         expiresIn: 10000,
     }
 }
-
 
 exports.applyPassportStrategy = passport => {
     const options = {};

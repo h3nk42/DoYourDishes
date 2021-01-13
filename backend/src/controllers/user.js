@@ -17,7 +17,6 @@ const secret = process.env.JWT_SECRET;
 exports.createUser = async function (req, res) {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     let{ userName, password } = req.body;
-
     let user = await User.exists({$or:[{userName: userName},{userNameLowerCase: userName.toLowerCase()}]})
     if (user){
         return  retErr(res, {}, 418, 'USERNAME_TAKEN');
@@ -31,7 +30,6 @@ exports.createUser = async function (req, res) {
         if(err){
             return  retErr(res, err, 418, 'DB_ERROR');
         }
-
         const token = jwt.sign({userName: userName}, secret,
             {
                 expiresIn: 86400,
@@ -58,7 +56,6 @@ exports.delAllUsers = async (req, res) => {
 exports.delUser = async (req, res) => {
     let msgSender = req.user.userName;
     let planToDelete = await Plan.findOne({owner: msgSender})
-
     let userModel = await User.findOne({userName: msgSender}, (err, data)=>{})
 
     Plan.deleteOne({owner: msgSender}, (err,data) =>{
@@ -71,7 +68,6 @@ exports.delUser = async (req, res) => {
             })
         }
         //if user is in an existing plan but not owner, remove him/her from plan
-
         else if(data.n===0 && userModel.plan != null) {
             Plan.updateOne({_id: userModel.plan}, {$pull: {users: {userName: msgSender}}}, (err,data) =>{
                 if (err)  return  retErr(res, {}, 418, 'DB_ERROR');

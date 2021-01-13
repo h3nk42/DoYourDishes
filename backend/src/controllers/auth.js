@@ -11,6 +11,7 @@ const secret = process.env.JWT_SECRET;
 const {retErr} = require('../utils/index');
 
 exports.login = async (req, res) => {
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return  retErr(res, errors, 418, 'INVALID_INPUT');

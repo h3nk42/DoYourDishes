@@ -20,14 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2603276a-cbb9-480c-9580-c1f7b0677708" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/AsyncTaskLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/AsyncTaskLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/asyncLogic/login/LoginFacadeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacadeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DoYourDishes/DoYourDishes/src/main/java/com/control/networkHttp/HttpRequestFacadeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/plan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/plan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,15 +54,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/dydWebapp" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/models/unused" />
       <recent name="$PROJECT_DIR$/src/middlewares/unused" />
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/models" />
       <recent name="$PROJECT_DIR$/Schemas" />
     </key>
@@ -109,6 +109,11 @@
       <workItem from="1608303004724" duration="11745000" />
       <workItem from="1608580511816" duration="619000" />
       <workItem from="1608657164815" duration="4276000" />
+      <workItem from="1609674159391" duration="4496000" />
+      <workItem from="1609781719760" duration="1065000" />
+      <workItem from="1609782997545" duration="1250000" />
+      <workItem from="1610362312676" duration="7325000" />
+      <workItem from="1610375831273" duration="11000" />
     </task>
     <servers />
   </component>
