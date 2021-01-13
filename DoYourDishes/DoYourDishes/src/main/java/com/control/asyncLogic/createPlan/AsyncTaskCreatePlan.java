@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskCreatePlan extends android.os.AsyncTask<String, String, String[]> {
 
     private static final String TAG = "AsyncTaskCreatePlan";
     private String _token;
@@ -19,7 +19,7 @@ class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,String[]>{
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
     private String planName;
 
-    public AsyncTaskCreatePlan( String _token,String _planName, CreatePlanCallbackImpl createPlanCallback) {
+    public AsyncTaskCreatePlan(String _token, String _planName, CreatePlanCallbackImpl createPlanCallback) {
         this._token = _token;
         this.planName = _planName;
         this.createPlanCallback = createPlanCallback;
@@ -38,13 +38,13 @@ class AsyncTaskCreatePlan extends android.os.AsyncTask<String,String,String[]>{
                 .build();
         try {
             response = httpRequestFacade.POST(BackendURL + "/plan/createPlan", requestBody, _token);
-            if(response.has("data")){
+            if (response.has("data")) {
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "createPlanSuccess";
                 responseArr[1] = response.getJSONObject("data").getString("owner");
                 responseArr[2] = response.getJSONObject("data").getString("name");
                 responseArr[3] = response.getJSONObject("data").getString("_id");
-            } else if(response.has("customMessage")){
+            } else if (response.has("customMessage")) {
                 responseArr[0] = "createPlanError";
                 responseArr[1] = response.getString("customMessage");
             }

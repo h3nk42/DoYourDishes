@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-public class AsyncTaskDeleteTask extends AsyncTask<String,String,String[]> {
+public class AsyncTaskDeleteTask extends AsyncTask<String, String, String[]> {
 
 
     private static final String TAG = "AsyncTaskDeleteTask";
@@ -22,7 +22,7 @@ public class AsyncTaskDeleteTask extends AsyncTask<String,String,String[]> {
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
-    public AsyncTaskDeleteTask( String _token, String _taskToDeleteId, DeleteTaskCallback deleteTaskCallback) {
+    public AsyncTaskDeleteTask(String _token, String _taskToDeleteId, DeleteTaskCallback deleteTaskCallback) {
         this._token = _token;
         this._taskToDeleteId = _taskToDeleteId;
         this.deleteTaskCallback = deleteTaskCallback;
@@ -39,10 +39,10 @@ public class AsyncTaskDeleteTask extends AsyncTask<String,String,String[]> {
                 .build();
         try {
             response = httpRequestFacade.DELETE(BackendURL + "/task/delSingleTask", requestBody, _token);
-            if(response.has("data")){
+            if (response.has("data")) {
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "deleteTaskSuccess";
-            } else if(response.has("customMessage")){
+            } else if (response.has("customMessage")) {
                 responseArr[0] = "deleteTaskError";
                 responseArr[1] = response.getString("customMessage");
             }

@@ -4,7 +4,7 @@ class LoginFacadeImpl implements LoginFacade {
 
     private LoginCallBack loginCallBack;
 
-    LoginFacadeImpl (LoginCallBack _loginCallBack) {
+    LoginFacadeImpl(LoginCallBack _loginCallBack) {
         this.loginCallBack = _loginCallBack;
     }
 

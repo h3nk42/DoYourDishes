@@ -8,7 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.viewpager.widget.ViewPager;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
@@ -30,7 +29,6 @@ public class PlanActivity extends AppCompatActivity implements PlanActivityInter
     private TasksFragment tasksFragment;
     private UsersFragment usersFragment;
     private ScoreFragment scoreFragment;
-
 
 
     @Override
@@ -74,16 +72,19 @@ public class PlanActivity extends AppCompatActivity implements PlanActivityInter
                 this);
 
     }
+
     @Override
-    public PlanController getPlanController(){
+    public PlanController getPlanController() {
         return this.planController;
     }
+
     @Override
-    public void addUser(View view){
+    public void addUser(View view) {
         usersFragment.addUser();
     }
+
     @Override
-    public void addTask(View view){
+    public void addTask(View view) {
         tasksFragment.addTask();
     }
 }

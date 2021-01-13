@@ -1,16 +1,15 @@
 package com.view.gui.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.control.controllerLogic.PlanLogic.PlanController;
 import com.control.controllerLogic.PlanLogic.fragmentControllers.Users.RecyclerViewAdapterUser;
@@ -25,7 +24,7 @@ import java.util.List;
 public class UsersFragment extends Fragment implements UsersFragmentInterface {
 
 
-    private static final String TAG =  "UsersFragment";
+    private static final String TAG = "UsersFragment";
     private PlanActivity planActivity;
     private PlanController planController;
     private UserFragmentController userFragmentController;
@@ -61,7 +60,7 @@ public class UsersFragment extends Fragment implements UsersFragmentInterface {
         Log.d(TAG, "onCreateView: " + planController);
 
 
-        this.userFragmentController = new UserFragmentController( this.planController, this);
+        this.userFragmentController = new UserFragmentController(this.planController, this);
 
         List<User> userList = new ArrayList<User>();
         this.recyclerView = (RecyclerView) RootView.findViewById(R.id.usersFragmentRecyclerView);
@@ -75,12 +74,13 @@ public class UsersFragment extends Fragment implements UsersFragmentInterface {
     }
 
     @Override
-    public void renderData(List<User> usersToRender){
+    public void renderData(List<User> usersToRender) {
         RecyclerViewAdapterUser newAdapter = new RecyclerViewAdapterUser(usersToRender, this.planController);
         this.recyclerView.setAdapter(newAdapter);
     }
+
     @Override
-    public void addUser(){
+    public void addUser() {
         userFragmentController.addUser();
     }
 }

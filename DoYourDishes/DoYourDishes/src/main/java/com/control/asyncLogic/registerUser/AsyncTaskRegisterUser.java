@@ -5,12 +5,11 @@ import android.util.Log;
 import com.control.networkHttp.HttpRequestFacade;
 import com.control.networkHttp.HttpRequestFacadeFactory;
 
-
 import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]> {
+class AsyncTaskRegisterUser extends android.os.AsyncTask<String, String, String[]> {
 
     private static final String TAG = "AsyncTaskRegisterUser";
     private RegisterUserCallBackImpl registerUserCallBackImpl;
@@ -18,7 +17,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
     private String _password;
     private FormBody requestBody;
     private HttpRequestFacade httpRequestFacade;
-    private final String BackendURL =  "https://doyourdishes.herokuapp.com/api";
+    private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
     public AsyncTaskRegisterUser(String _userName, String _password, RegisterUserCallBackImpl registerUserCallBackImpl) {
         this._userName = _userName;
@@ -58,8 +57,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
         } catch (Exception e) {
             e.printStackTrace();
 
-            if(e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout"))
-            {
+            if (e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout")) {
                 responseArr[1] = "server needed to wake up! try again :)";
                 return responseArr;
             }
@@ -73,7 +71,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String,String,String[]>
     }
 
     @Override
-    protected void onPostExecute(String[] registerData){
+    protected void onPostExecute(String[] registerData) {
         registerUserCallBackImpl.registerUserCallBack(registerData);
     }
 }

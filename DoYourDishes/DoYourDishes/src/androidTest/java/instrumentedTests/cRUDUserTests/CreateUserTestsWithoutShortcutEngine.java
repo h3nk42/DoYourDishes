@@ -2,7 +2,7 @@
  * Testet ob ein Nutzer registriert werden kann
  */
 
-package instrumentedTests.E2E;
+package instrumentedTests.cRUDUserTests;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -17,27 +17,29 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import instrumentedTests.ShortcutEngine.RandomGenerator;
+import instrumentedTests.ShortcutEngine.RandomGeneratorImpl;
+import instrumentedTests.ShortcutEngine.ToastMatcher;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class EspressoCreateUser {
+public class CreateUserTestsWithoutShortcutEngine {
     DebugState state;
-    public static final String USERNAME_STRING_TO_BE_TYPED = "henk182";
-    public static final String PASSWORD_STRING_TO_BE_TYPED = "hotrod182app";
-    public static final String PLAN_STRING_TO_BE_TYPED = "EspressoPlan1";
+    RandomGenerator rando = new RandomGeneratorImpl();
+    public final String USERNAME_STRING_TO_BE_TYPED = rando.generateStringAndReturn() + "henk";
+    public final String PASSWORD_STRING_TO_BE_TYPED = rando.generateStringAndReturn() + "hotrod";
+    public final String PLAN_STRING_TO_BE_TYPED = "EspressoPlan1";
 
-/*    // das erste was der Test machen soll, ei jedem restart (hier: bilde Homeactivity [Toplevel Activity])
-    @Rule
-    public ActivityScenarioRule<LandingActivity> activityScenarioRule
-            = new ActivityScenarioRule<>(LandingActivity.class);*/
 
     @Before
     public void launchActivity() {
@@ -68,7 +70,10 @@ public class EspressoCreateUser {
         Assert.assertNotSame(state, DebugState.LOGGED_IN);
     }
 
-    // ein User registriert sich mit falscher Usernamelänge
+    /**
+     * Username zu kurz
+     * ein User registriert sich mit falscher Usernamelänge
+     */
     @Test
     public void creatUserSchlechtTest1() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
@@ -88,12 +93,20 @@ public class EspressoCreateUser {
         // klicke auf register
         onView(withId(R.id.registerButton)).perform(click());
 
+        //Prüfe Toast
+        onView(withText("username too short")).inRoot(new ToastMatcher())
+                .check(matches(isDisplayed()));
+
         //deleteUser
         Assert.assertNotSame(state, DebugState.NOT_LOGGED_IN);
 
     }
 
-    // ein User registriert sich mit falscher Passwortlänge, gibt 2 Zahlen ein
+
+    /**
+     * Passwort zu kurz
+     * ein User registriert sich mit falscher Passwortlänge, gibt 2 Zahlen ein
+     */
     @Test
     public void creatUserSchlechtTest2() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
@@ -108,17 +121,24 @@ public class EspressoCreateUser {
 
         // gib confirm password ein
         onView(withId(R.id.confirmRegisterPasswordEditText))
-                .perform(typeText(PASSWORD_STRING_TO_BE_TYPED), closeSoftKeyboard());
+                .perform(typeText("12"), closeSoftKeyboard());
 
         // klicke auf register
         onView(withId(R.id.registerButton)).perform(click());
+
+        //Prüfe Toast
+        onView(withText("password too short")).inRoot(new ToastMatcher())
+                .check(matches(isDisplayed()));
 
         //deleteUser
         Assert.assertNotSame(state, DebugState.NOT_LOGGED_IN);
 
     }
 
-    // ein User registriert sich mit falscher confirmationpass
+    /**
+     * Passwort stimmt nicht überein
+     * ein User registriert sich mit falscher confirmationpass
+     */
     @Test
     public void creatUserSchlechtTest3() {
         onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
@@ -137,6 +157,10 @@ public class EspressoCreateUser {
 
         // klicke auf register
         onView(withId(R.id.registerButton)).perform(click());
+
+        //Prüfe Toast
+        onView(withText("passwords don't match")).inRoot(new ToastMatcher())
+                .check(matches(isDisplayed()));
 
         //deleteUser
         Assert.assertNotSame(state, DebugState.NOT_LOGGED_IN);
@@ -169,20 +193,17 @@ public class EspressoCreateUser {
         // klicke auf das plan name feld um plannamen einzugeben
         onView(withHint("plan name")).perform(typeText(PLAN_STRING_TO_BE_TYPED), closeSoftKeyboard());
 
-        /*onView(allOf(
-                isDescendantOfA(withText("plan name")),
-                isAssignableFrom(EditText.class)))
-                .inRoot(isDialog())
-                .perform(typeText("1234"))
-                .perform(closeSoftKeyboard());*/
-
         // klicke auf OK im Alertdialog
         onView(withId(android.R.id.button1)).perform(click());
 
         // Überprüfe ob wir in Plananischt gelandet sind
         onView(withId(R.id.planNameTextView)).check(matches(withText(PLAN_STRING_TO_BE_TYPED)));
 
-        //TODO fehlt noch delete User danach damit man ihn wiedr anlegen kann
+        //Klicke auf delete User
+        onView(withId(R.id.deleteUserButton)).perform(click());
+
+        // klicke auf OK im Alertdialog
+        onView(withId(android.R.id.button2)).perform(click());
 
     }
 

@@ -1,15 +1,16 @@
 package com.view.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.control.controllerLogic.LandingLogic.LandingController;
 import com.view.R;
 
 /**
  * First activity of the application
+ *
  * @value landingController holds the control for this activity (view)
  * @value landingActivity holds the instance of this activity to pass it to the control
  */
@@ -35,7 +36,7 @@ public class LandingActivity extends AppCompatActivity implements LandingActivit
      * -> calls the control function
      */
     @Override
-    public void toRegisterUserClick(View view){
+    public void toRegisterUserClick(View view) {
         landingController.goToRegisterUser();
     }
 
@@ -44,7 +45,7 @@ public class LandingActivity extends AppCompatActivity implements LandingActivit
      * -> calls the control function
      */
     @Override
-    public void toLoginClick(View view){
+    public void toLoginClick(View view) {
         landingController.goToLogin();
     }
 }

@@ -1,11 +1,11 @@
 package com.control.asyncLogic.deletePlan;
 
 
-class DeletePlanFacadeImpl implements DeletePlanFacade{
+class DeletePlanFacadeImpl implements DeletePlanFacade {
 
     private DeletePlanCallback deletePlanCallback;
 
-    DeletePlanFacadeImpl (DeletePlanCallback deletePlanCallback) {
+    DeletePlanFacadeImpl(DeletePlanCallback deletePlanCallback) {
         this.deletePlanCallback = deletePlanCallback;
     }
 

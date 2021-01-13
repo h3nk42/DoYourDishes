@@ -1,7 +1,7 @@
 /**
  * Testet ob Registrierter User sich einloggen kann
  */
-package LogicTest.espressoTest;
+package instrumentedTests.cRUDUserTests;
 
 
 import android.view.View;
@@ -17,31 +17,34 @@ import com.view.gui.LandingActivity;
 import com.view.gui.LoginActivity;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import instrumentedTests.ShortcutEngine.RandomGenerator;
+import instrumentedTests.ShortcutEngine.RandomGeneratorImpl;
+import instrumentedTests.ShortcutEngine.ToastMatcher;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static org.hamcrest.Matchers.is;
-
 
 
 @RunWith(AndroidJUnit4.class)
 
 @LargeTest
-public class EspressoLogin {
+public class LoginTestsWithoutShortcutEngine {
     DebugState state;
-    public static final String USERNAME_STRING_TO_BE_TYPED = "harun";
-    public static final String PASSWORD_STRING_TO_BE_TYPED = "harun1";
+    RandomGenerator rando = new RandomGeneratorImpl();
+    public final String USERNAME_STRING_TO_BE_TYPED = rando.generateStringAndReturn() + "harun";
+    public final String PASSWORD_STRING_TO_BE_TYPED = rando.generateStringAndReturn() + "harun1";
     public static final String WRONGUSERNAME_STRING_TO_BE_TYPED = "wrongy";     // please dont register this User
     public static final String WRONGPASSWORD_STRING_TO_BE_TYPED = "wrongy1";    // please dont register this User
 
@@ -56,22 +59,33 @@ public class EspressoLogin {
         ActivityScenario.launch(LandingActivity.class);
     }
 
-    @Before
-    public void setUp(){
-        activityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction<LoginActivity>() {
-            @Override
-            public void perform(LoginActivity activity) {
-                decorView = activity.getWindow().getDecorView();
-            }
-        });
-    }
-
 
     /**
+     * Richtige Logindaten
      * User loggt sich mit gültigen Nutzerdaten ein
      */
     @Test
     public void LoginGutTest() {
+        onView(withId(R.id.toCreateAccountActivityButton)).perform(click());
+
+        // gib Username ein
+        onView(withId(R.id.registerUserNameTextField))
+                .perform(typeText(USERNAME_STRING_TO_BE_TYPED), closeSoftKeyboard());
+
+        // gib password ein
+        onView(withId(R.id.passwordTextField))
+                .perform(typeText(PASSWORD_STRING_TO_BE_TYPED), closeSoftKeyboard());
+
+        // gib confirm password ein
+        onView(withId(R.id.confirmRegisterPasswordEditText))
+                .perform(typeText(PASSWORD_STRING_TO_BE_TYPED), closeSoftKeyboard());
+
+        // klicke auf register
+        onView(withId(R.id.registerButton)).check(matches(withText("Register"))).perform(click());
+
+        //HW Button
+        onView(isRoot()).perform(pressBack());
+
         onView(withId(R.id.toLoginButton)).perform(click());
 
         // gib Username ein
@@ -93,11 +107,12 @@ public class EspressoLogin {
     }
 
     /**
+     * Falsche Logindaten
      * Userloggt sich mit falschen Userdaten ein
      */
-    @Ignore
     @Test
-    public void LoginSchlechtTest1(){
+    public void LoginSchlechtTest1() {
+
         onView(withId(R.id.toLoginButton)).perform(click());
 
         // gib Username ein
@@ -110,12 +125,12 @@ public class EspressoLogin {
 
         // klicke auf login
         onView(withId(R.id.toLoginButton)).perform(click());
-
         //
 
         // Toast-Message
-        onView(withText("no username/password given")).inRoot(withDecorView(is(decorView))).check(matches(isDisplayed()));
+        //onView(withText("no username/password given")).inRoot(withDecorView(is(decorView))).check(matches(isDisplayed()));
+        onView(withText(R.string.TOAST_STRING_WRONG_NAME_OR_PASSWORD_COMBO)).inRoot(new ToastMatcher())
+                .check(matches(isDisplayed()));
     }
 
-    //TODO: User loggt sich mit keinen Daten ein
 }

@@ -1,12 +1,11 @@
 package com.control.asyncLogic.registerUser;
 
 
-
 class RegisterUserFacadeImpl implements RegisterUserFacade {
 
     private RegisterUserCallBack registerUserCallBack;
 
-    RegisterUserFacadeImpl (RegisterUserCallBack registerUserCallBack) {
+    RegisterUserFacadeImpl(RegisterUserCallBack registerUserCallBack) {
         this.registerUserCallBack = registerUserCallBack;
     }
 

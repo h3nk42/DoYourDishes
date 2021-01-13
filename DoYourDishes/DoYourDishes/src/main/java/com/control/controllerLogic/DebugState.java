@@ -13,22 +13,4 @@ public enum DebugState {
     NOT_REGISTERED,
     REGISTER_USER_ERROR,
     REGISTERED_AND_LOGGED_IN,
-
-
-
-    CREATE_USER,             //Username:String  password:String
-    DELETE_USER,             //Username:String
-
-    LOGIN,                 //Username:String  password:String
-    WHOAMI,
-
-    CREATE_PLAN,
-    DELETE_PLAN,
-
-    ADD_USER,
-    FIND_PLAN,
-    CREATE_TASK,
-    DELETE_SINGLE_TASK,
-    FULFILL_TASK
-
-    }
+}

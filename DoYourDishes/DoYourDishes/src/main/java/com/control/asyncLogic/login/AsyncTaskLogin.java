@@ -1,16 +1,15 @@
 package com.control.asyncLogic.login;
-import android.util.Log;
 
+import android.util.Log;
 
 import com.control.networkHttp.HttpRequestFacade;
 import com.control.networkHttp.HttpRequestFacadeFactory;
 
 import org.json.JSONObject;
 
-
 import okhttp3.FormBody;
 
-class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
+class AsyncTaskLogin extends android.os.AsyncTask<String, String, String[]> {
 
 
     private static final String TAG = "AsyncTaskLogin";
@@ -49,12 +48,10 @@ class AsyncTaskLogin extends android.os.AsyncTask<String,String,String[]>{
                 responseArr[0] = "loginError";
                 responseArr[1] = response.getString("customMessage");
             }
-        }
-        catch (Exception e) {
-           // e.printStackTrace();
+        } catch (Exception e) {
+            // e.printStackTrace();
             responseArr[0] = "loginException";
-            if(e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout"))
-            {
+            if (e.toString().startsWith("java.lang.Exception: java.net.SocketTimeoutException: timeout")) {
                 responseArr[1] = "server needed to wake up! try again :)";
                 return responseArr;
             }

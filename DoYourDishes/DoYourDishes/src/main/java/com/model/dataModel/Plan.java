@@ -17,8 +17,12 @@ public class Plan {
         this.tasks = _tasks;
     }
 
+    public Plan() throws NullPointerException {
+        throw new NullPointerException();
+    }
 
     public void setName(String name) {
+        guard(name);
         this.name = name;
     }
 
@@ -26,7 +30,7 @@ public class Plan {
         this.tasks = tasks;
     }
 
-    public void setUsers(List<User>users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
@@ -45,4 +49,19 @@ public class Plan {
     public List<User> getUsers() {
         return users;
     }
+
+    public int getTaskListSize() {
+        return tasks.size();
+    }
+
+    public int getUserListSize() {
+        return users.size();
+    }
+
+    public void guard(String wennNull) throws NullPointerException, IllegalArgumentException {
+        if (wennNull == null) throw new NullPointerException();
+        if (wennNull.equals("")) throw new IllegalArgumentException();
+    }
+
+
 }

@@ -10,6 +10,7 @@ import com.view.gui.RegisterActivity;
 
 /**
  * controls the Landing_activity
+ *
  * @value landingActivity holds the instance of LandingActivity
  * @value state holds state for debugging purposes
  */

@@ -8,11 +8,9 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacade;
 import com.control.asyncLogic.removeUserFromPlan.RemoveUserFacadeFactory;
 import com.control.controllerLogic.PlanLogic.PlanController;
-
 import com.view.R;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {
@@ -34,12 +32,12 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         removeUserButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RemoveUserFacade removeUserFacade = RemoveUserFacadeFactory.produceRemoveUserFacade();
-                if(userName.getText().toString().equals(planController.getActiveUserName())){
+                if (userName.getText().toString().equals(planController.getActiveUserName())) {
                     Log.d(TAG, "onClick: user deleted himself");
-                    removeUserFacade.removeUserCallAsync(planController.getToken(),userName.getText().toString(), planController, true);
+                    removeUserFacade.removeUserCallAsync(planController.getToken(), userName.getText().toString(), planController, true);
                 } else {
                     Log.d(TAG, "onClick: user deleted someone else");
-                    removeUserFacade.removeUserCallAsync(planController.getToken(),userName.getText().toString(), planController, false);
+                    removeUserFacade.removeUserCallAsync(planController.getToken(), userName.getText().toString(), planController, false);
                 }
             }
         });

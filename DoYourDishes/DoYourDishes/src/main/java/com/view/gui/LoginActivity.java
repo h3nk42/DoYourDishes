@@ -1,18 +1,18 @@
 package com.view.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.control.controllerLogic.LoginLogic.LoginController;
 import com.view.R;
 
 /**
- *  this is the activity that handles user logIn
+ * this is the activity that handles user logIn
+ *
  * @value loginActivity holds itself to pass to control and so the activity can get finsihed from another activity
  * @value loginWasOpened gets set to true if a single instance of this activity was existent,
  * so the Homeactivity knows which activities to .finish() when started
@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
 
     public static LoginActivity loginActivity;
     public static Boolean loginWasOpened = false;
-    private static final String TAG="LoginActivity";
+    private static final String TAG = "LoginActivity";
     private LoginController loginController;
 
 
@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
 
     /**
      * gets called by loginButton
+     *
      * @param view
      */
     @Override

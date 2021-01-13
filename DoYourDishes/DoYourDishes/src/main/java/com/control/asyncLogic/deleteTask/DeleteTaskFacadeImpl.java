@@ -1,11 +1,11 @@
 package com.control.asyncLogic.deleteTask;
 
 
-public class DeleteTaskFacadeImpl implements  DeleteTaskFacade {
+public class DeleteTaskFacadeImpl implements DeleteTaskFacade {
 
     private DeleteTaskCallback deleteTaskCallback;
 
-    DeleteTaskFacadeImpl (DeleteTaskCallback deleteTaskCallback) {
+    DeleteTaskFacadeImpl(DeleteTaskCallback deleteTaskCallback) {
         this.deleteTaskCallback = deleteTaskCallback;
     }
 

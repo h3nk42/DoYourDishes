@@ -14,16 +14,16 @@ class HttpRequestFacadeImpl implements HttpRequestFacade {
 
     @Override
     public JSONObject GET(String path, RequestBody data, String token) throws Exception {
-        return httpRequest.GET(path,data,token);
+        return httpRequest.GET(path, data, token);
     }
 
     @Override
     public JSONObject POST(String path, RequestBody data, String token) throws Exception {
-        return httpRequest.POST(path,data,token);
+        return httpRequest.POST(path, data, token);
     }
 
     @Override
     public JSONObject DELETE(String path, RequestBody data, String token) throws Exception {
-        return httpRequest.DELETE(path,data,token);
+        return httpRequest.DELETE(path, data, token);
     }
 }

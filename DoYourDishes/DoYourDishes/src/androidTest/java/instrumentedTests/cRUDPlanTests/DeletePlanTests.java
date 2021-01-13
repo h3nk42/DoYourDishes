@@ -1,17 +1,29 @@
 package instrumentedTests.cRUDPlanTests;
 
+import androidx.test.core.app.ActivityScenario;
+
+import com.view.gui.LandingActivity;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import instrumentedTests.ShortcutEngine.IcRUDShortcut;
-import instrumentedTests.ShortcutEngine.RandomStringGeneratorForLogin;
-import instrumentedTests.ShortcutEngine.cRudEngine;
+import instrumentedTests.ShortcutEngine.CrudEngine;
+import instrumentedTests.ShortcutEngine.ICrudShortcut;
+import instrumentedTests.ShortcutEngine.RandomGenerator;
+import instrumentedTests.ShortcutEngine.RandomGeneratorImpl;
 
 public class DeletePlanTests {
 
-    RandomStringGeneratorForLogin rando = new RandomStringGeneratorForLogin();
+    @Before
+    public void launchActivity() {
+        ActivityScenario.launch(LandingActivity.class);
+    }
+
+    RandomGenerator rando = new RandomGeneratorImpl();
     public final String USERNAME = rando.generateStringAndReturn() + "myName";
     public final String PASSWORD = rando.generateStringAndReturn() + "myPass";
     public final String PLAN = rando.generateStringAndReturn() + " Plan";
+
 
     /**
      * Test erstelle einen Plan
@@ -19,8 +31,8 @@ public class DeletePlanTests {
      */
     @Test
     public void deletePlanGutTest1() {
-        IcRUDShortcut icRUDShortcut;
-        icRUDShortcut = new cRudEngine();
+        ICrudShortcut icRUDShortcut;
+        icRUDShortcut = new CrudEngine();
 
         icRUDShortcut.createUser(USERNAME, PASSWORD);
         icRUDShortcut.createPlan(PLAN);

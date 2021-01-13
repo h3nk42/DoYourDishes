@@ -8,7 +8,7 @@ import java.util.List;
 
 interface FetchPlanCallback {
 
-    void fetchPlanCallBack(String[] planData,  List<User> users,  List<Task> tasks);
+    void fetchPlanCallBack(String[] planData, List<User> users, List<Task> tasks);
 
 
     void fetchPlanCallAsync(String _token, FetchPlanUser fetchPlanUser);

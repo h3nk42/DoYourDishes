@@ -3,7 +3,6 @@ package com.control.asyncLogic.removeUserFromPlan;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.control.asyncLogic.deleteUser.DeleteUserCallback;
 import com.control.networkHttp.HttpRequestFacade;
 import com.control.networkHttp.HttpRequestFacadeFactory;
 
@@ -11,7 +10,7 @@ import org.json.JSONObject;
 
 import okhttp3.FormBody;
 
-public class AsyncTaskRemoveUser extends AsyncTask<String,String,String[]> {
+public class AsyncTaskRemoveUser extends AsyncTask<String, String, String[]> {
 
 
     private static final String TAG = "AsyncTaskRemoveUser";
@@ -24,7 +23,7 @@ public class AsyncTaskRemoveUser extends AsyncTask<String,String,String[]> {
     private final String BackendURL = "https://doyourdishes.herokuapp.com/api";
 
 
-    public AsyncTaskRemoveUser( String _token,String _userNameToRemove, RemoveUserCallback removeUserCallback, Boolean _deleteHimself) {
+    public AsyncTaskRemoveUser(String _token, String _userNameToRemove, RemoveUserCallback removeUserCallback, Boolean _deleteHimself) {
         this._token = _token;
         this._userNameToRemove = _userNameToRemove;
         this.removeUserCallback = removeUserCallback;
@@ -41,12 +40,12 @@ public class AsyncTaskRemoveUser extends AsyncTask<String,String,String[]> {
                 .add("userName", _userNameToRemove)
                 .build();
         try {
-            Log.d(TAG, "doInBackground: Token: "+ _token);
+            Log.d(TAG, "doInBackground: Token: " + _token);
             response = httpRequestFacade.POST(BackendURL + "/plan/removeUser", requestBody, _token);
-            if(response.has("data")){
+            if (response.has("data")) {
                 Log.d(TAG, "doInBackground: " + response);
                 responseArr[0] = "removeUserSuccess";
-            } else if(response.has("customMessage")){
+            } else if (response.has("customMessage")) {
                 responseArr[0] = "removeUserError";
                 responseArr[1] = response.getString("customMessage");
             }

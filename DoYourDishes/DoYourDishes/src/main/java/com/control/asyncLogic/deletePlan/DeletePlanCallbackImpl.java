@@ -1,16 +1,15 @@
 package com.control.asyncLogic.deletePlan;
 
-class DeletePlanCallbackImpl implements DeletePlanCallback{
+class DeletePlanCallbackImpl implements DeletePlanCallback {
 
     private DeletePlanUser deletePlanUser;
-
 
 
     @Override
     public void deletePlanCallBack(String[] planData) {
 
         String responseInfo = planData[0];
-        if(responseInfo.equals("deletePlanSuccess")){
+        if (responseInfo.equals("deletePlanSuccess")) {
             deletePlanUser.successCallbackDeletePlan(responseInfo);
         } else if (responseInfo.equals("deletePlanError") || responseInfo.equals("deletePlanException")) {
             String errorInfo = planData[1];

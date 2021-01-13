@@ -1,23 +1,22 @@
 package com.view.gui.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.view.R;
 import com.view.gui.PlanActivity;
 
 
- public class ScoreFragment extends Fragment {
+public class ScoreFragment extends Fragment {
 
 
     private PlanActivity planActivity;
 
-    public ScoreFragment(){
+    public ScoreFragment() {
     }
 
 

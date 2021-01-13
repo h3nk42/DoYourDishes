@@ -1,6 +1,6 @@
 package com.control.asyncLogic.registerUser;
 
-class RegisterUserCallBackImpl implements RegisterUserCallBack{
+class RegisterUserCallBackImpl implements RegisterUserCallBack {
 
     RegisterUserUser registerUserUser;
 
@@ -12,13 +12,13 @@ class RegisterUserCallBackImpl implements RegisterUserCallBack{
     public void registerUserCallBack(String[] loginData) {
 
         String infoField = loginData[0];
-        switch(infoField){
-            case("registerError"):
-            case("registerException"):
+        switch (infoField) {
+            case ("registerError"):
+            case ("registerException"):
                 String errorMessage = loginData[1];
                 registerUserUser.errorCallbackRegisterUser(errorMessage);
                 break;
-            case("registerSuccess"):
+            case ("registerSuccess"):
                 this.resToken = loginData[1];
                 this.respUserName = loginData[2];
                 this.responsePlanId = loginData[3];
