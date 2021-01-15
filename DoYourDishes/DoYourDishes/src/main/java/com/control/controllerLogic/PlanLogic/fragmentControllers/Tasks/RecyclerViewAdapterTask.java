@@ -52,9 +52,9 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
 
         //render the color based on when the task was done last
         RelativeLayout rl = (RelativeLayout) cardView.findViewById(R.id.taskRelativeLayout);
-        if (timesTamp.intValue() < 60) {
+        if (timesTamp.intValue() < 10) {
             rl.setBackgroundColor(0xFF87f589);
-        } else if (timesTamp.intValue() < 120) {
+        } else if (timesTamp.intValue() < 20) {
             rl.setBackgroundColor(0xFFf5e887);
         } else {
             rl.setBackgroundColor(0xFFf58787);
