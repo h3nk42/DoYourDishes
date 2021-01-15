@@ -264,6 +264,7 @@ public class HomeController implements HomeControllerInterface, CreatePlanUser, 
     public void successCallbackFetchPlan(String _planName, String _planId, String _planOwner, List<User> users, List<Task> tasks) {
         activeUser.setPlan(_planId);
         this.plan = new Plan(_planOwner, _planName, _planId, users, tasks);
+        this.userPlanName = _planName;
         renderLayout();
     }
 
