@@ -23,12 +23,15 @@
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/plan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/plan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middlewares/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/passport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dropDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dropDb.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +57,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/dydWebapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../testRepo/DoYourDishes/backend" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/models/unused" />
@@ -114,6 +120,10 @@
       <workItem from="1609782997545" duration="1250000" />
       <workItem from="1610362312676" duration="7325000" />
       <workItem from="1610375831273" duration="11000" />
+      <workItem from="1610703080871" duration="9708000" />
+      <workItem from="1610728452755" duration="96000" />
+      <workItem from="1610728551702" duration="21000" />
+      <workItem from="1610729138101" duration="3868000" />
     </task>
     <servers />
   </component>

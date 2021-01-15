@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
 const Plan = require('../models/Plan')
 const Task = require('../models/Task')
 const User = require('../models/User')
+require('dotenv').config();
 
 const dbUri = process.env.MONGO_LOCAL_CONN_URL;
 

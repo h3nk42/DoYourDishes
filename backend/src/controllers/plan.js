@@ -1,5 +1,3 @@
-
-
 const Plan = require('../models/Plan')
 const Task = require('../models/Task')
 const User = require('../models/User')
@@ -8,7 +6,6 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const {retErr} = require('../utils/index');
 const {checkInputs} = require('../utils/index')
-
 
 exports.findPlanToOwner = async (req, res) => {
     let msgSender = req.user.userName;
@@ -96,7 +93,6 @@ exports.addUser = async (req, res) => {
 }
 
 exports.removeUser = async (req, res) => {
-
     let doAction = () => {
         Plan.updateOne({_id: userMsgSender.plan}, {$pull: {users: {userName: userToRemove}}}, (err,data) =>{
             if (err)  return  retErr(res, {}, 418, 'DB_ERROR');
@@ -129,11 +125,4 @@ exports.removeUser = async (req, res) => {
         if(String(user.plan) !== String(userMsgSender.plan) ) return  retErr(res, {}, 418, 'USER_NOT_IN_THIS_PLAN');
         doAction();
     }
-}
-
-
-
-
-exports.kickUser = (req, res) => {
-
 }

@@ -11,6 +11,7 @@ const passport = require('passport');
 
 // setting up db uri and api port
 const dbUri = process.env.MONGO_LOCAL_CONN_URL;
+
 const API_PORT = process.env.PORT || 3001;
 
 //=== 1 - CREATE APP
@@ -61,7 +62,6 @@ require('./routes/index')(app);
 
 // launch our backend into a port
     app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
-
 
 
 module.exports = app;
