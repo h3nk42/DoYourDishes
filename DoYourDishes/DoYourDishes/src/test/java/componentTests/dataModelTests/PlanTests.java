@@ -40,7 +40,7 @@ public class PlanTests {
         List<User> usersList = new Stack<>();
         List<Task> taskList = new Stack<>();
 
-        //TODO überlegen welche TESTteile Redundant!
+
 
         usersList.add(harun);
         usersList.add(henk);

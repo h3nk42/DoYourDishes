@@ -99,7 +99,7 @@ public class DeleteTaskTests {
      * erstelle einen User, erstelle einen Plan und lösche den Plan dann den User
      */
 
-    //TODO HW Buttonclick ein/aus-bauen in addTask
+
     @Test
     public void deleteTaskGutTest1() {
         ICrudShortcut icRUDShortcut;

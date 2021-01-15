@@ -103,7 +103,6 @@ public class LoginTestsWithoutShortcutEngine {
         onView(withId(R.id.welcomeUserNameTextView)).check(matches(withText("Welcome " + USERNAME_STRING_TO_BE_TYPED + "!")));
         //Assert.assertTrue(state==DebugState.LOGGED_IN);
 
-        //TODO: arbeiten an state
     }
 
     /**

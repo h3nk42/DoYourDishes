@@ -129,7 +129,6 @@ public class UserTests {
 
     @Test
     public void gutTestsetPointsInPlan() {
-        //TODO icabinda konstruktorda fail, setPoints yapmaliyim?
         Assert.assertEquals(POINTSINPLAN, user.getPointsInPlan(), 0);
     }
 
