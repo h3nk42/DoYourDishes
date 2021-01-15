@@ -20,6 +20,8 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
     List<Task> taskList;
     private PlanController planController;
     private View cardView;
+    private final Integer YELLOWTIME = 10;
+    private final Integer REDTIME = 20;
 
     public RecyclerViewAdapterTask(List<Task> taskList, PlanController planController) {
         this.taskList = taskList;
@@ -52,9 +54,9 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<TaskViewHolder
 
         //render the color based on when the task was done last
         RelativeLayout rl = (RelativeLayout) cardView.findViewById(R.id.taskRelativeLayout);
-        if (timesTamp.intValue() < 10) {
+        if (timesTamp.intValue() < YELLOWTIME) {
             rl.setBackgroundColor(0xFF87f589);
-        } else if (timesTamp.intValue() < 20) {
+        } else if (timesTamp.intValue() < REDTIME) {
             rl.setBackgroundColor(0xFFf5e887);
         } else {
             rl.setBackgroundColor(0xFFf58787);
