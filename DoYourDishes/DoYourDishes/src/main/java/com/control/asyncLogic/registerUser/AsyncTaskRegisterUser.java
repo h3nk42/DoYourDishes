@@ -23,9 +23,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String, String, String[
         this._userName = _userName;
         this._password = _password;
         this.registerUserCallBackImpl = registerUserCallBackImpl;
-
         this.httpRequestFacade = HttpRequestFacadeFactory.produceHttpRequestFacade();
-
     }
 
     @Override
@@ -52,7 +50,7 @@ class AsyncTaskRegisterUser extends android.os.AsyncTask<String, String, String[
             } else {
                 responseArr[0] = "registerError";
                 responseArr[1] = response.getString("customMessage");
-
+                Log.d(TAG, "doInBackground: " + responseArr[1] );
             }
         } catch (Exception e) {
             e.printStackTrace();
